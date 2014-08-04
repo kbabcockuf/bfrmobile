@@ -1,0 +1,74 @@
+/* Header
+-----------------------------------------------------------------------------------------------------------*/
+.ui-title{
+	margin: 0.6em 10% 0.8em !important;
+}
+
+/* Sections
+-----------------------------------------------------------------------------------------------------------*/
+.section_div {
+	margin: 15px; 
+	font-size: 20px;
+/*	font-weight: normal; */	
+	border-bottom: 1px solid #dddddd !important; 
+	margin-top: 30px; 
+	border-top: 1px solid #dddddd !important;
+	padding-bottom: 8px !important;
+	padding-top: 8px !important;
+	color: #4a4a4a; 
+	font:20px/1.5 'Trebuchet MS', Arial;
+}
+
+.info_div {
+	margin-top: 20px; 
+	padding-bottom: 0px !important;
+	font: 15px/1 'Trebuchet MS', Arial;"
+}
+
+
+/* Font
+-----------------------------------------------------------------------------------------------------------*/
+.main_button {
+	font-size: 16px;
+	color: white;
+	font-family: Helvetica, sans-serif;
+	font-weight: 200;
+}
+.ext_button {
+	font-size: 16px;
+	color: white;
+	font-family: Helvetica, sans-serif;
+	font-weight: 200;
+	/*background-color: #3e94d1;*/
+}
+
+.drop_button {
+	font-size: 16px;
+	color: #444444;
+	font-family: Helvetica, sans-serif;
+	height: 40px;
+	/*vertical-align: middle;*/
+	text-align: center;
+	padding: 0px;
+	font-weight: 200;
+	line-height: 40px;
+}
+
+.date_picker {
+	color: #000;
+	border: 2px solid #07c;
+	padding: 2px 5px;
+}
+
+.div_dim {
+	margin: 15px;
+}
+
+input.bigCheckbox { 
+	width: 40px; 
+	height: 40px; 
+}
+
+.bb div, .bb td.bb th {
+    border-bottom: 1px solid gray !important;
+}

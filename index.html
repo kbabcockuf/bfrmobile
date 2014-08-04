@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Boulder Food Rescue</title>
+	<link rel="stylesheet" href="themes/Bootstrap.css">
+	<link rel="stylesheet" href="themes/application.css">
+	
+	<script href="themes/js/boostrap-dropdown.js"></script>
+	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+
+	<!-- DatePicker -->
+	<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
+	
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+    <script>
+        $(function () {
+            //$('.employee').unbind().on("click", function () {
+            $("#loginForm").on("submit", function (y) {
+                //disable the button so we can't resubmit while we wait
+                $("#submitButton", this).attr("disabled", "disabled");
+                var e = $("#email").val();
+                var p = $("#password").val();
+                $.ajax({
+                    type: "POST",
+                    url: "http://dev.boulderfoodrescue.org/volunteers/sign_in.json",
+                    data: { email: e, password: p },
+                    success: function (data) {
+                        window.sessionStorage.token = data.authentication_token;
+                        window.sessionStorage.email = e;
+                        window.location = ("home.html");
+                    },
+                    error: function (msg) {
+                        var newAttachments = alert(JSON.stringify(msg));
+                    }
+                });
+                $("#submitButton").removeAttr("disabled");
+            });
+        });
+        
+    </script>
+    <script>
+    	$(function () {
+			$("hitButton", this).attr("disabled", "disabled");
+			$.ajax({
+				type: "DELETE",
+				url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
+				data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+				success: function( data ) {
+					alert('Success');
+					window.location = ("index.html");
+				}
+				error: function ( msg ) {
+					alert(JSON.stringify(msg))
+				}
+			})
+    		}
+    	})
+    </script>
+</head>
+<body onload="init()">
+	<div data-role="page" id="reposHome">  
+		<div data-position="fixed" data-role="header" data-theme="a">  
+			<!-- <a data-icon="home" data-iconpos="notext" rel="external" href="home.html">Home</a>  --> 
+			<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial;">
+				Food Rescue Robot
+			</h1>  
+		</div>  
+		<div data-role="content" id="contentConfirmation" name="contentConfirmation" align="center">  
+			<h1 style="color: #4a4a4a; font:30px/1.5 'Trebuchet MS', Arial;">Log In</h1>  
+			<form id="loginForm">  
+				<!-- <div data-role="fieldcontain">  
+					<label style="color: #4a4a4a; font:15px/1.5 'Trebuchet MS', Arial;" for="url">Username:</label>  
+					<input class="required" id="Lusername" name="uid_r" value="" type="text">            
+				</div>  --> 
+
+				<div data-role="fieldcontain" class="ui-hide-label">
+					<label for="email">Email:</label>
+					<input type="text" name="email" id="email" value="" placeholder="Email" />
+				</div>
+
+				<!-- <div data-role="fieldcontain">  
+					<label style="color: #4a4a4a; font:15px/1.5 'Trebuchet MS', Arial;" for="url">Password:</label>  
+					<input id="Lpassword" name="pwd_r" value="" type="password">            
+				</div>  -->
+
+				<div data-role="fieldcontain" class="ui-hide-label">
+					<label for="password">Password:</label>
+					<input type="password" name="password" id="password" value="" placeholder="Password" />
+				</div>
+
+<!--  				<div class="div_dim">
+					<a rel="external" href="home.html" data-role="button" data-theme="d" data-inline="false">
+						<span class="ui-btn-inner ui-btn-corner-all">
+							<span class="ext_button">
+								Sign In
+							</span>
+						</span>
+					</a>
+				</div>
+ -->
+				<input type="submit" value="Login" id="submitButton">
+		<!-- 		<button onclick="myFunction()">Try it</button>
+				<button onclick="deviceReady()">What</button> -->
+			</form> 
+			
+<!-- 			<a style="font-weight: 200;" href="signup.html" data-inline="false">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="ui-btn-text">
+						Sign Up
+					</span>
+				</span>
+			</a> -->
+			
+<!-- 			<a style="font-weight: 200;" href="forgotpassword.html" data-inline="false">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="ui-btn-text">
+						Forgot Your Password?
+					</span>
+				</span>
+			</a> -->
+			
+		</div> 
+
+<!-- 		<h4>GitHub Test Search Filter</h4>
+
+		<div data-role="content">
+			<ul id="allRepos" data-role="listview" data-filter="true">
+			</ul>
+		</div> -->
+
+
+	</div>
+
+
+	<!-- End of page so it gets loaded last -->
+	<script type="text/javascript" src="js/index.js"></script>
+	<script>
+		// function myFunction() {
+		// 	alert("Hello! I am an alert box!");
+		// }
+	</script>
+</body>
+</html>
