@@ -36,33 +36,33 @@
 				success: function (data) {
         			//alert(JSON.stringify(data));
         			//alert(JSON.stringify(data[0].donor_id));
-        			alert(JSON.stringify(data));
+        			//alert(JSON.stringify(data));
         			var data_id = (data.length-1);
         			if((data[data_id]).id) {
         				result = (data[data_id]).id;
-        				alert((data[data_id]).id);
+        				//alert((data[data_id]).id);
         			}
 
         			$("#test").on("submit", function (y) {
         				$("#submitButton", this).attr("disabled", "disabled");
-        				alert(getFormData());
+        				//alert(getFormData());
         				$.ajax({
         					type: "PUT",
         					url: "http://dev.boulderfoodrescue.org/logs/" + result + ".json",
         					data: {volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token
         					},
         					success: function (data) {
-        						alert("success");
+        						//alert("success");
         					},
         					error: function (msg) {
-        						alert( JSON.stringify(msg) );
+        						//alert( JSON.stringify(msg) );
         					}
         				});
         				$("#submitButton").removeAttr("disabled");
         			});
         		},
         		error: function (msg) {
-        			alert( JSON.stringify(msg) );
+        			//alert( JSON.stringify(msg) );
         		}
         	});
 		});
@@ -140,7 +140,7 @@
 				<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="home" data-iconpos="notext" href="home.html">
 					Home
 				</a>  
-				<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial;">
+				<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
 					Food Rescue Robot
 				</h1> 
 				<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" data-iconpos="notext" href="index.html">
@@ -150,7 +150,7 @@
 			<h3>
 				<div style="margin: 15px; color: #4a4a4a; font:20px/1.5 'Trebuchet MS', Arial; border-bottom: 1px solid #c5c5c5 !important;">
 					<center>
-						Edit Pick Up Report
+						Pick Up Report
 					</center>
 				</div>
 			</h3>
@@ -178,10 +178,10 @@
 					<option value="1">Hall Fewds</option>
 					<option value="2">Whale Mart</option>
 					<option value="3">Targeh</option>
-					<option value="4">FWP</option>
-					<option value="5">Lambda</option>
-					<option value="6">U</option>
-					<option value="7">Queen Syndra</option>
+					<option value="4">AllFallFa</option>
+                    <option value="5">Soyweigh</option>
+					<option value="6">Wander Pris</option>
+					<option value="7">Farmer Betty</option>
 				</select>
 			</div>
 
@@ -208,10 +208,10 @@
 				<option value="5">Pit Bullz</option>
 				<option value="6">Sunshine</option>
 				<option value="7">Rainbows</option>
-				<option value="8">Doctors who need doctors</option>
+				<option value="8">Granny</option>
 				<option value="9">Noice</option>
 				<option value="10">Reading 4 fun</option>
-				<option value="11">Transistor</option>
+				<option value="11">Buskers</option>
 				<option value="12">Leptons R Lyfe</option>
 				<option value="13">Bosons though</option>
 				<option value="14">Are pretty neat 2</option>
@@ -237,13 +237,12 @@
 		<div class="div_dim">
 			<select style="" class="drop_button" name="produce" id="produce" >
 				<option>Produce</option>
-				<option value="1">Up</option>
-				<option value="2">Down</option>
-				<option value="3">Charm</option>
-				<option value="4">Strange</option>
-				<option value="5">Top</option>
-				<option value="6">Bottom</option>
-				<option value="7">Quarks</option>
+				<option value="1">Dry Foods</option>
+				<option value="2">Water</option>
+				<option value="3">Soup</option>
+				<option value="4">Top</option>
+				<option value="5">Bottom</option>
+				<option value="6">Quarks</option>
 			</select>
 		</div>
 
@@ -270,19 +269,22 @@
 		<div class="div_dim">
 			<select class="drop_button" name="weighedwith" id="weighedwith">
 				<option>Weighed With</option>
+                <option value="FloorScale">Floor Scale (lb)</option>
 				<option value="Bathroom Scale">Bathroom Scale (lb)</option>
-				<option value="Floor Scale">Floor Scale (lb)</option>
 				<option value="Guesstimate">Guesstimate (lb)</option>
 			</select>
 		</div>
 
 		<div class="div_dim">
 			<select class="drop_button" name="transportedwith" id="transportedwith">
-				<option>Transported With</option>
+				<option>Transportation</option>
 				<option value="Bike">Bike</option>
-				<option value="Car">Car</option>
 				<option value="Foot">Foot</option>
-				<option value="7">A Smile</option>
+                <option value="Car">Car</option>
+                <option value="Truck">Truck</option>
+                <option value="Van">Van</option>
+                <option value="Motorcycle">Motorcycle</option>
+                <option value="Golfcart">Golf cart</option>
 			</select>
 		</div>
 
@@ -290,8 +292,8 @@
 			<label style="color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;" for="textarea">
 				Notes:
 			</label>
-			<textarea cols="40" rows="8" name="notes" id="textarea"></textarea>
-
+			<textarea cols="40" rows="8" name="notes" id="textarea">
+            </textarea>
 		</div>
 
 		<div class="field_title" data-role="fieldcontain">
@@ -299,7 +301,7 @@
 				<label style="color: #FF3300; font: 15px/1 'Trebuchet MS', Arial; line-height: 150%; height: 25px;" for="checkbox-1">
 					<text style="top: 15px;">Flag for Admin</text>
 				</label>
-				<input type="checkbox" name="flag_for_admin" id="checkbox-1" value="true"class="custom" />
+				<input type="checkbox" name="flag_for_admin" id="checkbox-1" value="true" class="custom"/>
 			</fieldset>
 
 		</div> 
@@ -328,7 +330,7 @@
 		<input type="submit" value="Save Changes" id="submitButton">
 
 	</div>
-</div>
+<!--</div>-->
 </form>
 </body>
 </html>

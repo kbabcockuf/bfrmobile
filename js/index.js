@@ -32,7 +32,7 @@ function deviceReady() {
             if(data == true) {
                 window.location = ("home.html");
             } else {
-                alert("Your login failed");
+                //alert("Your login failed");
             }
             $("#submitButton").removeAttr("disabled");
         },"json");

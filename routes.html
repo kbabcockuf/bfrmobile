@@ -6,9 +6,9 @@
 	<title>Boulder Food Rescue</title>
 	<link rel="stylesheet" href="themes/Bootstrap.css">
 	<link rel="stylesheet" href="themes/application.css">
-	<script href="themes/js/boostrap-dropdown.js"></script>
+<!--	<script href="themes/js/boostrap-dropdown.js"></script>
 	<link rel="stylesheet" href="themes/css/boostrap_2-1-1.css">
-	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>
+	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
@@ -31,7 +31,7 @@
 				success: function (data) {
             			//alert(JSON.stringify(data));
             			//alert(JSON.stringify(data[0].donor_id));
-            			alert("Number of upcoming shifts " + data.length);
+            			//alert("Number of upcoming shifts " + data.length);
             			if(data[(data.length)-1].donor_id)
             			{
             				result=data[(data.length)-1].donor_id;
@@ -44,7 +44,7 @@
             				url: "http://dev.boulderfoodrescue.org/locations/" + result + ".json",
             				data: {volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token},
             				success: function (data) {
-            					alert("success");
+            					//alert("success");
             					if(data)
             					{
             						populateShiftData(data);
@@ -52,13 +52,13 @@
 
             				},
             				error: function (msg) {
-            					alert( JSON.stringify(msg) );
+            					//alert( JSON.stringify(msg) );
             				}
             			});
 
             		},
             		error: function (msg) {
-            			alert( JSON.stringify(msg) );
+            			//alert( JSON.stringify(msg) );
             		}
             	});
 });
@@ -110,13 +110,13 @@ function populateShiftData(data){
 <body>
 	<div data-role="page" id="home">  
 		<div data-position="fixed" data-role="header" data-theme="a">  
-			<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="home" data-iconpos="notext" href="home.html">
+			<a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext" href="home.html">
 				Home
 			</a>  
-			<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial;">
+			<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
 				Food Rescue Robot
 			</h1> 
-			<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" data-iconpos="notext" href="index.html">
+			<a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="power" data-iconpos="notext" href="index.html">
 				Log Out
 			</a>
 		</div>
@@ -134,31 +134,31 @@ function populateShiftData(data){
 		font:15px/1.5 'Trebuchet MS', Arial;">
 		<tr>
 			<td style="font-weight:bold">Donor</td>
-			<td id="contact"></td>		
+			<td id="contact">Whale Mart</td>		
 		</tr>
 		<tr>
 			<td style="font-weight:bold">Address</td>
-			<td id="address"></td>		
+			<td id="address">Hiris Ave</td>		
 		</tr>
 		<tr>
 			<td style="font-weight:bold">Time Frame</td>
-			<td id="date"></td>		
+			<td id="date">11-12pm</td>		
 		</tr>
 		<tr>
 			<td style="font-weight:bold">Equipment Storage Info</td>
-			<td id="info"></td>
+			<td id="info">N/A</td>
 		</tr>
 		<tr>
 			<td style="font-weight:bold">Food Storage Info</td>
-			<td id="info2"></td>
+			<td id="info2">N/A</td>
 		</tr>
 		<tr>
 			<td style="font-weight:bold">Entry Info</td>
-			<td id="info3"></td>
+			<td id="info3">Ring bell at rear loading dock</td>
 		</tr>
 		<tr>
 			<td style="font-weight:bold">Exit Info</td>
-			<td id="info4"></td>
+			<td id="info4">Say THANK YOU!</td>
 		</tr>
 	</table>
 
