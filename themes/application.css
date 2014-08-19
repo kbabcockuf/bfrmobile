@@ -52,6 +52,7 @@
 	padding: 0px;
 	font-weight: 200;
 	line-height: 40px;
+	/*display: inline;*/
 }
 
 .date_picker {
@@ -71,4 +72,49 @@ input.bigCheckbox {
 
 .bb div, .bb td.bb th {
     border-bottom: 1px solid gray !important;
+}
+
+.logo {
+  width: 100%;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.header 
+{
+    color: #4a4a4a;
+    background-color: #eeeeee;
+    font:20px/1.5 'Trebuchet MS', Arial;
+    border-bottom: 1px solid #c5c5c5 !important;
+}
+
+.header2 
+{
+    color: #4a4a4a;
+    background-color: #eeeeee;
+    border-bottom: 1px solid #c5c5c5 !important;
+    font-family: 'Trebuchet MS', Arial;
+    line-height: 1.3em;
+}
+
+.subheader 
+{
+    color: #4a4a4a;
+    background-color: #eeeeee;
+    font:20px/1.5 'Trebuchet MS', Arial;
+    border-bottom: 1px solid #c5c5c5 !important;
+    border-top: 1px solid #c5c5c5 !important;
+    margin-top: .5em !important;
+}
+
+.shiftlink
+{
+    padding-left:.7em;
+}
+
+.timedate
+{
+    font-weight: bold;
+    margin-top: .5em !important;
 }

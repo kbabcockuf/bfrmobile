@@ -37,11 +37,27 @@
 						//alert(JSON.stringify(msg));
 					}
 				});
-			});
-		});
+            });
+        });
+           
 	</script>
+    
+    <style type="text/css">
+	    body, textarea {
+            font-size: 1em;
+            line-height: 1.3;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            }
+            
+        h3
+        {
+            text-indent: 2.3em;
+        }   
+    </style>
 </head>
 <body>
+    <form id="frmHome">
+    
 	<div data-role="page" id="home">  
 		<div data-position="fixed" data-role="header" data-theme="a">  
 			<a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext" href="home.html">Home</a>  
@@ -49,27 +65,70 @@
 				Food Rescue Robot
 			</h1> 
 
-			<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" id="logout" data-iconpos="notext">Log Out</a>
-		</div> 
-		<div style="margin: 15px">
-			<a rel="external" href="pickupreport.html" data-role="button" data-theme="c" data-inline="false">
-				<span class="ui-btn-inner ui-btn-corner-all">
-					<span class="main_button">
-						Pickup Report
-					</span>
-				</span>
-			</a>
-		</div> 
-		<div style="margin: 15px">
-			<a rel="external" href="routes.html" data-role="button" data-theme="c" data-inline="false">
-				<span class="ui-btn-inner ui-btn-corner-all">
-					<span class="main_button">
-						View Todays Routes
-					</span>
-				</span>
-			</a>
+    		<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" id="logout" data-iconpos="notext">Log Out</a>
 		</div> 
 
+		
+        <div data-role="tabs" id="tabs" style=" border: 10px; border-color: #aaaaaa;">
+          <div data-role="navbar">
+            <ul>
+              <li><a href="#divUpcoming" data-ajax="false" >Upcoming (2)</a></li>
+              <li><a href="#divPickup" data-ajax="false">Pick-Up (6)</a></li>
+              <li><a href="#divEnterData" data-ajax="false">Enter Data (3)</a></li>
+            </ul>
+          </div>
+
+            <div id="divUpcoming">
+                <div data-role="collapsible-set" data-corners="false" style="margin: 0em;">
+
+	                <div data-role="collapsible" data-collapsed="false">
+	                    <h3>6:00pm Today</h3>
+	                    
+                            1) Whole Foods (Pickup)<br />
+                            2) Vitamin College (Pickup)<br />
+                            3) Attention Homes (Drop)<br />
+                        
+                        <div data-role="tabs" id="Div1" style=" margin-top: .7em;">
+                          <div data-role="navbar">
+                            <ul>
+                              <li><a href="Info.html" data-ajax="false" >Info</a></li>
+                              <li><a href="Calendar" data-ajax="false">Calendar</a></li>
+                              <li><a href="Map" data-ajax="false">Map</a></li>
+                            </ul>
+                          </div>
+                        </div>
+                        
+	                </div>
+	
+	                <div data-role="collapsible">
+	                    <h3>3:00pm Wednesday (2 days)</h3>
+	                    <p>I'm the collapsible set content for section 2.</p>
+	                </div>
+	
+                </div>
+            </div>
+
+            <div id="divPickup">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                </p>
+            </div>
+
+            <div id="divEnterData">
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            </div>
+        </div>
+
 	</div>
+
+</form>
+
+    <script>
+        //$("#tabs").tabs({ active: 0 });
+    </script>
+
 </body>
 </html>

@@ -69,19 +69,21 @@
 </head>
 <body onload="init()">
 	<div data-role="page" id="reposHome">  
-		<div data-position="fixed" data-role="header" data-theme="a">  
-			<!-- <a data-icon="home" data-iconpos="notext" rel="external" href="home.html">Home</a>  --> 
-			<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
+        <!--<div data-position="fixed" data-role="header" data-theme="a"> --> 
+			<!--<a data-icon="home" data-iconpos="notext" rel="external" href="home.html">Home</a>-->
+			<!--<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
 				Food Rescue Robot
-			</h1>  
-		</div>  
-		<div data-role="content" id="contentConfirmation" name="contentConfirmation" align="center">  
-			<h1 style="color: #4a4a4a; font:30px/1.5 'Trebuchet MS', Arial;">Log In</h1>  
+			</h1>
+		</div>-->
+		<div data-role="content" id="contentConfirmation" name="contentConfirmation" align="center">
+            <img alt="" src="icon.png" class="logo"/>
+
+			<!--<h1 style="color: #4a4a4a; font:30px/1.5 'Trebuchet MS', Arial;">Log In</h1>-->
 			<form id="loginForm">  
 				<!-- <div data-role="fieldcontain">  
 					<label style="color: #4a4a4a; font:15px/1.5 'Trebuchet MS', Arial;" for="url">Username:</label>  
 					<input class="required" id="Lusername" name="uid_r" value="" type="text">            
-				</div>  --> 
+				</div>-->   
 
 				<div data-role="fieldcontain" class="ui-hide-label">
 					<label for="email">Email:</label>
@@ -109,7 +111,7 @@
 				</div>
  -->
 				<input type="submit" value="Login" id="submitButton">
-		<!-- 		<button onclick="myFunction()">Try it</button>
+		 		<!--<button onclick="myFunction()">Try it</button>
 				<button onclick="deviceReady()">What</button> -->
 			</form> 
 			
@@ -145,9 +147,9 @@
 	<!-- End of page so it gets loaded last -->
 	<script type="text/javascript" src="js/index.js"></script>
 	<script>
-		// function myFunction() {
-		// 	alert("Hello! I am an alert box!");
-		// }
+//		 function myFunction() {
+//		 	alert("Hello! I am an alert box!");
+//		 }
 	</script>
 </body>
 </html>
