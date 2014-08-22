@@ -9,7 +9,7 @@
 	
 <!--	<script href="themes/js/boostrap-dropdown.js"></script>
 	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
@@ -49,12 +49,12 @@
             font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
             }
             
-        h3
-        {
+        h3 {
             text-indent: 2.3em;
-        }   
+        }
+        
     </style>
-</head>
+</head> 
 <body>
     <form id="frmHome">
     
@@ -66,61 +66,78 @@
 			</h1> 
 
     		<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" id="logout" data-iconpos="notext">Log Out</a>
+
+            <div data-role="header">
+                <div data-role="navbar">
+                    <ul>
+                      <li><a href="#home" data-ajax="false" style="border: .1em solid #4b7333; color: White;">Today</a></li>
+                      <li><a href="#divTake" data-ajax="false" style="border: .1em solid #4b7333; color: White;">Cover</a></li>
+                      <li><a href="#divReport" data-ajax="false" style="border: .1em solid #4b7333; color: White;">Due</a></li>
+                    </ul>
+                </div>
+            </div>
 		</div> 
 
 		
-        <div data-role="tabs" id="tabs" style=" border: 10px; border-color: #aaaaaa;">
+<!--        <div data-role="tabs">
           <div data-role="navbar">
             <ul>
-              <li><a href="#divUpcoming" data-ajax="false" >Upcoming (2)</a></li>
-              <li><a href="#divPickup" data-ajax="false">Pick-Up (6)</a></li>
-              <li><a href="#divEnterData" data-ajax="false">Enter Data (3)</a></li>
+              <li><a href="#divUpcoming" data-ajax="false" style="border: .1em solid #4b7333;">Upcoming</a></li>
+              <li><a href="#divPickup" data-ajax="false" style="border: .1em solid #4b7333;">Take</a></li>
+              <li><a href="#divEnterData" data-ajax="false" style="border: .1em solid #4b7333;">Report</a></li>
             </ul>
-          </div>
+         </div>-->
 
             <div id="divUpcoming">
-                <div data-role="collapsible-set" data-corners="false" style="margin: 0em;">
+               <div data-role="collapsible-set" data-corners="false" style="margin: .2em;">
 
 	                <div data-role="collapsible" data-collapsed="false">
 	                    <h3>6:00pm Today</h3>
 	                    
-                            1) Whole Foods (Pickup)<br />
-                            2) Vitamin College (Pickup)<br />
-                            3) Attention Homes (Drop)<br />
+                                1) Whole Foods (Pickup)<br />
+                                2) Vitamin College (Pickup)<br />
+                                3) Attention Homes (Drop)<br />
                         
-                        <div data-role="tabs" id="Div1" style=" margin-top: .7em;">
+                        <!--<div data-role="tabs" style=" margin-top: .5em;">
                           <div data-role="navbar">
                             <ul>
-                              <li><a href="Info.html" data-ajax="false" >Info</a></li>
-                              <li><a href="Calendar" data-ajax="false">Calendar</a></li>
-                              <li><a href="Map" data-ajax="false">Map</a></li>
+                              <li><a href="asfinfo.html" data-ajax="false" style="border: .1em solid #4b7333;">Info</a></li>
+                              <li><a href="Calendar" data-ajax="false" style="border: .1em solid #4b7333;">Calendar</a></li>
+                              <li><a href="Map" data-ajax="false" style="border: .1em solid #4b7333;">Map</a></li>
                             </ul>
                           </div>
-                        </div>
+                        </div>-->
+
+                        <div data-role="navbar" style=" margin-top: .5em;">
+	                        <ul>
+		                        <!--<li><a href="info.html" class="ui-btn-active ui-state-persist" style="border: .1em solid #4b7333;">Info</a></li>-->
+                                <li><a href="info.html" style="border: .1em solid #4b7333;">Info</a></li>
+		                        <li><a href="calshow://" style="border: .1em solid #4b7333;">Calendar</a></li>
+                                <li><a href="maps.apple.com/maps?q=boulder" style="border: .1em solid #4b7333;">Map</a></li>
+	                        </ul>
+                        </div><!-- /navbar -->
                         
 	                </div>
 	
 	                <div data-role="collapsible">
 	                    <h3>3:00pm Wednesday (2 days)</h3>
-	                    <p>I'm the collapsible set content for section 2.</p>
+                            
+                            1) Alfalfa (Pickup)<br />
+                            2) Meals On Wheels (Pickup)<br />
+                            3) Food Sharing (Drop)<br />
+                        
+                        <div data-role="tabs" style=" margin-top: .5em;">
+                          <div data-role="navbar">
+                            <ul>
+                              <li><a href="asfinfo.html" data-ajax="false" style="border: .1em solid #4b7333;">Info</a></li>
+                              <li><a href="calshow://" data-ajax="false" style="border: .1em solid #4b7333;">Calendar</a></li>
+                              <li><a href="maps.apple.com/maps?q=boulder" data-ajax="false" style="border: .1em solid #4b7333;">Map</a></li>
+                            </ul>
+                          </div>
+                        </div>
 	                </div>
-	
-                </div>
+	            </div>
             </div>
-
-            <div id="divPickup">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </p>
-            </div>
-
-            <div id="divEnterData">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-            </div>
-        </div>
 
 	</div>
 
