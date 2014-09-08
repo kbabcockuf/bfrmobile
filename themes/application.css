@@ -46,12 +46,12 @@
 	font-size: 16px;
 	color: #444444;
 	font-family: Helvetica, sans-serif;
-	height: 40px;
+	height: 30px;
 	/*vertical-align: middle;*/
 	text-align: center;
 	padding: 0px;
 	font-weight: 200;
-	line-height: 40px;
+	line-height: 30px;
 	/*display: inline;*/
 }
 
@@ -63,6 +63,11 @@
 
 .div_dim {
 	margin: 15px;
+}
+
+.field_title {
+	margin: 12px; 
+	color: black;
 }
 
 input.bigCheckbox { 
