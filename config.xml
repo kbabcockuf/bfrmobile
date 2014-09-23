@@ -11,7 +11,7 @@
         Mobile Boulder Food Rescue
     </description>
 
-    <author href="http://dragondev.com" email="michael@dragondev.com">Michael Williams</author>
+    <author href="http://dragondev.com" email="dathan@dragondev.com">Dathan Ellis</author>
         
     <!-- ICONS -->
         
@@ -101,6 +101,15 @@
     <feature name="http://api.phonegap.com/1.0/notification"/>
     -->
 
-    <access origin="*" />
+    <!--<access origin="*" />-->
+
+      <system.webServer>
+        <httpProtocol>
+          <customHeaders>
+            <add name="Access-Control-Allow-Origin" value="*"/>
+            <add name="Access-Control-Allow-Headers" value="Origin, X-Requested-With, Content-Type, Accept" />
+          </customHeaders>
+        </httpProtocol>
+      </system.webServer>
 
 </widget>
