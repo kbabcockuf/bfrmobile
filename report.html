@@ -25,40 +25,37 @@
 	<script type="text/javascript">
 	    var now = new Date();
 	    var strDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+	    function TripDate(dt, formDate) {
+	        this.date = dt;
+	        this.formatedDate = formDate;
+	        this.end = "</div></div>";
+	    }
 
-	    //                        $.getJSON('http://dev.boulderfoodrescue.org/logs/mine_past.json', function (data) {
+	    TripDate.prototype.begin = function () {
+	        return "<div data-role='collapsible-set' data-corners='false' style='margin: .2em;' class='ui-collapsible-set'>" +
+                         "<div data-role='collapsible' id='" + this.date + "' class='ui-collapsible ui-collapsible-inset ui-collapsible-themed-content'>";
+	    };
 
-	    //                        //document.getElementById("placeholder").innerHTML=data.complete+" "+data.created_at+" "+data.donor_id;
+	    TripDate.prototype.getHeader = function () {
+	        return "<h3 class='ui-collapsible-heading'> \
+                             <a href='#' class='ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-inherit ui-icon-minus'>"
+                             + this.formatedDate +
+                             "<span class='ui-collapsible-heading-status'> click to collapse contents</span></a></h3>";
+	    };
 
-	    //                            var output = "<ul>";
-	    //                            for (var i in data) {
-	    //                                output += "<li>" + data[i].complete + " " + data[i].created_at + "--" + data[i].donor_id + "</li>";
-	    //                            }
+	    TripDate.prototype.render = function (appendId) {
+	        $(this.begin() + this.getHeader() + this.end).appendTo(appendId);
+	    };
 
-	    //                            output += "</ul>";
-	    //                            document.getElementById("placeholder").innerHTML = output;
-	    //                        });
-	    //$(document).ready(function () {
-	    //$(window).load(function () {
-	    //function pageLoad(){
-	    //$("#btnjson").click(function () {
-	    $.ajax({
-	        type: "GET",
-	        url: "http://dev.boulderfoodrescue.org/logs/mine_past.json",
-	        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-	        success: function (data) {
-	            //alert(JSON.stringify(data));
-	            var varIncomplete = ""
-	            var varShiftDate = ""
-	            var varDonorID = ""
-	            var varDonorName = ""
-	            var varBegin = "<div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
-                                                    <div data-role='collapsible'><h3>";
-	            var varDonorID1 = "</h3> \
-                                           <div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
-                                                <div data-role='collapsible'> <h3>";
-	            var varEnd = "</h3> \
-                                                <fieldset class='ui-grid-a'> \
+	    function Trip(donor, dId, dt) {
+	        this.top = "<div class='ui-collapsible-content ui-body-inherit' aria-hidden='false'> \
+                        <div data-role='collapsible-set' data-corners='false' style='margin: .2em;' class='ui-collapsible-set ui-group-theme-inherit'> \
+                        <div data-role='collapsible' class='ui-collapsible ui-collapsible-inset ui-collapsible-themed-content ui-last-child'>";
+	        this.bottom = "</div>";
+	        this.donorName = donor;
+	        this.donorId = dId;
+	        this.date = dt;
+	        this.inputPanel = "                                                <fieldset class='ui-grid-a'> \
                                                     <div class='ui-block-a' style='width:60%; height: 10%;'> \
 				                                            <select class='drop_button' name='volunteers' id='volunteers'> \
 					                                            <option>Food</option> \
@@ -118,7 +115,7 @@
                                                 </fieldset> \
                                                 </div><!--/collapsible--> \
                                                     <div data-role='collapsible'> \
-	                                                    <h3>Vitamin Cottage</h3> \
+	                                                    <!-- <h3>Vitamin Cottage</h3> -->\
                                                         <fieldset class='ui-grid-a'> \
                                                             <div class='ui-block-a' style='width:60%'> \
 				                                                    <select class='drop_button' name='volunteers' id='Select2'> \
@@ -197,48 +194,96 @@
                                                         </textarea> \
 		                                            </div> \
                                                 </div> \
-                                                <div class='div_dim'> \
+                                                 <div class='div_dim'> \
                                                     <input type='submit' value='Save Changes' id='submitButton'> \
                                                 </div>";
+	    }
 
+	    Trip.prototype.getHeader = function () {
+	        return "<h3 class='ui-collapsible-heading'>\
+                            <a href='#' class='ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-inherit ui-icon-minus'>"
+                            + this.donorName +
+                            "<span class='ui-collapsible-heading-status'> click to collapse contents</span>\
+                           </a>\
+                       </h3>";
+	    };
+
+	    Trip.prototype.appendTo = function (appendTo) {
+	        $(this.top + this.getHeader() + this.inputPanel + this.bottom).appendTo(appendTo);
+	    };
+
+	    //                        $.getJSON('http://dev.boulderfoodrescue.org/logs/mine_past.json', function (data) {
+
+	    //                        //document.getElementById("placeholder").innerHTML=data.complete+" "+data.created_at+" "+data.donor_id;
+
+	    //                            var output = "<ul>";
+	    //                            for (var i in data) {
+	    //                                output += "<li>" + data[i].complete + " " + data[i].created_at + "--" + data[i].donor_id + "</li>";
+	    //                            }
+
+	    //                            output += "</ul>";
+	    //                            document.getElementById("placeholder").innerHTML = output;
+	    //                        });
+	    //$(document).ready(function () {
+	    //$(window).load(function () {
+	    //function pageLoad(){
+	    //$("#btnjson").click(function () {
+	    $.ajax({
+	        type: "GET",
+	        url: "http://dev.boulderfoodrescue.org/logs/mine_past.json",
+	        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+	        success: function (data) {
+
+
+
+	            //alert(JSON.stringify(data));
+	            var varIncomplete = ""
+	            var varShiftDate = ""
+	            var varDonorID = ""
+	            var varDonorName = ""
+	            /* var varBegin = "<div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
+	            <div data-role='collapsible'><h3>";
+	            var varDonorID1 = "</h3> \
+	            <div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
+	            <div data-role='collapsible'> <h3>";
+	            */
 	            $.each(data, function () {
+	                var tripDate = this.when;
+	                if (!this.complete) {
 
-	                $.each(this, function (key, value) {
-
-	                    if (key == "complete" && value == false) {
-
-	                        varIncomplete = "true";
-
+	                    varShiftDate = moment(tripDate).format('ddd' + ' - ' + 'DD MMM YYYY');
+	                    if ($("#" + varShiftDate).size() < 1) {
+	                        var dateWidget = new TripDate(tripDate, varShiftDate);
+	                        dateWidget.render("#divReport");
 	                    }
-	                    if (varIncomplete == "true" && key == "donor_id") {
+	                    // $(varBegin + varShiftDate + varDonorID1 + varEnd).appendTo('#divReport').trigger("create");
 
-	                        varDonorID = value;
-	                        alert(varDonorID);
+	                    //alert(varDonorID);
 
-	                        $.ajax({
-	                            type: "GET",
-	                            url: "http://dev.boulderfoodrescue.org/locations/" + varDonorID + ".json",
-	                            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-	                            success: function (data) {
-	                                //Set Location Name
-	                                $("<h3>" + data.name + "</h3><br/>").appendTo("#divReport");
-	                            },
-	                            error: function (msg) {
-	                                // alert(JSON.stringify(msg));
-	                            }
-	                        });
-	                    }
-	                    if (varIncomplete == "true" && key == "when") {
+	                    $.ajax({
+	                        type: "GET",
+	                        url: "http://dev.boulderfoodrescue.org/locations/" + this.donor_id + ".json",
+	                        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+	                        success: function (response) {
+	                            //Set Location Name
+	                            //$(data).each(function () {
+	                            var trip = new Trip(response.name, response.id, tripDate);
+	                                trip.appendTo("#" + tripDate);
+	                            //});
 
-	                        varIncomplete = "false";
-	                        varShiftDate = moment(value).format('ddd' + ' - ' + 'DD MMM YYYY');
-	                        $(varBegin + varShiftDate + varDonorID1 + varEnd).appendTo('#divReport').trigger("create");
-	                    }
-	                });
+	                        },
+	                        error: function (msg) {
+	                            // alert(JSON.stringify(msg));
+	                        }
+	                    });
+
+	                }
+
 	            });
 
 	        }
 	    });
+
 	    //});
 
 	    //$.getJSON("http://dev.boulderfoodrescue.org/logs/mine_past.json", function (ajaxresult) {
@@ -356,7 +401,10 @@
 	    //	            data += $checkboxInputs[0].name + ": " + "false" + ",";
 	    //	        }
 	    //	        return data;
-	    //	    } 
+	    //	    }
+        
+           
+ 
 	</script>
     
     <style type="text/css">
