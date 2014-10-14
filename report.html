@@ -26,22 +26,22 @@
 	    var now = new Date();
 	    var strDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
 
-                        //                        $.getJSON('http://dev.boulderfoodrescue.org/logs/mine_past.json', function (data) {
+	    //                        $.getJSON('http://dev.boulderfoodrescue.org/logs/mine_past.json', function (data) {
 
-                        //                        //document.getElementById("placeholder").innerHTML=data.complete+" "+data.created_at+" "+data.donor_id;
+	    //                        //document.getElementById("placeholder").innerHTML=data.complete+" "+data.created_at+" "+data.donor_id;
 
-                        //                            var output = "<ul>";
-                        //                            for (var i in data) {
-                        //                                output += "<li>" + data[i].complete + " " + data[i].created_at + "--" + data[i].donor_id + "</li>";
-                        //                            }
+	    //                            var output = "<ul>";
+	    //                            for (var i in data) {
+	    //                                output += "<li>" + data[i].complete + " " + data[i].created_at + "--" + data[i].donor_id + "</li>";
+	    //                            }
 
-                        //                            output += "</ul>";
-                        //                            document.getElementById("placeholder").innerHTML = output;
-                        //                        });
-                        //$(document).ready(function () {
-                            //$(window).load(function () {
-                            //function pageLoad(){
-                            //$("#btnjson").click(function () {
+	    //                            output += "</ul>";
+	    //                            document.getElementById("placeholder").innerHTML = output;
+	    //                        });
+	    //$(document).ready(function () {
+	    //$(window).load(function () {
+	    //function pageLoad(){
+	    //$("#btnjson").click(function () {
 	    $.ajax({
 	        type: "GET",
 	        url: "http://dev.boulderfoodrescue.org/logs/mine_past.json",
@@ -53,11 +53,11 @@
 	            var varDonorID = ""
 	            var varDonorName = ""
 	            var varBegin = "<div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
-                                                    <div data-role='collapsible'><h3>"
-	            var varEnd = "</h3> \
+                                                    <div data-role='collapsible'><h3>";
+	            var varDonorID1 = "</h3> \
                                            <div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
-                                                <div data-role='collapsible'> \
-	                                                <h3>Whole Foods</h3> \
+                                                <div data-role='collapsible'> <h3>";
+	            var varEnd = "</h3> \
                                                 <fieldset class='ui-grid-a'> \
                                                     <div class='ui-block-a' style='width:60%; height: 10%;'> \
 				                                            <select class='drop_button' name='volunteers' id='volunteers'> \
@@ -199,192 +199,164 @@
                                                 </div> \
                                                 <div class='div_dim'> \
                                                     <input type='submit' value='Save Changes' id='submitButton'> \
-                                                </div>"
+                                                </div>";
 
 	            $.each(data, function () {
-	                //alert(JSON.stringify(data));
+
 	                $.each(this, function (key, value) {
-	                    //alert(JSON.stringify(value));
+
 	                    if (key == "complete" && value == false) {
-	                        //alert(JSON.stringify(value));
-	                        varIncomplete = "true"
-	                        //return false;
+
+	                        varIncomplete = "true";
+
 	                    }
 	                    if (varIncomplete == "true" && key == "donor_id") {
-	                        //alert(JSON.stringify(value));
-	                        varDonorID = value
+
+	                        varDonorID = value;
+	                        alert(varDonorID);
 
 	                        $.ajax({
 	                            type: "GET",
-	                            url: "http://dev.boulderfoodrescue.org/locations/:" + varDonorID + ".json",
+	                            url: "http://dev.boulderfoodrescue.org/locations/" + varDonorID + ".json",
 	                            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
 	                            success: function (data) {
-
-	                                alert("here");
-
-	                                //	                                $.each(this, function (key, value) {
-	                                //	                                    if (is_donor = "true") {
-	                                //	                                        alert(JSON.stringify(value));
-	                                //	                                        varDonorName = value
-	                                //	                                    }
-	                                //	                                });
-
-	                                
+	                                //Set Location Name
+	                                $("<h3>" + data.name + "</h3><br/>").appendTo("#divReport");
 	                            },
 	                            error: function (msg) {
-	                                alert(JSON.stringify(msg));
+	                                // alert(JSON.stringify(msg));
 	                            }
 	                        });
 	                    }
 	                    if (varIncomplete == "true" && key == "when") {
 
-	                        //$('<div id="foo">text</div>').appendTo('#objGroup');
-	                        //alert(JSON.stringify(value));
-	                        varIncomplete = "false"
-	                        //value = moment(value).format('ddd DD MMM YYYY'); 4
+	                        varIncomplete = "false";
 	                        varShiftDate = moment(value).format('ddd' + ' - ' + 'DD MMM YYYY');
-	                        //<!----------------------------->
-
-	                        //$('<div data-role="collapsible-set" data-corners="false" style="margin: .2em;">
-	                        //$("#divReport").html("<tr><td>Nickname</td><td><input type='text' id='"+id+"' name='nickname'></td><lable id='"+labelText+"'></lable></td></tr>");
-	                        $(varBegin + varShiftDate + varEnd).appendTo('#divReport').trigger("create");
-
-	                        //<!----------------------------->
+	                        $(varBegin + varShiftDate + varDonorID1 + varEnd).appendTo('#divReport').trigger("create");
 	                    }
 	                });
 	            });
-	            //                                        var data_id = (data.length - 2);
-	            //	                                    if ((data[data_id]).id) {
-	            //	                                        result = (data[data_id]).id;
-	            //	                                        alert((data[data_id]).id);
-	            //	                                    }
-	            //                                success: function (ajaxresult) {
-	            //                                    alert(JSON.stringify(ajaxresult));
 
-	            //                                    });​
-	            //                                    $("#complete").append(ajaxresult.complete);
-	            //                                    $("#created_at").append(ajaxresult.created_at);
-	            //                                    $("#donor_id").append(ajaxresult.donor_id);
 	        }
 	    });
-                        //});
+	    //});
 
-                        //$.getJSON("http://dev.boulderfoodrescue.org/logs/mine_past.json", function (ajaxresult) {
-
-
+	    //$.getJSON("http://dev.boulderfoodrescue.org/logs/mine_past.json", function (ajaxresult) {
 
 
 
 
 
-//	    $.getJSON("http://dev.boulderfoodrescue.org/logs/open.json", function (data) {
-//	        var items = [];
-//	        $.each(data, function (key, val) {
-//	            items.push("<li id='" + key + "'>" + val + "</li>");
-//	        });
-
-//	        $("<ul/>", {
-//	            "class": "my-new-list",
-//	            html: items.join("")
-//	        }).appendTo("body");
-//	    });
 
 
-//	    $(function () {
+	    //	    $.getJSON("http://dev.boulderfoodrescue.org/logs/open.json", function (data) {
+	    //	        var items = [];
+	    //	        $.each(data, function (key, val) {
+	    //	            items.push("<li id='" + key + "'>" + val + "</li>");
+	    //	        });
+
+	    //	        $("<ul/>", {
+	    //	            "class": "my-new-list",
+	    //	            html: items.join("")
+	    //	        }).appendTo("body");
+	    //	    });
 
 
-//	        var people = [];
-
-//	        $.getJSON('http://dev.boulderfoodrescue.org/logs/todo.json', function (data) {
-//	            $.each(data.person, function (i, f) {
-//	                var tblRow = "<tr>" + "<td>" + f.firstName + "</td>" +
-//           "<td>" + f.lastName + "</td>" + "<td>" + f.job + "</td>" + "<td>" + f.roll + "</td>" + "</tr>"
-//	                $(tblRow).appendTo("#userdata tbody");
-//	            });
-
-//	        });
-
-//	    });
-
-//	    $(document).ready(function () {
-//	        $("#aToday").click(function () {
-//	            $.getJSON("http://dev.boulderfoodrescue.org/logs/todo.json", function (result) {
-//	                $.each(result, function (i, field) {
-//	                    $("div").append(field + " ");
-//	                });
-//	            });
-//	        });
-//	    });
+	    //	    $(function () {
 
 
-//	    $(function () {
-//	        $.ajax({
-//	            type: "GET",
-//	            url: "http://dev.boulderfoodrescue.org/logs/todo.json",
-//	            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-//	            success: function (data) {
-//	                alert(JSON.stringify(data));
-//	                //alert(JSON.stringify(data[0].donor_id));
-//	                //alert(JSON.stringify(data));
-//	                var data_id = (data.length - 1);
-//	                if ((data[data_id]).id) {
-//	                    result = (data[data_id]).id;
-//	                    //alert((data[data_id]).id);
-//	                }
+	    //	        var people = [];
 
-//	                $("#frmReport").on("submit", function (y) {
-//	                    $("#submitButton", this).attr("disabled", "disabled");
-//	                    //alert(getFormData());
-//	                    $.ajax({
-//	                        type: "PUT",
-//	                        url: "http://dev.boulderfoodrescue.org/logs/" + result + ".json",
-//	                        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token
-//	                        },
-//	                        success: function (data) {
-//	                            //alert("success");
-//	                        },
-//	                        error: function (msg) {
-//	                            //alert( JSON.stringify(msg) );
-//	                        }
-//	                    });
-//	                    $("#submitButton").removeAttr("disabled");
-//	                });
-//	            },
-//	            error: function (msg) {
-//	                //alert( JSON.stringify(msg) );
-//	            }
-//	        });
-//	    });
+	    //	        $.getJSON('http://dev.boulderfoodrescue.org/logs/todo.json', function (data) {
+	    //	            $.each(data.person, function (i, f) {
+	    //	                var tblRow = "<tr>" + "<td>" + f.firstName + "</td>" +
+	    //           "<td>" + f.lastName + "</td>" + "<td>" + f.job + "</td>" + "<td>" + f.roll + "</td>" + "</tr>"
+	    //	                $(tblRow).appendTo("#userdata tbody");
+	    //	            });
 
-//	    function getFormData() {
-//	        var data = "";
-//	        var $textInputs = $("input:text");
-//	        for (i = 0; i < $textInputs.length; i++) {
-//	            if ($textInputs[i].value) {
-//	                data += $textInputs[i].name + ": " + $textInputs[i].value + ", ";
-//	            }
-//	        }
-//	        var $selectInputs = $("select");
-//	        for (i = 0; i < $selectInputs.length; i++) {
-//	            if ($selectInputs[i].value) {
-//	                data += $selectInputs[i].name + ": " + $selectInputs[i].value + ", ";
-//	            }
-//	        }
-//	        var $textAreaInputs = $("textarea");
-//	        for (i = 0; i < $textAreaInputs.length; i++) {
-//	            if ($textAreaInputs[i].value) {
-//	                data += $textAreaInputs[i].name + ": " + $textAreaInputs[i].value + ", ";
-//	            }
-//	        }
-//	        var $checkboxInputs = $("input:checkbox");
-//	        if ($checkboxInputs.is(":checked")) {
-//	            data += $checkboxInputs[0].name + ": " + "true" + ",";
-//	        }
-//	        else {
-//	            data += $checkboxInputs[0].name + ": " + "false" + ",";
-//	        }
-//	        return data;
-//	    } 
+	    //	        });
+
+	    //	    });
+
+	    //	    $(document).ready(function () {
+	    //	        $("#aToday").click(function () {
+	    //	            $.getJSON("http://dev.boulderfoodrescue.org/logs/todo.json", function (result) {
+	    //	                $.each(result, function (i, field) {
+	    //	                    $("div").append(field + " ");
+	    //	                });
+	    //	            });
+	    //	        });
+	    //	    });
+
+
+	    //	    $(function () {
+	    //	        $.ajax({
+	    //	            type: "GET",
+	    //	            url: "http://dev.boulderfoodrescue.org/logs/todo.json",
+	    //	            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+	    //	            success: function (data) {
+	    //	                alert(JSON.stringify(data));
+	    //	                //alert(JSON.stringify(data[0].donor_id));
+	    //	                //alert(JSON.stringify(data));
+	    //	                var data_id = (data.length - 1);
+	    //	                if ((data[data_id]).id) {
+	    //	                    result = (data[data_id]).id;
+	    //	                    //alert((data[data_id]).id);
+	    //	                }
+
+	    //	                $("#frmReport").on("submit", function (y) {
+	    //	                    $("#submitButton", this).attr("disabled", "disabled");
+	    //	                    //alert(getFormData());
+	    //	                    $.ajax({
+	    //	                        type: "PUT",
+	    //	                        url: "http://dev.boulderfoodrescue.org/logs/" + result + ".json",
+	    //	                        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token
+	    //	                        },
+	    //	                        success: function (data) {
+	    //	                            //alert("success");
+	    //	                        },
+	    //	                        error: function (msg) {
+	    //	                            //alert( JSON.stringify(msg) );
+	    //	                        }
+	    //	                    });
+	    //	                    $("#submitButton").removeAttr("disabled");
+	    //	                });
+	    //	            },
+	    //	            error: function (msg) {
+	    //	                //alert( JSON.stringify(msg) );
+	    //	            }
+	    //	        });
+	    //	    });
+
+	    //	    function getFormData() {
+	    //	        var data = "";
+	    //	        var $textInputs = $("input:text");
+	    //	        for (i = 0; i < $textInputs.length; i++) {
+	    //	            if ($textInputs[i].value) {
+	    //	                data += $textInputs[i].name + ": " + $textInputs[i].value + ", ";
+	    //	            }
+	    //	        }
+	    //	        var $selectInputs = $("select");
+	    //	        for (i = 0; i < $selectInputs.length; i++) {
+	    //	            if ($selectInputs[i].value) {
+	    //	                data += $selectInputs[i].name + ": " + $selectInputs[i].value + ", ";
+	    //	            }
+	    //	        }
+	    //	        var $textAreaInputs = $("textarea");
+	    //	        for (i = 0; i < $textAreaInputs.length; i++) {
+	    //	            if ($textAreaInputs[i].value) {
+	    //	                data += $textAreaInputs[i].name + ": " + $textAreaInputs[i].value + ", ";
+	    //	            }
+	    //	        }
+	    //	        var $checkboxInputs = $("input:checkbox");
+	    //	        if ($checkboxInputs.is(":checked")) {
+	    //	            data += $checkboxInputs[0].name + ": " + "true" + ",";
+	    //	        }
+	    //	        else {
+	    //	            data += $checkboxInputs[0].name + ": " + "false" + ",";
+	    //	        }
+	    //	        return data;
+	    //	    } 
 	</script>
     
     <style type="text/css">
