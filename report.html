@@ -16,12 +16,6 @@
 	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
     <script type="text/javascript" src="themes/js/moment.min.js"></script>
 
-	<!-- DatePicker -->	
-	<!--<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>	-->
-
 	<script type="text/javascript">
 	    var now = new Date();
 	    var strDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
@@ -55,148 +49,89 @@
 	        this.donorName = donor;
 	        this.donorId = dId;
 	        this.date = dt;
-	        this.inputPanel = "                                                <fieldset class='ui-grid-a'> \
-                                                    <div class='ui-block-a' style='width:60%; height: 10%;'> \
-				                                            <select class='drop_button' name='volunteers' id='volunteers'> \
-					                                            <option>Food</option> \
-					                                            <option value='1'>Produce</option> \
-					                                            <option value='2'>Bread</option> \
-					                                            <option value='3'>Water</option> \
-				                                            </select> \
-			                                            <!--</div>/ui-btn--> \
-                                                    </div> \
-                                                    <div class='ui-block-b' style='width:20%'> \
-                                                        <input type='text' name='weight' id='name' value=''/> \
-                                                    </div> \
-                                                    <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                        <div class='field_title' data-role='fieldcontain'> \
-                                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
-                                                        </div> \
-                                                    </div> \
-                                                </fieldset> \
-                                                <fieldset class='ui-grid-b'> \
-                                                    <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                        <div class='field_title' data-role='fieldcontain'> \
-                                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
-                                                        </div> \
-                                                    </div> \
-                                                    <div class='ui-block-b' style='width:80%'> \
-                                                        <input type='text' name='weight' id='Text1' value=''/> \
-                                                    </div> \
-                                                </fieldset> \
-                                                <fieldset class='ui-grid-a'> \
-                                                    <div class='ui-block-a' style='width:60%'> \
-				                                            <select class='drop_button' name='volunteers' id='Select1'> \
-					                                            <option>Food</option> \
-					                                            <option value='1'>Produce</option> \
-					                                            <option value='2'>Bread</option> \
-					                                            <option value='3'>Water</option> \
-				                                            </select> \
-			                                            <!--</div>/ui-btn--> \
-                                                    </div> \
-                                                    <div class='ui-block-b' style='width:20%'> \
-                                                        <input type='text' name='weight' id='Text2' value=''/> \
-                                                    </div> \
-                                                    <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                        <div class='field_title' data-role='fieldcontain'> \
-                                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
-                                                        </div> \
-                                                    </div> \
-                                                </fieldset> \
-                                                <fieldset class='ui-grid-b'> \
-                                                    <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                        <div class='field_title' data-role='fieldcontain'> \
-                                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
-                                                        </div> \
-                                                    </div> \
-                                                    <div class='ui-block-b' style='width:80%'> \
-                                                        <input type='text' name='weight' id='Text3' value=''/> \
-                                                    </div> \
-                                                </fieldset> \
-                                                </div><!--/collapsible--> \
-                                                    <div data-role='collapsible'> \
-	                                                    <!-- <h3>Vitamin Cottage</h3> -->\
-                                                        <fieldset class='ui-grid-a'> \
-                                                            <div class='ui-block-a' style='width:60%'> \
-				                                                    <select class='drop_button' name='volunteers' id='Select2'> \
-					                                                    <option>Food</option> \
-					                                                    <option value='1'>Produce</option> \
-					                                                    <option value='2'>Bread</option> \
-					                                                    <option value='3'>Water</option> \
-				                                                    </select> \
-                                                            </div> \
-                                                            <div class='ui-block-b' style='width:20%'> \
-                                                                <input type='text' name='weight' id='Text4' value=''/> \
-                                                            </div> \
-                                                            <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                                <div class='field_title' data-role='fieldcontain'> \
-                                                                    <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
-                                                                </div> \
-                                                            </div> \
-                                                        </fieldset> \
-                                                        <fieldset class='ui-grid-b'> \
-                                                            <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                                <div class='field_title' data-role='fieldcontain'> \
-                                                                    <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
-                                                                </div> \
-                                                            </div> \
-                                                            <div class='ui-block-b' style='width:80%'> \
-                                                                <input type='text' name='weight' id='Text5' value=''/> \
-                                                            </div> \
-                                                        </fieldset> \
-                                                        <fieldset class='ui-grid-a'> \
-                                                            <div class='ui-block-a' style='width:60%'> \
-				                                                    <select class='drop_button' name='volunteers' id='Select3'> \
-					                                                    <option>Food</option> \
-					                                                    <option value='1'>Produce</option> \
-					                                                    <option value='2'>Bread</option> \
-					                                                    <option value='3'>Water</option> \
-				                                                    </select> \
-                                                            </div> \
-                                                            <div class='ui-block-b' style='width:20%'> \
-                                                                <input type='text' name='weight' id='Text6' value=''/> \
-                                                            </div> \
-                                                            <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                                <div class='field_title' data-role='fieldcontain'> \
-                                                                    <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
-                                                                </div> \
-                                                            </div> \
-                                                        </fieldset> \
-                                                        <fieldset class='ui-grid-b'> \
-                                                            <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                                                <div class='field_title' data-role='fieldcontain'> \
-                                                                    <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
-                                                                </div> \
-                                                            </div> \
-                                                            <div class='ui-block-b' style='width:80%'> \
-                                                                <input type='text' name='weight' id='Text7' value=''/> \
-                                                            </div> \
-                                                        </fieldset> \
-                                                    </div><!--/collapsible--> \
-                                            </div><!--/collapsible-set--> \
-                                            <div class='div_dim'> \
-				                                    <select class='drop_button' name='volunteers' id='Select4'> \
-					                                    <option value='Bicycle'>Bicycle</option> \
-				                                        <option value='Foot'>Foot</option> \
-                                                        <option value='Car'>Car</option> \
-                                                        <option value='Truck'>Truck</option> \
-                                                        <option value='Van'>Van</option> \
-                                                        <option value='Motorcycle'>Motorcycle</option> \
-                                                        <option value='Golfcart'>Golf cart</option> \
-				                                    </select> \
-			                                    </div> \
-                                                <div class='div_dim'> \
-                                                    <div class='field_title' data-role='fieldcontain'> \
-			                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='textarea'> \
-				                                            Notes: \
-			                                            </label> \
-			                                            <textarea cols='40' rows='8' name='notes' id='textarea'> \
-                                                        </textarea> \
-		                                            </div> \
-                                                </div> \
-                                                 <div class='div_dim'> \
-                                                    <input type='submit' value='Save Changes' id='submitButton'> \
-                                                </div>";
+	        this.inputPanel = "<fieldset class='ui-grid-a'> \
+                                    <div class='ui-block-a' style='width:60%; height: 10%;'> \
+				                            <select class='drop_button' name='volunteers' id='volunteers'> \
+					                            <option>Food</option> \
+					                            <option value='1'>Produce</option> \
+					                            <option value='2'>Bread</option> \
+					                            <option value='3'>Water</option> \
+				                            </select> \
+			                            <!--</div>/ui-btn--> \
+                                    </div> \
+                                    <div class='ui-block-b' style='width:20%'> \
+                                        <input type='text' name='weight' id='name' value=''/> \
+                                    </div> \
+                                    <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
+                                        <div class='field_title' data-role='fieldcontain'> \
+                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
+                                        </div> \
+                                    </div> \
+                                </fieldset> \
+                                <fieldset class='ui-grid-b'> \
+                                    <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
+                                        <div class='field_title' data-role='fieldcontain'> \
+                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
+                                        </div> \
+                                    </div> \
+                                    <div class='ui-block-b' style='width:80%'> \
+                                        <input type='text' name='weight' id='Text1' value=''/> \
+                                    </div> \
+                                </fieldset> \
+                                <fieldset class='ui-grid-a'> \
+                                    <div class='ui-block-a' style='width:60%'> \
+				                            <select class='drop_button' name='volunteers' id='Select1'> \
+					                            <option>Food</option> \
+					                            <option value='1'>Produce</option> \
+					                            <option value='2'>Bread</option> \
+					                            <option value='3'>Water</option> \
+				                            </select> \
+			                            <!--</div>/ui-btn--> \
+                                    </div> \
+                                    <div class='ui-block-b' style='width:20%'> \
+                                        <input type='text' name='weight' id='Text2' value=''/> \
+                                    </div> \
+                                    <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
+                                        <div class='field_title' data-role='fieldcontain'> \
+                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
+                                        </div> \
+                                    </div> \
+                                </fieldset> \
+                                <fieldset class='ui-grid-b'> \
+                                    <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
+                                        <div class='field_title' data-role='fieldcontain'> \
+                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
+                                        </div> \
+                                    </div> \
+                                    <div class='ui-block-b' style='width:80%'> \
+                                        <input type='text' name='weight' id='Text3' value=''/> \
+                                    </div> \
+                                </fieldset> \
+                            </div><!--/collapsible--> \
+                        </div><!--/collapsible-set--> \
+                        <div class='div_dim'> \
+				                <select class='drop_button' name='volunteers' id='Select4'> \
+					                <option value='Bicycle'>Bicycle</option> \
+				                    <option value='Foot'>Foot</option> \
+                                    <option value='Car'>Car</option> \
+                                    <option value='Truck'>Truck</option> \
+                                    <option value='Van'>Van</option> \
+                                    <option value='Motorcycle'>Motorcycle</option> \
+                                    <option value='Golfcart'>Golf cart</option> \
+				                </select> \
+			                </div> \
+                            <div class='div_dim'> \
+                                <div class='field_title' data-role='fieldcontain'> \
+			                        <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='textarea'> \
+				                        Notes: \
+			                        </label> \
+			                        <textarea cols='40' rows='8' name='notes' id='textarea'> \
+                                    </textarea> \
+		                        </div> \
+                            </div> \
+                            <div class='div_dim'> \
+                                <input type='submit' value='Save Changes' id='submitButton'/> \
+                            </div>";
 	    }
 
 	    Trip.prototype.getHeader = function () {
@@ -212,31 +147,12 @@
 	        $(this.top + this.getHeader() + this.inputPanel + this.bottom).appendTo(appendTo);
 	    };
 
-	    //                        $.getJSON('http://dev.boulderfoodrescue.org/logs/mine_past.json', function (data) {
-
-	    //                        //document.getElementById("placeholder").innerHTML=data.complete+" "+data.created_at+" "+data.donor_id;
-
-	    //                            var output = "<ul>";
-	    //                            for (var i in data) {
-	    //                                output += "<li>" + data[i].complete + " " + data[i].created_at + "--" + data[i].donor_id + "</li>";
-	    //                            }
-
-	    //                            output += "</ul>";
-	    //                            document.getElementById("placeholder").innerHTML = output;
-	    //                        });
-	    //$(document).ready(function () {
-	    //$(window).load(function () {
-	    //function pageLoad(){
-	    //$("#btnjson").click(function () {
 	    $.ajax({
 	        type: "GET",
 	        url: "http://dev.boulderfoodrescue.org/logs/mine_past.json",
 	        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
 	        success: function (data) {
 
-
-
-	            //alert(JSON.stringify(data));
 	            var varIncomplete = ""
 	            var varShiftDate = ""
 	            var varDonorID = ""
@@ -258,7 +174,6 @@
 	                    }
 	                    // $(varBegin + varShiftDate + varDonorID1 + varEnd).appendTo('#divReport').trigger("create");
 
-	                    //alert(varDonorID);
 
 	                    $.ajax({
 	                        type: "GET",
@@ -286,122 +201,6 @@
 
 	    //});
 
-	    //$.getJSON("http://dev.boulderfoodrescue.org/logs/mine_past.json", function (ajaxresult) {
-
-
-
-
-
-
-
-	    //	    $.getJSON("http://dev.boulderfoodrescue.org/logs/open.json", function (data) {
-	    //	        var items = [];
-	    //	        $.each(data, function (key, val) {
-	    //	            items.push("<li id='" + key + "'>" + val + "</li>");
-	    //	        });
-
-	    //	        $("<ul/>", {
-	    //	            "class": "my-new-list",
-	    //	            html: items.join("")
-	    //	        }).appendTo("body");
-	    //	    });
-
-
-	    //	    $(function () {
-
-
-	    //	        var people = [];
-
-	    //	        $.getJSON('http://dev.boulderfoodrescue.org/logs/todo.json', function (data) {
-	    //	            $.each(data.person, function (i, f) {
-	    //	                var tblRow = "<tr>" + "<td>" + f.firstName + "</td>" +
-	    //           "<td>" + f.lastName + "</td>" + "<td>" + f.job + "</td>" + "<td>" + f.roll + "</td>" + "</tr>"
-	    //	                $(tblRow).appendTo("#userdata tbody");
-	    //	            });
-
-	    //	        });
-
-	    //	    });
-
-	    //	    $(document).ready(function () {
-	    //	        $("#aToday").click(function () {
-	    //	            $.getJSON("http://dev.boulderfoodrescue.org/logs/todo.json", function (result) {
-	    //	                $.each(result, function (i, field) {
-	    //	                    $("div").append(field + " ");
-	    //	                });
-	    //	            });
-	    //	        });
-	    //	    });
-
-
-	    //	    $(function () {
-	    //	        $.ajax({
-	    //	            type: "GET",
-	    //	            url: "http://dev.boulderfoodrescue.org/logs/todo.json",
-	    //	            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-	    //	            success: function (data) {
-	    //	                alert(JSON.stringify(data));
-	    //	                //alert(JSON.stringify(data[0].donor_id));
-	    //	                //alert(JSON.stringify(data));
-	    //	                var data_id = (data.length - 1);
-	    //	                if ((data[data_id]).id) {
-	    //	                    result = (data[data_id]).id;
-	    //	                    //alert((data[data_id]).id);
-	    //	                }
-
-	    //	                $("#frmReport").on("submit", function (y) {
-	    //	                    $("#submitButton", this).attr("disabled", "disabled");
-	    //	                    //alert(getFormData());
-	    //	                    $.ajax({
-	    //	                        type: "PUT",
-	    //	                        url: "http://dev.boulderfoodrescue.org/logs/" + result + ".json",
-	    //	                        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token
-	    //	                        },
-	    //	                        success: function (data) {
-	    //	                            //alert("success");
-	    //	                        },
-	    //	                        error: function (msg) {
-	    //	                            //alert( JSON.stringify(msg) );
-	    //	                        }
-	    //	                    });
-	    //	                    $("#submitButton").removeAttr("disabled");
-	    //	                });
-	    //	            },
-	    //	            error: function (msg) {
-	    //	                //alert( JSON.stringify(msg) );
-	    //	            }
-	    //	        });
-	    //	    });
-
-	    //	    function getFormData() {
-	    //	        var data = "";
-	    //	        var $textInputs = $("input:text");
-	    //	        for (i = 0; i < $textInputs.length; i++) {
-	    //	            if ($textInputs[i].value) {
-	    //	                data += $textInputs[i].name + ": " + $textInputs[i].value + ", ";
-	    //	            }
-	    //	        }
-	    //	        var $selectInputs = $("select");
-	    //	        for (i = 0; i < $selectInputs.length; i++) {
-	    //	            if ($selectInputs[i].value) {
-	    //	                data += $selectInputs[i].name + ": " + $selectInputs[i].value + ", ";
-	    //	            }
-	    //	        }
-	    //	        var $textAreaInputs = $("textarea");
-	    //	        for (i = 0; i < $textAreaInputs.length; i++) {
-	    //	            if ($textAreaInputs[i].value) {
-	    //	                data += $textAreaInputs[i].name + ": " + $textAreaInputs[i].value + ", ";
-	    //	            }
-	    //	        }
-	    //	        var $checkboxInputs = $("input:checkbox");
-	    //	        if ($checkboxInputs.is(":checked")) {
-	    //	            data += $checkboxInputs[0].name + ": " + "true" + ",";
-	    //	        }
-	    //	        else {
-	    //	            data += $checkboxInputs[0].name + ": " + "false" + ",";
-	    //	        }
-	    //	        return data;
-	    //	    }
         
            
  
@@ -477,23 +276,9 @@
 
         <div id="divReport">
 
-        
-
-
-
-
-
-
-
-
-
-
-
-
         </div><!--/divReport-->
 
     </div><!--/home-->
-
 
     </form>
 
