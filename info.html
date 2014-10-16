@@ -16,14 +16,18 @@
 
 	<!-- DatePicker -->
 	<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
-	
-	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+<!--	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> -->
 
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>	
-	<script>
+	
+    <script type="text/javascript">
+
+    
+
 	    $(function () {
+        alert("Hi there");
 	        $("#logout").on("click", function () {
 	            $.ajax({
 	                type: "DELETE",
@@ -31,6 +35,7 @@
 	                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
 	                success: function (data) {
 	                    //alert("Logging Out");
+                        //alert(JSON.stringify(data));
 	                    window.location = ("index.html");
 	                },
 	                error: function (msg) {
@@ -38,6 +43,19 @@
 	                }
 	            });
 	        });
+	    });
+
+        $.ajax({
+	        type: "GET",
+	        url: "http://dev.boulderfoodrescue.org/locations/2.json",// + 2 + ".json",
+	        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+	        success: function (response) {
+	            //alert(JSON.Stringify(data.name));
+
+	        },
+	        error: function (msg) {
+	            // alert(JSON.stringify(msg));
+	        }
 	    });
            
 	</script>
@@ -51,6 +69,11 @@
             
         h3 {
             text-indent: 2.3em;
+        }
+        .infoDiv 
+        {
+            padding-left: 1em;
+            width: 95%;
         }
         
     </style>
@@ -77,6 +100,14 @@
                 </div>
             </div>
 		</div> 
+
+        <h3 style="text-align: center;width: 87%;">Whole Foods!</h3>
+        <div class="infoDiv"><h4>Equipment Storage:</h4><p id="equipmentInfo">yay blah blah</p></div>
+        <div class="infoDiv"><h4>Food Storage:</h4><p id="foodStorageInfo">yay blah blah</p></div>
+        <div class="infoDiv"><h4>Entry Info:</h4><p id="entryInfo">yay blah blah</p></div>
+        <div class="infoDiv"><h4>Exit Info:</h4><p id="exitInfo">yay blah blah</p></div>
+        <div class="infoDiv"><h4>Onsite Contact:</h4><p id="onsiteContactInfo">yay blah blah</p></div>
+
     </div>
 
     </form>

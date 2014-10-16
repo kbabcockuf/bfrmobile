@@ -1,7 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+    <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Boulder Food Rescue</title>
 	<link rel="stylesheet" href="themes/Bootstrap.css">
@@ -9,143 +9,113 @@
 	
 <!--	<script href="themes/js/boostrap-dropdown.js"></script>
 	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
+
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
+    <script type="text/javascript" src="themes/js/moment.min.js"></script>
 
-	<!-- DatePicker -->
-	<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
-	
-	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+    <script>
+        $(function () {
 
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
-	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>	
-	<script>
-		$(function () {
-			$("#logout").on("click", function() {
-				$.ajax({
-					type: "DELETE",
-					url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
-					data: {volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token},
-					success: function (data) {
-						//alert("Logging Out");
-						window.location = ("index.html");
-					},
-					error: function(msg) {
-						//alert(JSON.stringify(msg));
-					}
-				});
+            //alert("home page");
+            $("#logout").on("click", function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
+                    data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                    success: function (data) {
+                        //alert("Logging Out");
+                        window.location = ("index.html");
+                    },
+                    error: function (msg) {
+                        //alert(JSON.stringify(msg));
+                    }
+                });
             });
         });
            
-	</script>
-    
+    </script>
     <style type="text/css">
-	    body, textarea {
+        body, textarea
+        {
             font-size: 1em;
             line-height: 1.3;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-            }
-            
-        h3 {
-            text-indent: 2.3em;
+            font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
         }
         
+        h3
+        {
+            text-indent: 2.3em;
+        }
     </style>
-</head> 
+</head>
 <body>
     <form id="frmHome">
-    
-	<div data-role="page" id="home">  
-		<div data-position="fixed" data-role="header" data-theme="a">  
-			<a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext" href="home.html">Home</a>  
-			<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
-				Food Rescue Robot
-			</h1> 
-
-    		<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" id="logout" data-iconpos="notext">Log Out</a>
-
+    <div data-role="page" id="home">
+        <div data-position="fixed" data-role="header" data-theme="a">
+            <a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext"
+                href="home.html">Home</a>
+            <h1 style="font: 13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
+                Food Rescue Robot
+            </h1>
+            <a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="power"
+                id="logout" data-iconpos="notext">Log Out</a>
             <div data-role="header">
                 <div data-role="navbar">
                     <ul>
-                      <li><a href="#home" data-ajax="false" style="border: .1em solid #4b7333; color: White;">Today</a></li>
-                      <li><a href="#divTake" data-ajax="false" style="border: .1em solid #4b7333; color: White;">Cover</a></li>
-                      <li><a href="report.html" data-ajax="false" style="border: .1em solid #4b7333; color: White;">Due</a></li>
+                        <li><a href="#home" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                            Today</a></li>
+                        <li><a href="#divTake" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                            Cover</a></li>
+                        <li><a href="report.html" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                            Due</a></li>
                     </ul>
                 </div>
             </div>
-		</div> 
-
-		
-<!--        <div data-role="tabs">
-          <div data-role="navbar">
-            <ul>
-              <li><a href="#divUpcoming" data-ajax="false" style="border: .1em solid #4b7333;">Upcoming</a></li>
-              <li><a href="#divPickup" data-ajax="false" style="border: .1em solid #4b7333;">Take</a></li>
-              <li><a href="#divEnterData" data-ajax="false" style="border: .1em solid #4b7333;">Report</a></li>
-            </ul>
-         </div>-->
-
-            <div id="divUpcoming">
-               <div data-role="collapsible-set" data-corners="false" style="margin: .2em;">
-
-	                <div data-role="collapsible" data-collapsed="false">
-	                    <h3>6:00pm Today</h3>
-	                    
-                                1) Whole Foods (Pickup)<br />
-                                2) Vitamin College (Pickup)<br />
-                                3) Attention Homes (Drop)<br />
+        </div>
+        <div id="divUpcoming">
+            <div data-role="collapsible-set" data-corners="false" style="margin: .2em;">
+                <div data-role="collapsible" data-collapsed="false">
+                    <h3>
+                        6:00pm Today</h3>
+                     <p>1) Whole Foods (Pickup)</p>
+                        <p>2) Vitamin College (Pickup)</p>
+                        <p>3) Attention Homes (Drop)</p>
+                    
+                    <div data-role="navbar" style="margin-top: .5em;">
+                        <ul>
+                            <!--<li><a href="info.html" class="ui-btn-active ui-state-persist" style="border: .1em solid #4b7333;">Info</a></li>-->
+                            <li><a href="info.html" style="border: .1em solid #4b7333;">Info</a></li>
+                            <li><a href="calshow://" style="border: .1em solid #4b7333;">Calendar</a></li>
+                            <li><a href="maps.apple.com/maps?q=boulder" style="border: .1em solid #4b7333;">Map</a></li>
+                        </ul>
+                    </div>
+                    <!-- /navbar -->
+                </div>
+                <div data-role="collapsible">
+                    <h3>
+                        3:00pm Wednesday (2 days)</h3>
                         
-                        <!--<div data-role="tabs" style=" margin-top: .5em;">
-                          <div data-role="navbar">
+                    <p>1) Alfalfa (Pickup)</p>
+                    <p>2) Meals On Wheels (Pickup)</p>
+                    <p>3) Food Sharing (Drop)</p>
+                    <div data-role="tabs" style="margin-top: .5em;">
+                        <div data-role="navbar">
                             <ul>
-                              <li><a href="asfinfo.html" data-ajax="false" style="border: .1em solid #4b7333;">Info</a></li>
-                              <li><a href="Calendar" data-ajax="false" style="border: .1em solid #4b7333;">Calendar</a></li>
-                              <li><a href="Map" data-ajax="false" style="border: .1em solid #4b7333;">Map</a></li>
+                                <li><a href="info.html" data-ajax="false" style="border: .1em solid #4b7333;">Info</a></li>
+                                <li><a href="calshow://" data-ajax="false" style="border: .1em solid #4b7333;">Calendar</a></li>
+                                <li><a href="maps.apple.com/maps?q=boulder" data-ajax="false" style="border: .1em solid #4b7333;">
+                                    Map</a></li>
                             </ul>
-                          </div>
-                        </div>-->
-
-                        <div data-role="navbar" style=" margin-top: .5em;">
-	                        <ul>
-		                        <!--<li><a href="info.html" class="ui-btn-active ui-state-persist" style="border: .1em solid #4b7333;">Info</a></li>-->
-                                <li><a href="info.html" style="border: .1em solid #4b7333;">Info</a></li>
-		                        <li><a href="calshow://" style="border: .1em solid #4b7333;">Calendar</a></li>
-                                <li><a href="maps.apple.com/maps?q=boulder" style="border: .1em solid #4b7333;">Map</a></li>
-	                        </ul>
-                        </div><!-- /navbar -->
-                        
-	                </div>
-	
-	                <div data-role="collapsible">
-	                    <h3>3:00pm Wednesday (2 days)</h3>
-                            
-                            1) Alfalfa (Pickup)<br />
-                            2) Meals On Wheels (Pickup)<br />
-                            3) Food Sharing (Drop)<br />
-                        
-                        <div data-role="tabs" style=" margin-top: .5em;">
-                          <div data-role="navbar">
-                            <ul>
-                              <li><a href="asfinfo.html" data-ajax="false" style="border: .1em solid #4b7333;">Info</a></li>
-                              <li><a href="calshow://" data-ajax="false" style="border: .1em solid #4b7333;">Calendar</a></li>
-                              <li><a href="maps.apple.com/maps?q=boulder" data-ajax="false" style="border: .1em solid #4b7333;">Map</a></li>
-                            </ul>
-                          </div>
                         </div>
-	                </div>
-	            </div>
+                    </div>
+                </div>
             </div>
-
-	</div>
-
-</form>
-
-    <script>
-        //$("#tabs").tabs({ active: 0 });
-    </script>
-
+        </div>
+    </div>
+    </form>
 </body>
 </html>
