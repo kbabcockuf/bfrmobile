@@ -24,39 +24,87 @@
 	
     <script type="text/javascript">
 
-    
 
-	    $(function () {
-        alert("Hi there");
-	        $("#logout").on("click", function () {
-	            $.ajax({
-	                type: "DELETE",
-	                url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
-	                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-	                success: function (data) {
-	                    //alert("Logging Out");
+
+        $(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "http://dev.boulderfoodrescue.org/locations/3.json", // + 2 + ".json",
+                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                success: function (response) {
+
+                    if (response.equipment_storage_info) {
+                        $("<p>" + response.equipment_storage_info + "</p>").appendTo("#equipmentInfo");
+                    }
+                    else {
+                        $("<p>No info provided</p>").appendTo("#equipmentInfo");
+                    }
+
+                    if (response.food_storage_info) {
+                        $("<p>" + response.food_storage_info + "</p>").appendTo("#foodStorageInfo");
+                    }
+                    else {
+                        $("<p>No info provided</p>").appendTo("#foodStorageInfo");
+                    }
+
+                    if (response.entry_info) {
+                        $("<p>" + response.entry_info + "</p>").appendTo("#entryInfo");
+                    }
+                    else {
+                        $("<p>No info provided</p>").appendTo("#entryInfo");
+                    }
+
+                    if (response.exit_info) {
+                        $("<p>" + response.exit_info + "</p>").appendTo("#exitInfo");
+                    }
+                    else {
+                        $("<p>No info provided</p>").appendTo("#exitInfo");
+                    }
+
+                    if (response.onsite_contact_info) {
+                        $("<p>" + response.onsite_contact_info + "</p>").appendTo("#onsiteContactInfo");
+                    }
+                    else {
+                        $("<p>No info provided</p>").appendTo("#onsiteContactInfo");
+                    }
+
+
+                    $("<p>" + response.name + "</p>").appendTo("#donorHeader");
+
+                    //$("<p>" + response.equipment_storage_info + "</p>").appendTo("#equipmentInfo");
+                    //$("<p>" + response.food_storage_info + "</p>").appendTo("#foodStorageInfo");
+                    //$("<p>" + response.entry_info + "</p>").appendTo("#entryInfo");
+                    //$("<p>" + response.exit_info + "</p>").appendTo("#exitInfo");
+                    //$("<p>" + response.onsite_contact_info + "</p>").appendTo("#onsiteContactInfo");
+
+                },
+                error: function (msg) {
+                    // alert(JSON.stringify(msg));
+                }
+            });
+
+
+            //alert("Hi there");
+
+            $("#logout").on("click", function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
+                    data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                    success: function (data) {
+                        //alert("Logging Out");
                         //alert(JSON.stringify(data));
-	                    window.location = ("index.html");
-	                },
-	                error: function (msg) {
-	                    //alert(JSON.stringify(msg));
-	                }
-	            });
-	        });
-	    });
+                        window.location = ("index.html");
+                    },
+                    error: function (msg) {
+                        //alert(JSON.stringify(msg));
+                    }
+                });
+            });
+        });
 
-        $.ajax({
-	        type: "GET",
-	        url: "http://dev.boulderfoodrescue.org/locations/2.json",// + 2 + ".json",
-	        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-	        success: function (response) {
-	            //alert(JSON.Stringify(data.name));
 
-	        },
-	        error: function (msg) {
-	            // alert(JSON.stringify(msg));
-	        }
-	    });
            
 	</script>
     
@@ -101,12 +149,12 @@
             </div>
 		</div> 
 
-        <h3 style="text-align: center;width: 87%;">Whole Foods!</h3>
-        <div class="infoDiv"><h4>Equipment Storage:</h4><p id="equipmentInfo">yay blah blah</p></div>
-        <div class="infoDiv"><h4>Food Storage:</h4><p id="foodStorageInfo">yay blah blah</p></div>
-        <div class="infoDiv"><h4>Entry Info:</h4><p id="entryInfo">yay blah blah</p></div>
-        <div class="infoDiv"><h4>Exit Info:</h4><p id="exitInfo">yay blah blah</p></div>
-        <div class="infoDiv"><h4>Onsite Contact:</h4><p id="onsiteContactInfo">yay blah blah</p></div>
+        <h3 id="donorHeader" style="text-align: center;width: 87%;"></h3>
+        <div class="infoDiv" id="equipmentInfo"><h4>Equipment Storage:</h4></div>
+        <div class="infoDiv" id="foodStorageInfo"><h4>Food Storage:</h4></div>
+        <div class="infoDiv" id="entryInfo"><h4>Entry Info:</h4></div>
+        <div class="infoDiv" id="exitInfo"><h4>Exit Info:</h4></div>
+        <div class="infoDiv" id="onsiteContactInfo"><h4>Onsite Contact:</h4></div>
 
     </div>
 
