@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -15,8 +15,7 @@
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	
-    
-    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
+    <!--<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>-->
     
     <script type="text/javascript" src="themes/js/moment.min.js"></script>
 
@@ -40,9 +39,16 @@
             });
         });
 
-        
+        $.ajax({
+            type: "GET",
+            url: "http://dev.boulderfoodrescue.org/logs/open.json",
+            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+            success: function (response) {
 
-        // Generate Current Date variable
+                alert(JSON.stringify(response));
+                //Cycle through each trip, old and upcoming
+                $(response).each(function () {
+                    //Used http://www.w3schools.com/jsref/jsref_obj_date.asp as a reference
                     //                    var now = new Date();
                     //                    var day = now.getDate();
                     //                    if (day < 10) {
@@ -58,46 +64,26 @@
                     //CHANGE TO CURRENTDATE INSTEAD OF STATIC DATE
                     if ("2014-06-02" == this.when) {
                         alert("Yay, this trip is scheduled for today!");
+                        //alert(JSON.stringify(this));
+                        //Then make sure this trip is displayed
+
+                        //Change the this.when to reflect today
+
+                        //Create the div for each trip that has unique time?
+
+                        //Go into each div and add the trips location name and the dropoff location
+
+                        //In each info link within each div, make sure to pass along the location id to the info page
+
+                        //
                     }
-        // After getting the log IDs for the day and loop through, doing the following - use logs/mine_upcoming.json
-                    $.ajax({
-                        type: "GET",
-                        url: "http://dev.boulderfoodrescue.org/logs/15363.json",
-                        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-                        success: function (response) {
-                            $(response).each(function () {
-                                var recipientIDs = response.log.recipient_ids;
-                                for (i = 0; i < recipientIDs.length; i++) {
-                                    console.log("loop for recipient ID " + recipientIDs[i]);
-                                }
-                                //Access the locations file based on response.log.donor_id
-                                console.log(response.log.donor_id);
-                                $.ajax({
-                                    type: "GET",
-                                    url: "http://dev.boulderfoodrescue.org/locations/" + response.log.donor_id + ".json",
-                                    data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-                                    success: function (response) {
-                                        //Grab the name
-                                        var donorName = response.name;
-                                        console.log(donorName);
-                                    },
-                                    error: function (msg) {
-                                        // alert(JSON.stringify(msg));
-                                    }
-                                });
+                });
 
-                                //Go into each div and add the trips location name and the dropoff location
-
-                                //In each info link within each div, make sure to pass along the location id to the info page
-
-                                //stuff
-                            });
-
-                        },
-                        error: function (msg) {
-                            // alert(JSON.stringify(msg));
-                        }
-                    });
+            },
+            error: function (msg) {
+                // alert(JSON.stringify(msg));
+            }
+        });
 
         
            
@@ -130,9 +116,9 @@
             <div data-role="header">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                        <li><a href="#home" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
                             Today</a></li>
-                        <li><a href="take.html" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                        <li><a href="" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
                             Cover</a></li>
                         <li><a href="report.html" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
                             Due</a></li>
@@ -144,10 +130,8 @@
             <div data-role="collapsible-set" data-corners="false" style="margin: .2em;">
                 <div data-role="collapsible" data-collapsed="false">
                     <h3>
-                        6:00pm Today</h3>
-                     <p>1) Whole Foods (Pickup)</p>
-                        <p>2) Vitamin College (Pickup)</p>
-                        <p>3) Attention Homes (Drop)</p>
+                        To Cover:</h3>
+
                     
                     <div data-role="navbar" style="margin-top: .5em;">
                         <ul>
@@ -159,24 +143,7 @@
                     </div>
                     <!-- /navbar -->
                 </div>
-                <div data-role="collapsible">
-                    <h3>
-                        3:00pm Wednesday (2 days)</h3>
-                        
-                    <p>1) Alfalfa (Pickup)</p>
-                    <p>2) Meals On Wheels (Pickup)</p>
-                    <p>3) Food Sharing (Drop)</p>
-                    <div data-role="tabs" style="margin-top: .5em;">
-                        <div data-role="navbar">
-                            <ul>
-                                <li><a href="info.html" data-ajax="false" style="border: .1em solid #4b7333;">Info</a></li>
-                                <li><a href="calshow://" data-ajax="false" style="border: .1em solid #4b7333;">Calendar</a></li>
-                                <li><a href="maps.apple.com/maps?q=boulder" data-ajax="false" style="border: .1em solid #4b7333;">
-                                    Map</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
