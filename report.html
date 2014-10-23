@@ -6,7 +6,7 @@
 	<title>Boulder Food Rescue</title>
 	<link rel="stylesheet" href="themes/Bootstrap.css">
 	<link rel="stylesheet" href="themes/application.css">
-	
+	<link rel="stylesheet" type="text/css" href="themes/DefinedStylesBFR.css">
 <!--	<script href="themes/js/boostrap-dropdown.js"></script>
 	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
@@ -30,6 +30,21 @@
 	        $(document).on('click', "div.timeHeader", function () {
 	            $(this).siblings().toggle();
 	        });
+
+	        // Div clicked
+	        // for each input iterate through, make JS object with submit ID as identifier id:value, all inputs
+	        $(document).on('click', "div.saveChangesButton", function () {
+	            var container = $(this).parent().parent();
+	            var inputs = container.find(':input');
+	            var data = "{";
+	            var pickUpID = container.attr('id');
+	            inputs.each(function () {
+	                console.log(this.name, this.value);
+	                data += this.name + ": '" + this.value + "', ";
+	            });
+	            data += "}";
+	            //console.log(inputs);
+	        });
 	    });
 
 	    $(function () {
@@ -51,6 +66,7 @@
 	        });
 	    });
 
+
 	    $.ajax({
 	        type: "GET",
 	        url: "http://dev.boulderfoodrescue.org/logs/mine_past.json",
@@ -59,20 +75,20 @@
 
 	            //Cycle through each open log
 	            $(response).each(function () {
-
+	                console.log(this);
 	                //Make a div with the id of the log
 	                //$("#headerDiv").after("<div id='" + this.id + "'>hi</div>");
 	                var modeOfTransportHTMLString = "<p>Mode of Transport</p>\
-                                                        <select class='transportDropDown' name='volunteers' id='Select4'>\
-                                                              <option value='Bicycle'>Bicycle</option>\
-                                                              <option value='Foot'>Foot</option>\
-                                                              <option value='Car'>Car</option>\
-                                                              <option value='Truck'>Truck</option>\
-                                                              <option value='Van'>Van</option>\
-                                                              <option value='Motorcycle'>Motorcycle</option>\
-                                                              <option value='Golfcart'>Golf cart</option>\
+                                                        <select class='transportDropDown' name='transport_type_id' id='Select4'>\
+                                                              <option value='1'>Bicycle</option>\
+                                                              <option value='2'>Foot</option>\
+                                                              <option value='3'>Car</option>\
+                                                              <option value='4'>Truck</option>\
+                                                              <option value='5'>Van</option>\
+                                                              <option value='6'>Motorcycle</option>\
+                                                              <option value='7'>Golf cart</option>\
                                                         </select>";
-	                var notesHTMLString = "<p>Notes</p><textarea rows='4' cols='30'></textarea>";
+	                var notesHTMLString = "<p>Notes</p><textarea rows='4' cols='30' name='Notes'></textarea>";
 	                var saveChangesButtonHTMLString = "<div class='saveChangesButton'>Save Changes</div>";
 	                var endOfFormHTMLString = modeOfTransportHTMLString + notesHTMLString + saveChangesButtonHTMLString;
 
@@ -89,9 +105,9 @@
 	                        var logID = response.log.id;
 	                        var startTime = new Date(response.schedule.detailed_start_time).getHours() + 1;
 	                        var stopTime = new Date(response.schedule.detailed_stop_time).getHours() + 1;
-	                        var dayOfWeek = response.schedule.day_of_week;
-	                        var monthOfYear = new Date(response.log.when).getMonth();
-	                        var dayOfMonth = new Date(response.log.when).getDate();
+	                        var dayOfWeek = new Date(response.log.when).getDay();
+	                        var monthOfYear = new Date(response.log.when).getMonth(); // getMonth() goes from 0 to 11
+	                        var dayOfMonth = new Date(response.log.when).getDate(); // getDate() goes from 1-31
 	                        var weekDayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
 	                        var monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
@@ -157,109 +173,7 @@
            
     </script>
     
-<style type="text/css">
-        body, textarea
-        {
-            font-size: 1em;
-            line-height: 1.3;
-            font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
-        }
-        
-        h3
-        {
-            text-align: center;
-            text-indent: 0em;
-            padding: 3px;
-            margin: 0;
-        }
-        .upcomingDiv
-        {
-            width: 95%;
-            margin: auto;
-            padding-top: 0.5em;
-        }
-        .upcomingDiv a
-        {
-            text-decoration: none;
-            color: White !important;
-        }
-        .upcomingDiv .navDiv li
-        {
-            border: .1em solid #4b7333;
-            background-color: #51A351;
-            color: White;
-            float: left;
-            width: 42%%;
-            text-align: center;
-            list-style-type: none;
-        }
-        .clickCollapse
-        {
-            overflow: hidden;
-            border: .1em solid #4b7333;
-            margin-bottom: 0.2em;
-        }
-        .timeHeader
-        {
-            background: #51A351 /*{a-bup-background-color}*/;
-            border-color: #00a84c /*{a-bup-border}*/;
-            color: #FFFFFF
-        }
-        .donor, .endOfForm
-        {
-            margin: auto;
-            width: 90%;
-        }
-        .saveChangesButton
-        {
-            float: left;
-            padding: .5em;
-            width: 42%;
-            text-align: center;
-            margin-left: 26%;
-            margin-right: auto;
-            margin-bottom: .8em;
-            margin-top: .8em;
-            border: .1em solid #4b7333;
-        }
-        .donorNameClass
-        {
-            padding: 0.2em;
-            background: #51A351;
-            color:white;
-            padding-left: 0.5em;
-        }
-        input
-        {
-            width: 40%;
-            float: left;
-            height: 1em;
-            padding: 0.2em;
-        }
-        .foodDropDown
-        {
-            float:left;
-        }
-        .lbsClass
-        {
-            padding: 0.2em;
-            text-align: right;
-            padding-right: 1.2em;
-            margin: 0;
-        }
-        .endOfForm p
-        {
-            width: 50%;
-            float: left;
-            margin: 0;
-            margin-top: 0.2em;
-        }
-        .transportDropDown
-        {
-            padding: 0.2em;
-            margin-top: 0;
-        }
-    </style>
+
 </head>
 <body>
     <form id="frmReport">

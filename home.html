@@ -6,7 +6,7 @@
 	<title>Boulder Food Rescue</title>
 	<link rel="stylesheet" href="themes/Bootstrap.css">
 	<link rel="stylesheet" href="themes/application.css">
-	
+	<link rel="stylesheet" type="text/css" href="themes/DefinedStylesBFR.css">
 <!--	<script href="themes/js/boostrap-dropdown.js"></script>
 	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
 
@@ -70,8 +70,7 @@
         }
 
         // After getting the log IDs for the day and loop through, doing the following - use logs/mine_upcoming.json
-        var logIDs = [12195, 12406, 12196];
-//        var logIDs = [12195];
+        var logIDs = [12195, 12406, 12196, 12231];
 
         window.onload = function () {
             var navBar = "<div class='navDiv' data-role='navbar' style='margin-top: .5em;'>\
@@ -168,60 +167,7 @@
 
            
     </script>
-    <style type="text/css">
-        body, textarea
-        {
-            font-size: 1em;
-            line-height: 1.3;
-            font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
-        }
-        
-        h3
-        {
-            text-align: center;
-            text-indent: 0em;
-            padding: 3px;
-            margin: 0;
-        }
-        .upcomingDiv
-        {
-            width: 95%;
-            margin: auto;
-            padding-top: 0.5em;
-        }
-        .upcomingDiv li a
-        {
-            text-decoration: none;
-            color: White !important;
-        }
-        .upcomingDiv .navDiv li
-        {
-            border: .1em solid #4b7333;
-            background-color: #51A351;
-            color: White;
-            float: left;
-            width: 42%%;
-            text-align: center;
-            list-style-type: none;
-        }
-        .clickCollapse
-        {
-            overflow: hidden;
-            border: .1em solid #4b7333;
-            margin-bottom: 0.2em;
-        }
-        .timeHeader
-        {
-            background: #51A351 /*{a-bup-background-color}*/;
-            border-color: #00a84c /*{a-bup-border}*/;
-            color: #FFFFFF
-        }
-        .donor, .recipient
-        {
-            margin: auto;
-            width: 90%;
-        }
-    </style>
+    
 </head>
 <body>
     <form id="frmHome">
