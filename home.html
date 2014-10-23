@@ -15,12 +15,21 @@
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
 	
-    
+    <!--Make sure this is not commented out-->
     <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
     
     <script type="text/javascript" src="themes/js/moment.min.js"></script>
 
     <script>
+
+        $(document).ready(function () {
+            
+            // Expand and collapse sibling elements when clicking on a timeHeader div
+            $(document).on('click', "div.timeHeader", function () {
+                $(this).siblings().toggle();
+            });
+        });
+
         $(function () {
 
             //alert("home page");
@@ -42,64 +51,121 @@
 
         
 
-        // Generate Current Date variable
-                    //                    var now = new Date();
-                    //                    var day = now.getDate();
-                    //                    if (day < 10) {
-                    //                        day = '0' + day;
-                    //                    }
-                    //                    var month = now.getMonth() + 1; // January is 0
-                    //                    if (month < 10) {
-                    //                        month = '0' + month;
-                    //                    }
-                    //                    var year = now.getFullYear();
-                    //                    var currentDate = year + '-' + month + '-' + day;
+// Generate Current Date variable
+        //                    var now = new Date();
+        //                    var day = now.getDate();
+        //                    if (day < 10) {
+        //                        day = '0' + day;
+        //                    }
+        //                    var month = now.getMonth() + 1; // January is 0
+        //                    if (month < 10) {
+        //                        month = '0' + month;
+        //                    }
+        //                    var year = now.getFullYear();
+        //                    var currentDate = year + '-' + month + '-' + day;
 
-                    //CHANGE TO CURRENTDATE INSTEAD OF STATIC DATE
-                    if ("2014-06-02" == this.when) {
-                        alert("Yay, this trip is scheduled for today!");
-                    }
+        //CHANGE TO CURRENTDATE INSTEAD OF STATIC DATE
+        if ("2014-06-02" == this.when) {
+            alert("Yay, this trip is scheduled for today!");
+        }
+
         // After getting the log IDs for the day and loop through, doing the following - use logs/mine_upcoming.json
-                    $.ajax({
-                        type: "GET",
-                        url: "http://dev.boulderfoodrescue.org/logs/15363.json",
-                        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-                        success: function (response) {
-                            $(response).each(function () {
-                                var recipientIDs = response.log.recipient_ids;
-                                for (i = 0; i < recipientIDs.length; i++) {
-                                    console.log("loop for recipient ID " + recipientIDs[i]);
-                                }
-                                //Access the locations file based on response.log.donor_id
-                                console.log(response.log.donor_id);
-                                $.ajax({
-                                    type: "GET",
-                                    url: "http://dev.boulderfoodrescue.org/locations/" + response.log.donor_id + ".json",
-                                    data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-                                    success: function (response) {
-                                        //Grab the name
-                                        var donorName = response.name;
-                                        console.log(donorName);
-                                    },
-                                    error: function (msg) {
-                                        // alert(JSON.stringify(msg));
-                                    }
-                                });
+        var logIDs = [12195, 12406, 12196];
+//        var logIDs = [12195];
 
-                                //Go into each div and add the trips location name and the dropoff location
+        window.onload = function () {
+            var navBar = "<div class='navDiv' data-role='navbar' style='margin-top: .5em;'>\
+                          <ul>\
+                            <li><a href='calshow://'>Calendar</a></li>\
+                            <li><a href='maps.apple.com/maps?q=boulder'>Map</a></li>\
+                        </ul>\
+                    </div>"
+            var beginDivs = "<div class='upcomingDiv'></div>";
+            var middleDivs = "<div class='timeHeader'></div><div class='donor'></div><div class='recipient'></div>";
+            $("#headerDiv").after(beginDivs);
+            for (i = 0; i < logIDs.length; i++) {
+                $(".upcomingDiv").append("<div class='clickCollapse' id='" + logIDs[i] + "'>" + middleDivs + navBar + "</div>");
+            }
 
-                                //In each info link within each div, make sure to pass along the location id to the info page
+        };
 
-                                //stuff
-                            });
+        for (i = 0; i < logIDs.length; i++) {
 
-                        },
-                        error: function (msg) {
-                            // alert(JSON.stringify(msg));
-                        }
-                    });
+            $.ajax({
+                type: "GET",
+                url: "http://dev.boulderfoodrescue.org/logs/" + logIDs[i] + ".json",
+                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                success: function (response) {
+                    var logID = response.log.id;
+                    // Get the start and stop times, display with AM or PM times
+                    var startTime = new Date(response.schedule.detailed_start_time).getHours() + 1; // getHours() goes from 0-23
+                    var stopTime = new Date(response.schedule.detailed_stop_time).getHours() + 1;
+                    var startTimeText;
+                    var stopTimeText;
+                    if (startTime > 12) {
+                        startTime = startTime - 12;
+                        startTimeText = 'pm';
+                    }
+                    else {
+                        startTimeText = 'am';
+                    }
+                    if (stopTime > 12) {
+                        stopTime = stopTime - 12;
+                        stopTimeText = 'pm';
+                    }
+                    else {
+                        stopTimeText = 'am';
+                    }
+                    var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText + ' Today';
+                    $("#" + logID + " .timeHeader").append("<h3>" + timeSpanString + "</h3>");
 
-        
+                    // Grab the recipient and donor info
+                    applyDonorInfoFunction(response.log.donor_id, logID);
+                    applyRecipientInfoFunction(response.log.recipient_ids, logID);
+
+                },
+                error: function (msg) {
+                    //alert(JSON.stringify(msg));
+                }
+            });
+        }
+
+        function applyRecipientInfoFunction(recipientArray, logID) {
+            // Recipient info: Access the locations file using the recipientID
+            for (i = 0; i < recipientArray.length; i++) {
+                $.ajax({
+                    type: "GET",
+                    url: "http://dev.boulderfoodrescue.org/locations/" + recipientArray[i] + ".json",
+                    data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                    success: function (response) {
+                        //Grab the name, add to div
+                        var recipientName = response.name;
+                        $("#" + logID + " .recipient").append("<p>" + recipientName + " (Dropoff) <a href='info.html?id=" + response.id + "'>Info</a></p>");
+                    },
+                    error: function (msg) {
+                        //alert(JSON.stringify(msg));
+                    }
+                });
+            }
+        }
+
+        function applyDonorInfoFunction(donorID, logID) {
+            $.ajax({
+                type: "GET",
+                url: "http://dev.boulderfoodrescue.org/locations/" + donorID + ".json",
+                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                success: function (response) {
+                    //Grab the name, add to div
+                    var donorName = response.name;
+                    $("#" + logID + " .donor").append("<p>" + donorName + " (Pickup) <a href='info.html?id=" + response.id + "'>Info</a></p>");
+                },
+                error: function (msg) {
+                    //alert(JSON.stringify(msg));
+                }
+            });
+        }
+
+
            
     </script>
     <style type="text/css">
@@ -112,14 +178,55 @@
         
         h3
         {
-            text-indent: 2.3em;
+            text-align: center;
+            text-indent: 0em;
+            padding: 3px;
+            margin: 0;
+        }
+        .upcomingDiv
+        {
+            width: 95%;
+            margin: auto;
+            padding-top: 0.5em;
+        }
+        .upcomingDiv li a
+        {
+            text-decoration: none;
+            color: White !important;
+        }
+        .upcomingDiv .navDiv li
+        {
+            border: .1em solid #4b7333;
+            background-color: #51A351;
+            color: White;
+            float: left;
+            width: 42%%;
+            text-align: center;
+            list-style-type: none;
+        }
+        .clickCollapse
+        {
+            overflow: hidden;
+            border: .1em solid #4b7333;
+            margin-bottom: 0.2em;
+        }
+        .timeHeader
+        {
+            background: #51A351 /*{a-bup-background-color}*/;
+            border-color: #00a84c /*{a-bup-border}*/;
+            color: #FFFFFF
+        }
+        .donor, .recipient
+        {
+            margin: auto;
+            width: 90%;
         }
     </style>
 </head>
 <body>
     <form id="frmHome">
     <div data-role="page" id="home">
-        <div data-position="fixed" data-role="header" data-theme="a">
+        <div id="headerDiv" data-position="fixed" data-role="header" data-theme="a">
             <a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext"
                 href="home.html">Home</a>
             <h1 style="font: 13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
@@ -137,45 +244,6 @@
                         <li><a href="report.html" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
                             Due</a></li>
                     </ul>
-                </div>
-            </div>
-        </div>
-        <div id="divUpcoming">
-            <div data-role="collapsible-set" data-corners="false" style="margin: .2em;">
-                <div data-role="collapsible" data-collapsed="false">
-                    <h3>
-                        6:00pm Today</h3>
-                     <p>1) Whole Foods (Pickup)</p>
-                        <p>2) Vitamin College (Pickup)</p>
-                        <p>3) Attention Homes (Drop)</p>
-                    
-                    <div data-role="navbar" style="margin-top: .5em;">
-                        <ul>
-                            <!--<li><a href="info.html" class="ui-btn-active ui-state-persist" style="border: .1em solid #4b7333;">Info</a></li>-->
-                            <li><a href="info.html" style="border: .1em solid #4b7333;">Info</a></li>
-                            <li><a href="calshow://" style="border: .1em solid #4b7333;">Calendar</a></li>
-                            <li><a href="maps.apple.com/maps?q=boulder" style="border: .1em solid #4b7333;">Map</a></li>
-                        </ul>
-                    </div>
-                    <!-- /navbar -->
-                </div>
-                <div data-role="collapsible">
-                    <h3>
-                        3:00pm Wednesday (2 days)</h3>
-                        
-                    <p>1) Alfalfa (Pickup)</p>
-                    <p>2) Meals On Wheels (Pickup)</p>
-                    <p>3) Food Sharing (Drop)</p>
-                    <div data-role="tabs" style="margin-top: .5em;">
-                        <div data-role="navbar">
-                            <ul>
-                                <li><a href="info.html" data-ajax="false" style="border: .1em solid #4b7333;">Info</a></li>
-                                <li><a href="calshow://" data-ajax="false" style="border: .1em solid #4b7333;">Calendar</a></li>
-                                <li><a href="maps.apple.com/maps?q=boulder" data-ajax="false" style="border: .1em solid #4b7333;">
-                                    Map</a></li>
-                            </ul>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -23,14 +23,21 @@
 	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>	
 	
     <script type="text/javascript">
-
+        function getParameterByName(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
 
 
         $(function () {
 
+            var locationID = getParameterByName("id");
+
             $.ajax({
                 type: "GET",
-                url: "http://dev.boulderfoodrescue.org/locations/3.json", // + 2 + ".json",
+                url: "http://dev.boulderfoodrescue.org/locations/" + locationID + ".json",
                 data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
                 success: function (response) {
 

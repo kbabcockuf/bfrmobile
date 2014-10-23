@@ -16,238 +16,248 @@
 	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
     <script type="text/javascript" src="themes/js/moment.min.js"></script>
 
-	<script type="text/javascript">
-	    var now = new Date();
-	    var strDate = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
-	    function TripDate(dt, formDate) {
-	        this.date = dt;
-	        this.formatedDate = formDate;
-	        this.end = "</div></div>";
-	    }
+	<script>
+	    window.onload = function () {
+	        console.log("Collapse the divs");
+	        $(".timeHeader").each(function () {
+	            $(this).siblings().hide();
+	        });
 
-	    TripDate.prototype.begin = function () {
-	        return "<div data-role='collapsible-set' data-corners='false' style='margin: .2em;' class='ui-collapsible-set'>" +
-                         "<div data-role='collapsible' id='" + this.date + "' class='ui-collapsible ui-collapsible-inset ui-collapsible-themed-content'>";
 	    };
+	    $(document).ready(function () {
 
-	    TripDate.prototype.getHeader = function () {
-	        return "<h3 class='ui-collapsible-heading'> \
-                             <a href='#' class='ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-inherit ui-icon-minus'>"
-                             + this.formatedDate +
-                             "<span class='ui-collapsible-heading-status'> click to collapse contents</span></a></h3>";
-	    };
+	        // Expand and collapse sibling elements when clicking on a timeHeader div
+	        $(document).on('click', "div.timeHeader", function () {
+	            $(this).siblings().toggle();
+	        });
+	    });
 
-	    TripDate.prototype.render = function (appendId) {
-	        $(this.begin() + this.getHeader() + this.end).appendTo(appendId);
-	    };
+	    $(function () {
 
-	    function Trip(donor, dId, dt) {
-	        this.top = "<div class='ui-collapsible-content ui-body-inherit' aria-hidden='false'> \
-                        <div data-role='collapsible-set' data-corners='false' style='margin: .2em;' class='ui-collapsible-set ui-group-theme-inherit'> \
-                        <div data-role='collapsible' class='ui-collapsible ui-collapsible-inset ui-collapsible-themed-content ui-last-child'>";
-	        this.bottom = "</div>";
-	        this.donorName = donor;
-	        this.donorId = dId;
-	        this.date = dt;
-	        this.inputPanel = "<fieldset class='ui-grid-a'> \
-                                    <div class='ui-block-a' style='width:60%; height: 10%;'> \
-				                            <select class='drop_button' name='volunteers' id='volunteers'> \
-					                            <option>Food</option> \
-					                            <option value='1'>Produce</option> \
-					                            <option value='2'>Bread</option> \
-					                            <option value='3'>Water</option> \
-				                            </select> \
-			                            <!--</div>/ui-btn--> \
-                                    </div> \
-                                    <div class='ui-block-b' style='width:20%'> \
-                                        <input type='text' name='weight' id='name' value=''/> \
-                                    </div> \
-                                    <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                        <div class='field_title' data-role='fieldcontain'> \
-                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
-                                        </div> \
-                                    </div> \
-                                </fieldset> \
-                                <fieldset class='ui-grid-b'> \
-                                    <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                        <div class='field_title' data-role='fieldcontain'> \
-                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
-                                        </div> \
-                                    </div> \
-                                    <div class='ui-block-b' style='width:80%'> \
-                                        <input type='text' name='weight' id='Text1' value=''/> \
-                                    </div> \
-                                </fieldset> \
-                                <fieldset class='ui-grid-a'> \
-                                    <div class='ui-block-a' style='width:60%'> \
-				                            <select class='drop_button' name='volunteers' id='Select1'> \
-					                            <option>Food</option> \
-					                            <option value='1'>Produce</option> \
-					                            <option value='2'>Bread</option> \
-					                            <option value='3'>Water</option> \
-				                            </select> \
-			                            <!--</div>/ui-btn--> \
-                                    </div> \
-                                    <div class='ui-block-b' style='width:20%'> \
-                                        <input type='text' name='weight' id='Text2' value=''/> \
-                                    </div> \
-                                    <div class='ui-block-c' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                        <div class='field_title' data-role='fieldcontain'> \
-                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>lbs/kg</label> \
-                                        </div> \
-                                    </div> \
-                                </fieldset> \
-                                <fieldset class='ui-grid-b'> \
-                                    <div class='ui-block-a' style='width:20%; text-align:center; vertical-align:middle;'> \
-                                        <div class='field_title' data-role='fieldcontain'> \
-                                            <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='name'>Items:</label> \
-                                        </div> \
-                                    </div> \
-                                    <div class='ui-block-b' style='width:80%'> \
-                                        <input type='text' name='weight' id='Text3' value=''/> \
-                                    </div> \
-                                </fieldset> \
-                            </div><!--/collapsible--> \
-                        </div><!--/collapsible-set--> \
-                        <div class='div_dim'> \
-				                <select class='drop_button' name='volunteers' id='Select4'> \
-					                <option value='Bicycle'>Bicycle</option> \
-				                    <option value='Foot'>Foot</option> \
-                                    <option value='Car'>Car</option> \
-                                    <option value='Truck'>Truck</option> \
-                                    <option value='Van'>Van</option> \
-                                    <option value='Motorcycle'>Motorcycle</option> \
-                                    <option value='Golfcart'>Golf cart</option> \
-				                </select> \
-			                </div> \
-                            <div class='div_dim'> \
-                                <div class='field_title' data-role='fieldcontain'> \
-			                        <label style='color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;' for='textarea'> \
-				                        Notes: \
-			                        </label> \
-			                        <textarea cols='40' rows='8' name='notes' id='textarea'> \
-                                    </textarea> \
-		                        </div> \
-                            </div> \
-                            <div class='div_dim'> \
-                                <input type='submit' value='Save Changes' id='submitButton'/> \
-                            </div>";
-	    }
-
-	    Trip.prototype.getHeader = function () {
-	        return "<h3 class='ui-collapsible-heading'>\
-                            <a href='#' class='ui-collapsible-heading-toggle ui-btn ui-btn-icon-left ui-btn-inherit ui-icon-minus'>"
-                            + this.donorName +
-                            "<span class='ui-collapsible-heading-status'> click to collapse contents</span>\
-                           </a>\
-                       </h3>";
-	    };
-
-	    Trip.prototype.appendTo = function (appendTo) {
-	        $(this.top + this.getHeader() + this.inputPanel + this.bottom).appendTo(appendTo);
-	    };
+	        //alert("home page");
+	        $("#logout").on("click", function () {
+	            $.ajax({
+	                type: "DELETE",
+	                url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
+	                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+	                success: function (data) {
+	                    //alert("Logging Out");
+	                    window.location = ("index.html");
+	                },
+	                error: function (msg) {
+	                    //alert(JSON.stringify(msg));
+	                }
+	            });
+	        });
+	    });
 
 	    $.ajax({
 	        type: "GET",
 	        url: "http://dev.boulderfoodrescue.org/logs/mine_past.json",
 	        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-	        success: function (data) {
+	        success: function (response) {
 
-	            var varIncomplete = ""
-	            var varShiftDate = ""
-	            var varDonorID = ""
-	            var varDonorName = ""
-	            /* var varBegin = "<div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
-	            <div data-role='collapsible'><h3>";
-	            var varDonorID1 = "</h3> \
-	            <div data-role='collapsible-set' data-corners='false' style='margin: .2em;'> \
-	            <div data-role='collapsible'> <h3>";
-	            */
-	            $.each(data, function () {
-	                var tripDate = this.when;
-	                if (!this.complete) {
+	            //Cycle through each open log
+	            $(response).each(function () {
 
-	                    varShiftDate = moment(tripDate).format('ddd' + ' - ' + 'DD MMM YYYY');
-	                    if ($("#" + varShiftDate).size() < 1) {
-	                        var dateWidget = new TripDate(tripDate, varShiftDate);
-	                        dateWidget.render("#divReport");
-	                    }
-	                    // $(varBegin + varShiftDate + varDonorID1 + varEnd).appendTo('#divReport').trigger("create");
+	                //Make a div with the id of the log
+	                //$("#headerDiv").after("<div id='" + this.id + "'>hi</div>");
+	                var modeOfTransportHTMLString = "<p>Mode of Transport</p>\
+                                                        <select class='transportDropDown' name='volunteers' id='Select4'>\
+                                                              <option value='Bicycle'>Bicycle</option>\
+                                                              <option value='Foot'>Foot</option>\
+                                                              <option value='Car'>Car</option>\
+                                                              <option value='Truck'>Truck</option>\
+                                                              <option value='Van'>Van</option>\
+                                                              <option value='Motorcycle'>Motorcycle</option>\
+                                                              <option value='Golfcart'>Golf cart</option>\
+                                                        </select>";
+	                var notesHTMLString = "<p>Notes</p><textarea rows='4' cols='30'></textarea>";
+	                var saveChangesButtonHTMLString = "<div class='saveChangesButton'>Save Changes</div>";
+	                var endOfFormHTMLString = modeOfTransportHTMLString + notesHTMLString + saveChangesButtonHTMLString;
 
+	                var middleDivs = "<div class='timeHeader'></div><div class='donor'></div><div class='endOfForm'>" + endOfFormHTMLString + "</div>";
+	                $(".upcomingDiv").append("<div class='clickCollapse' id='" + this.id + "'>" + middleDivs + "</div>");
+	                //$().appendTo("#headerDiv");
 
-	                    $.ajax({
-	                        type: "GET",
-	                        url: "http://dev.boulderfoodrescue.org/locations/" + this.donor_id + ".json",
-	                        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-	                        success: function (response) {
-	                            //Set Location Name
-	                            //$(data).each(function () {
-	                            var trip = new Trip(response.name, response.id, tripDate);
-	                                trip.appendTo("#" + tripDate);
-	                            //});
+	                $.ajax({
+	                    type: "GET",
+	                    url: "http://dev.boulderfoodrescue.org/logs/" + this.id + ".json",
+	                    data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+	                    success: function (response) {
+	                        var donorID = response.log.donor_id;
+	                        var logID = response.log.id;
+	                        var startTime = new Date(response.schedule.detailed_start_time).getHours() + 1;
+	                        var stopTime = new Date(response.schedule.detailed_stop_time).getHours() + 1;
+	                        var dayOfWeek = response.schedule.day_of_week;
+	                        var monthOfYear = new Date(response.log.when).getMonth();
+	                        var dayOfMonth = new Date(response.log.when).getDate();
+	                        var weekDayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+	                        var monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-	                        },
-	                        error: function (msg) {
-	                            // alert(JSON.stringify(msg));
+	                        var startTimeText;
+	                        var stopTimeText;
+	                        if (startTime > 12) {
+	                            startTime = startTime - 12;
+	                            startTimeText = 'pm';
 	                        }
-	                    });
+	                        else {
+	                            startTimeText = 'am';
+	                        }
+	                        if (stopTime > 12) {
+	                            stopTime = stopTime - 12;
+	                            stopTimeText = 'pm';
+	                        }
+	                        else {
+	                            stopTimeText = 'am';
+	                        }
+	                        var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText;
+	                        var fullDateString = weekDayNames[dayOfWeek] + ', ' + monthNames[monthOfYear] + ' ' + dayOfMonth
+	                        var timeHeaderText = fullDateString + ', ' + timeSpanString
+	                        $("#" + logID + " .timeHeader").append("<h3>" + timeHeaderText + "</h3>");
 
-	                }
+	                        applyDonorInfoFunction(donorID, logID);
+	                    },
+	                    error: function (msg) {
+	                        // alert(JSON.stringify(msg));
+	                    }
+	                });
 
 	            });
 
+	        },
+	        error: function (msg) {
+	            // alert(JSON.stringify(msg));
 	        }
 	    });
 
-	    //});
+	    function applyDonorInfoFunction(donorID, logID) {
+	        $.ajax({
+	            type: "GET",
+	            url: "http://dev.boulderfoodrescue.org/locations/" + donorID + ".json",
+	            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+	            success: function (response) {
+	                //Grab the name, add to div
+	                var donorNameHTMLString = "<p class='donorNameClass'>" + response.name + "</p>";
+	                var itemsHTMLString = "<select class='foodDropDown' name='volunteers'>\
+                                          <option>Food</option>\
+                                          <option value='1'>Produce</option>\
+                                          <option value='2'>Bread</option>\
+                                          <option value='3'>Water</option>\
+                                       </select>"
+	                var textInputHTMLString = "<input type='text' name='weight'><p class='lbsClass'>lbs/kg</p><br/>";
 
-        
+	                $("#" + logID + " .donor").append(donorNameHTMLString + itemsHTMLString + textInputHTMLString);
+	            },
+	            error: function (msg) {
+	                // alert(JSON.stringify(msg));
+	            }
+	        });
+	    }
            
- 
-	</script>
+    </script>
     
-    <style type="text/css">
-	    body, textarea {
+<style type="text/css">
+        body, textarea
+        {
             font-size: 1em;
             line-height: 1.3;
-            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-            }
-            
-        h3 {
-            text-indent: 2.3em;
+            font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
         }
         
-       .field_title {
-		    margin: 12px; 
-		    color: black;
-	    }
-	    
-        .ui-collapsible-set {margin:-15px} 
-        .ui-collapsible-set .ui-listview {margin:0} 
-        .ui-collapsible-content {padding:5px; margin:0; border:0}
-        /*.ui-collapsible-heading .ui-btn-icon-right .ui-btn-inner {padding-left:18px}
-        .ui-collapsible-heading .ui-btn-icon-right .ui-icon {right:18px}*/
-        
-        @media all and (max-width: 450px){
-          .ui-field-contain, .ui-mobile fieldset.ui-field-contain { 
-            border-width: 0px !important;
-            padding: 0px !important;
-            margin: 1em 0 !important; 
-          }
+        h3
+        {
+            text-align: center;
+            text-indent: 0em;
+            padding: 3px;
+            margin: 0;
         }
-        
-        fieldset {
-            display: block;
-            -webkit-margin-start: 2px !important;
-            -webkit-margin-end: 2px !important;
-            -webkit-padding-before: 0.0em !important;
-            -webkit-padding-start: 0.0em !important;
-            -webkit-padding-end: 0.0em !important;
-            -webkit-padding-after: 0.0em !important;
-            }
-
-        table {
-          border-collapse: collapse;
+        .upcomingDiv
+        {
+            width: 95%;
+            margin: auto;
+            padding-top: 0.5em;
+        }
+        .upcomingDiv a
+        {
+            text-decoration: none;
+            color: White !important;
+        }
+        .upcomingDiv .navDiv li
+        {
+            border: .1em solid #4b7333;
+            background-color: #51A351;
+            color: White;
+            float: left;
+            width: 42%%;
+            text-align: center;
+            list-style-type: none;
+        }
+        .clickCollapse
+        {
+            overflow: hidden;
+            border: .1em solid #4b7333;
+            margin-bottom: 0.2em;
+        }
+        .timeHeader
+        {
+            background: #51A351 /*{a-bup-background-color}*/;
+            border-color: #00a84c /*{a-bup-border}*/;
+            color: #FFFFFF
+        }
+        .donor, .endOfForm
+        {
+            margin: auto;
+            width: 90%;
+        }
+        .saveChangesButton
+        {
+            float: left;
+            padding: .5em;
+            width: 42%;
+            text-align: center;
+            margin-left: 26%;
+            margin-right: auto;
+            margin-bottom: .8em;
+            margin-top: .8em;
+            border: .1em solid #4b7333;
+        }
+        .donorNameClass
+        {
+            padding: 0.2em;
+            background: #51A351;
+            color:white;
+            padding-left: 0.5em;
+        }
+        input
+        {
+            width: 40%;
+            float: left;
+            height: 1em;
+            padding: 0.2em;
+        }
+        .foodDropDown
+        {
+            float:left;
+        }
+        .lbsClass
+        {
+            padding: 0.2em;
+            text-align: right;
+            padding-right: 1.2em;
+            margin: 0;
+        }
+        .endOfForm p
+        {
+            width: 50%;
+            float: left;
+            margin: 0;
+            margin-top: 0.2em;
+        }
+        .transportDropDown
+        {
+            padding: 0.2em;
+            margin-top: 0;
         }
     </style>
 </head>
@@ -273,10 +283,7 @@
                 </div><!--/navbar-->
             </div><!--/header-->
 		</div><!--/fixed header-->
-
-        <div id="divReport">
-
-        </div><!--/divReport-->
+        <div class="upcomingDiv"></div>
 
     </div><!--/home-->
 
