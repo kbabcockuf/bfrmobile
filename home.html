@@ -23,16 +23,19 @@
     <script>
 
         $(document).ready(function () {
-            
+
             // Expand and collapse sibling elements when clicking on a timeHeader div
             $(document).on('click', "div.timeHeader", function () {
                 $(this).siblings().toggle();
             });
+
+            $(document).on('click', ".infoLink", function () {
+                var locationID = $(this).attr('id');
+                window.location.href = "info.html?id=" + locationID;
+            });
         });
 
         $(function () {
-
-            //alert("home page");
             $("#logout").on("click", function () {
                 $.ajax({
                     type: "DELETE",
@@ -139,7 +142,8 @@
                     success: function (response) {
                         //Grab the name, add to div
                         var recipientName = response.name;
-                        $("#" + logID + " .recipient").append("<p>" + recipientName + " (Dropoff) <a href='info.html?id=" + response.id + "'>Info</a></p>");
+                        //                        $("#" + logID + " .recipient").append("<p>" + recipientName + " (Dropoff) <a href='info.html?id=" + response.id + "'>Info</a></p>");
+                                                $("#" + logID + " .recipient").append("<p>" + recipientName + " (Dropoff) <a class='infoLink' id='" + response.id + "' href=''>Info</a></p>");
                     },
                     error: function (msg) {
                         //alert(JSON.stringify(msg));
@@ -156,7 +160,8 @@
                 success: function (response) {
                     //Grab the name, add to div
                     var donorName = response.name;
-                    $("#" + logID + " .donor").append("<p>" + donorName + " (Pickup) <a href='info.html?id=" + response.id + "'>Info</a></p>");
+                    //                    $("#" + logID + " .donor").append("<p>" + donorName + " (Pickup) <a href='info.html?id=" + response.id + "'>Info</a></p>");
+                    $("#" + logID + " .donor").append("<p>" + donorName + " (Pickup) <a class='infoLink' id='" + response.id + "' href=''>Info</a></p>");
                 },
                 error: function (msg) {
                     //alert(JSON.stringify(msg));

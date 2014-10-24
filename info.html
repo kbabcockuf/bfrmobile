@@ -26,74 +26,12 @@
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
             var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
-        results = regex.exec(location.search);
+            results = regex.exec(location.search);
             return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         }
 
 
         $(function () {
-
-            var locationID = getParameterByName("id");
-
-            $.ajax({
-                type: "GET",
-                url: "http://dev.boulderfoodrescue.org/locations/" + locationID + ".json",
-                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-                success: function (response) {
-
-                    if (response.equipment_storage_info) {
-                        $("<p>" + response.equipment_storage_info + "</p>").appendTo("#equipmentInfo");
-                    }
-                    else {
-                        $("<p>No info provided</p>").appendTo("#equipmentInfo");
-                    }
-
-                    if (response.food_storage_info) {
-                        $("<p>" + response.food_storage_info + "</p>").appendTo("#foodStorageInfo");
-                    }
-                    else {
-                        $("<p>No info provided</p>").appendTo("#foodStorageInfo");
-                    }
-
-                    if (response.entry_info) {
-                        $("<p>" + response.entry_info + "</p>").appendTo("#entryInfo");
-                    }
-                    else {
-                        $("<p>No info provided</p>").appendTo("#entryInfo");
-                    }
-
-                    if (response.exit_info) {
-                        $("<p>" + response.exit_info + "</p>").appendTo("#exitInfo");
-                    }
-                    else {
-                        $("<p>No info provided</p>").appendTo("#exitInfo");
-                    }
-
-                    if (response.onsite_contact_info) {
-                        $("<p>" + response.onsite_contact_info + "</p>").appendTo("#onsiteContactInfo");
-                    }
-                    else {
-                        $("<p>No info provided</p>").appendTo("#onsiteContactInfo");
-                    }
-
-
-                    $("<p>" + response.name + "</p>").appendTo("#donorHeader");
-
-                    //$("<p>" + response.equipment_storage_info + "</p>").appendTo("#equipmentInfo");
-                    //$("<p>" + response.food_storage_info + "</p>").appendTo("#foodStorageInfo");
-                    //$("<p>" + response.entry_info + "</p>").appendTo("#entryInfo");
-                    //$("<p>" + response.exit_info + "</p>").appendTo("#exitInfo");
-                    //$("<p>" + response.onsite_contact_info + "</p>").appendTo("#onsiteContactInfo");
-
-                },
-                error: function (msg) {
-                    // alert(JSON.stringify(msg));
-                }
-            });
-
-
-            //alert("Hi there");
-
             $("#logout").on("click", function () {
                 $.ajax({
                     type: "DELETE",
@@ -111,7 +49,40 @@
             });
         });
 
+        $(document).ready(function () {
+            loadInfoFunction();
+        });
 
+
+        function loadInfoFunction() {
+            
+            var locationID = getParameterByName("id");
+
+            $.ajax({
+                type: "GET",
+                url: "http://dev.boulderfoodrescue.org/locations/" + locationID + ".json",
+                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                success: function (response) {
+
+                    if (response.equipment_storage_info) { $("<p>" + response.equipment_storage_info + "</p>").appendTo("#equipmentInfo"); }
+                    else { $("<p>No info provided</p>").appendTo("#equipmentInfo"); }
+                    if (response.food_storage_info) { $("<p>" + response.food_storage_info + "</p>").appendTo("#foodStorageInfo"); }
+                    else { $("<p>No info provided</p>").appendTo("#foodStorageInfo"); }
+                    if (response.entry_info) { $("<p>" + response.entry_info + "</p>").appendTo("#entryInfo"); }
+                    else { $("<p>No info provided</p>").appendTo("#entryInfo"); }
+                    if (response.exit_info) { $("<p>" + response.exit_info + "</p>").appendTo("#exitInfo"); }
+                    else { $("<p>No info provided</p>").appendTo("#exitInfo"); }
+                    if (response.onsite_contact_info) { $("<p>" + response.onsite_contact_info + "</p>").appendTo("#onsiteContactInfo"); }
+                    else { $("<p>No info provided</p>").appendTo("#onsiteContactInfo"); }
+                    $("<p>" + response.name + "</p>").appendTo("#donorHeader");
+
+                },
+                error: function (msg) {
+                    // alert(JSON.stringify(msg));
+                }
+            });
+
+        }
            
 	</script>
     

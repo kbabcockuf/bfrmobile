@@ -22,13 +22,9 @@
 
     <script>
         window.onload = function () {
-            console.log("Collapse the divs");
-            $(".donor").hide();
-            $(".timeHeader").each(function () {
-                $(this).siblings().hide();
-            });
 
         };
+
         $(document).ready(function () {
 
             // Expand and collapse sibling elements when clicking on a timeHeader div
@@ -43,8 +39,6 @@
         });
 
         $(function () {
-
-            //alert("home page");
             $("#logout").on("click", function () {
                 $.ajax({
                     type: "DELETE",
@@ -71,7 +65,6 @@
                 $(response).each(function () {
 
                     //Make a div with the id of the log
-                    //$("#headerDiv").after("<div id='" + this.id + "'>hi</div>");
                     var middleDivs = "<div class='timeHeader'></div><div class='donor'></div><div class='recipient'></div>";
                     var navBar = "<div class='navDiv' data-role='navbar' style='margin-top: .5em;'>\
                                           <ul>\

@@ -31,8 +31,7 @@
 	            $(this).siblings().toggle();
 	        });
 
-	        // Div clicked
-	        // for each input iterate through, make JS object with submit ID as identifier id:value, all inputs
+	        // Click on div saveChangesButton, push the new data
 	        $(document).on('click', "div.saveChangesButton", function () {
 	            var container = $(this).parent().parent();
 	            var inputs = container.find(':input');
@@ -45,12 +44,9 @@
 	            data += "}";
 	            //console.log(inputs);
 	        });
-	    });
-
-	    $(function () {
-
-	        //alert("home page");
-	        $("#logout").on("click", function () {
+            
+            // Click to logout
+            $(document).on("click", "#logout", function () {
 	            $.ajax({
 	                type: "DELETE",
 	                url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
@@ -65,7 +61,6 @@
 	            });
 	        });
 	    });
-
 
 	    $.ajax({
 	        type: "GET",
