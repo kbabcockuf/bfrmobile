@@ -117,3 +117,8 @@
             margin-top: .8em;
             border: .1em solid #4b7333;
         }
+        .mapLink > a
+        {
+            padding-left: 30%;
+            padding-right: 30%;
+        }

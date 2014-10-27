@@ -69,7 +69,7 @@
                     var navBar = "<div class='navDiv' data-role='navbar' style='margin-top: .5em;'>\
                                           <ul>\
                                             <li><a href='calshow://'>Calendar</a></li>\
-                                            <li><a href='maps.apple.com/maps?q=boulder'>Map</a></li>\
+                                            <li class='mapLink'></li>\
                                         </ul>\
                                     </div>"
                     var takeItButton = "<div class='takeItButton'>Take it!</div>";
@@ -140,6 +140,20 @@
                         var recipientName = response.name;
                         $("#" + logID + " .recipient").append("<p>" + recipientName + " (Dropoff)</p>");
                         $("#" + logID + " .recipient").hide(); // Want the divs to be collapsed on loading
+
+                        // Begin the creation of the map link
+                        var address = response.address;
+                        var hrefString = "http://maps.google.com/maps/dir/" + address + "/";
+
+                        // If the link is already present, add current address to the end of the href
+                        var linkElement = $("#" + logID + " > div.navDiv > ul > li.mapLink > a");
+                        if (linkElement.length) {
+                            var theHREF = linkElement.attr('href');
+                            linkElement.attr('href', theHREF + address);
+                        }
+                        else {
+                            $("#" + logID + " > div.navDiv > ul > li.mapLink").append("<a href='" + hrefString + "'>Map</a>");
+                        }
                     },
                     error: function (msg) {
                         // alert(JSON.stringify(msg));
@@ -158,6 +172,20 @@
                     var donorName = response.name;
                     $("#" + logID + " .donor").append("<p>" + donorName + " (Pickup)</p>");
                     $("#" + logID + " .donor").hide(); // Collapsed on loading
+
+                    // Begin the creation of the map link
+                    var address = response.address;
+                    var hrefString = "http://maps.google.com/maps/dir/" + address + "/";
+
+                    // If the link is already present, add current address to the end of the href
+                    var linkElement = $("#" + logID + " > div.navDiv > ul > li.mapLink > a");
+                    if (linkElement.length) {
+                        var theHREF = linkElement.attr('href');
+                        linkElement.attr('href', theHREF + address);
+                    }
+                    else {
+                        $("#" + logID + " > div.navDiv > ul > li.mapLink").append("<a href='" + hrefString + "'>Map</a>");
+                    }
                 },
                 error: function (msg) {
                     // alert(JSON.stringify(msg));

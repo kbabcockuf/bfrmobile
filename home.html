@@ -151,7 +151,6 @@
                         // If the link is already present, add current address to the end of the href
                         var linkElement = $("#" + logID + " > div.navDiv > ul > li.mapLink > a");
                         if (linkElement.length) {
-                            // Get the href
                             var theHREF = linkElement.attr('href');
                             linkElement.attr('href', theHREF + address);
                         }
@@ -184,13 +183,10 @@
                     // If the link is already present, add current address to the end of the href
                     var linkElement = $("#" + logID + " > div.navDiv > ul > li.mapLink > a");
                     if (linkElement.length) {
-                        console.log("Yay, the logID maplink is there, add the address on end of href");
-                        // Get the href
                         var theHREF = linkElement.attr('href');
                         linkElement.attr('href', theHREF + address);
                     }
                     else {
-                        console.log("Not there yet, so we have to install it");
                         $("#" + logID + " > div.navDiv > ul > li.mapLink").append("<a href='" + hrefString + "'>Map</a>");
                     }
                 },

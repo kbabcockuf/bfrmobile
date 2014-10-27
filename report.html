@@ -42,11 +42,11 @@
 	                data += this.name + ": '" + this.value + "', ";
 	            });
 	            data += "}";
-	            //console.log(inputs);
+	            console.log(data);
 	        });
-            
-            // Click to logout
-            $(document).on("click", "#logout", function () {
+
+	        // Click to logout
+	        $(document).on("click", "#logout", function () {
 	            $.ajax({
 	                type: "DELETE",
 	                url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
