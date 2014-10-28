@@ -34,25 +34,36 @@
 
             $(document).on('click', ".takeItButton", function () {
                 var shiftID = $(this).parent().attr('id');
-                // Add the code to push that the volunteer will take the shift with id=shiftID
-            });
-        });
-
-        $(function () {
-            $("#logout").on("click", function () {
+                // The volunteer will take the shift with id=shiftID
                 $.ajax({
-                    type: "DELETE",
-                    url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
+                    type: "GET",
+                    url: "http://dev.boulderfoodrescue.org/logs/" + shiftID + "/take.json",
                     data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-                    success: function (data) {
-                        //alert("Logging Out");
-                        window.location = ("index.html");
+                    success: function (response) {
+                        alert("You have signed up for this shift!");
+                        // Refresh the page
+                        location.reload();
                     },
                     error: function (msg) {
-                        //alert(JSON.stringify(msg));
+                        // alert(JSON.stringify(msg));
                     }
                 });
             });
+            $(document).on('click', "#logout", function () {
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
+                    //data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                    success: function (data) {
+                        alert("Logging Out");
+                        window.location = ("index.html");
+                    },
+                    error: function (msg) {
+                        alert(JSON.stringify(msg));
+                    }
+                });
+            });
+
         });
 
         $.ajax({
@@ -88,28 +99,11 @@
                             var dayOfWeek = new Date(response.log.when).getDay();
                             var monthOfYear = new Date(response.log.when).getMonth();
                             var dayOfMonth = new Date(response.log.when).getDate();
-                            var weekDayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-                            var monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
-                            var startTimeText;
-                            var stopTimeText;
-                            if (startTime > 12) {
-                                startTime = startTime - 12;
-                                startTimeText = 'pm';
-                            }
-                            else {
-                                startTimeText = 'am';
-                            }
-                            if (stopTime > 12) {
-                                stopTime = stopTime - 12;
-                                stopTimeText = 'pm';
-                            }
-                            else {
-                                stopTimeText = 'am';
-                            }
-                            var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText;
-                            var fullDateString = weekDayNames[dayOfWeek] + ', ' + monthNames[monthOfYear] + ' ' + dayOfMonth
-                            var timeHeaderText = fullDateString + ', ' + timeSpanString
+                            var timeSpanString = getTimeSpanString(startTime, stopTime);
+                            var fullDateString = getFullDateString(dayOfWeek, dayOfMonth, monthOfYear);
+
+                            var timeHeaderText = fullDateString + ', ' + timeSpanString;
                             $("#" + logID + " .timeHeader").append("<h3>" + timeHeaderText + "</h3>");
 
                             applyDonorInfoFunction(donorID, logID);
@@ -127,6 +121,34 @@
                 // alert(JSON.stringify(msg));
             }
         });
+
+        function getTimeSpanString(startTime, stopTime) {
+            var startTimeText;
+            var stopTimeText;
+            if (startTime > 12) {
+                startTime = startTime - 12;
+                startTimeText = 'pm';
+            }
+            else {
+                startTimeText = 'am';
+            }
+            if (stopTime > 12) {
+                stopTime = stopTime - 12;
+                stopTimeText = 'pm';
+            }
+            else {
+                stopTimeText = 'am';
+            }
+            var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText;
+            return timeSpanString;
+        }
+
+        function getFullDateString(dayOfWeek, dayOfMonth, monthOfYear) {
+            var weekDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
+            var monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+            var fullDateString = weekDayNames[dayOfWeek] + ' - ' + dayOfMonth + ' ' + monthNames[monthOfYear];
+            return fullDateString;
+        }
 
         function applyRecipientInfoFunction(recipientArray, logID) {
             // Recipient info: Access the locations file using the recipientID

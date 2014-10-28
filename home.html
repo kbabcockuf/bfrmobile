@@ -22,6 +22,10 @@
 
     <script>
 
+        window.onload = function () {
+            //alert("window loaded");
+        };
+
         $(document).ready(function () {
 
             // Expand and collapse sibling elements when clicking on a timeHeader div
@@ -33,6 +37,10 @@
                 var locationID = $(this).attr('id').split('_')[1];
                 window.location.href = "info.html?id=" + locationID;
             });
+
+//            if ($(".upcomingDiv").length == 0) {
+//                $("#headerDiv").after("<h3>No more shifts today!</h3>");
+//            }
         });
 
         $(function () {
@@ -52,84 +60,102 @@
             });
         });
 
-        
+        $.ajax({
+            type: "GET",
+            url: "http://dev.boulderfoodrescue.org/logs/mine_upcoming.json",
+            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+            success: function (response) {
 
-// Generate Current Date variable
-        //                    var now = new Date();
-        //                    var day = now.getDate();
-        //                    if (day < 10) {
-        //                        day = '0' + day;
-        //                    }
-        //                    var month = now.getMonth() + 1; // January is 0
-        //                    if (month < 10) {
-        //                        month = '0' + month;
-        //                    }
-        //                    var year = now.getFullYear();
-        //                    var currentDate = year + '-' + month + '-' + day;
+                $(response).each(function () {
 
-        //CHANGE TO CURRENTDATE INSTEAD OF STATIC DATE
-        if ("2014-06-02" == this.when) {
-            alert("Yay, this trip is scheduled for today!");
-        }
+                    // Check that the log is for today
+                    var today = new Date();
+                    var tripDate = new Date(this.when);
+                    var sameDay = Boolean(today.getFullYear() == tripDate.getFullYear() && today.getDate() == tripDate.getDate() && today.getMonth() == tripDate.getMonth());
+                    if (sameDay) {
+                        createDivs(this.id);
 
-        // After getting the log IDs for the day and loop through, doing the following - use logs/mine_upcoming.json
-        var logIDs = [12195, 12406, 12196, 12231];
+                        $.ajax({
+                            type: "GET",
+                            url: "http://dev.boulderfoodrescue.org/logs/" + this.id + ".json",
+                            data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                            success: function (response) {
+                                var logID = response.log.id;
+                                // Get the start and stop times, display with AM or PM times
+                                var startTime = new Date(response.schedule.detailed_start_time).getHours() + 1; // getHours() goes from 0-23
+                                var stopTime = new Date(response.schedule.detailed_stop_time).getHours() + 1;
+                                var logDate = new Date(response.log.when);
+                                var daysLeft = getCountDownDays(logDate);
+                                var timeSpanString = getTimeSpanString(startTime, stopTime, daysLeft);
+                                $("#" + logID + " .timeHeader").append("<h3>" + timeSpanString + "</h3>");
 
-        window.onload = function () {
+                                // Grab the recipient and donor info
+                                applyDonorInfoFunction(response.log.donor_id, logID);
+                                applyRecipientInfoFunction(response.log.recipient_ids, logID);
+
+                            },
+                            error: function (msg) {
+                                //alert(JSON.stringify(msg));
+                            }
+                        });
+
+                      }
+
+                });
+            },
+            error: function (msg) {
+                // alert(JSON.stringify(msg));
+            }
+        });
+
+        function createDivs(divID) {
             var navBar = "<div class='navDiv' data-role='navbar' style='margin-top: .5em;'>\
-                          <ul>\
-                            <li><a href='calshow://'>Calendar</a></li>\
-                            <li class='mapLink'></li>\
-                        </ul>\
-                    </div>"
+                                              <ul>\
+                                                <li><a href='calshow://'>Calendar</a></li>\
+                                                <li class='mapLink'></li>\
+                                            </ul>\
+                                        </div>"
             var beginDivs = "<div class='upcomingDiv'></div>";
             var middleDivs = "<div class='timeHeader'></div><div class='donor'></div><div class='recipient'></div>";
-            $("#headerDiv").after(beginDivs);
-            for (i = 0; i < logIDs.length; i++) {
-                $(".upcomingDiv").append("<div class='clickCollapse' id='" + logIDs[i] + "'>" + middleDivs + navBar + "</div>");
+            if ($(".upcomingDiv").length == 0) {
+                $("#headerDiv").after(beginDivs); // Only if beginDivs isn't there already
             }
+            $(".upcomingDiv").append("<div class='clickCollapse' id='" + divID + "'>" + middleDivs + navBar + "</div>");
+        }
 
-        };
+        function getCountDownDays(logDate) {
+            var today = new Date();
+            var daysLeft = (logDate - today) / (1000 * 60 * 60 * 24);
+            daysLeft = Math.round(daysLeft);
+            return daysLeft;
+        }
 
-        for (i = 0; i < logIDs.length; i++) {
-
-            $.ajax({
-                type: "GET",
-                url: "http://dev.boulderfoodrescue.org/logs/" + logIDs[i] + ".json",
-                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
-                success: function (response) {
-                    var logID = response.log.id;
-                    // Get the start and stop times, display with AM or PM times
-                    var startTime = new Date(response.schedule.detailed_start_time).getHours() + 1; // getHours() goes from 0-23
-                    var stopTime = new Date(response.schedule.detailed_stop_time).getHours() + 1;
-                    var startTimeText;
-                    var stopTimeText;
-                    if (startTime > 12) {
-                        startTime = startTime - 12;
-                        startTimeText = 'pm';
-                    }
-                    else {
-                        startTimeText = 'am';
-                    }
-                    if (stopTime > 12) {
-                        stopTime = stopTime - 12;
-                        stopTimeText = 'pm';
-                    }
-                    else {
-                        stopTimeText = 'am';
-                    }
-                    var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText + ' Today';
-                    $("#" + logID + " .timeHeader").append("<h3>" + timeSpanString + "</h3>");
-
-                    // Grab the recipient and donor info
-                    applyDonorInfoFunction(response.log.donor_id, logID);
-                    applyRecipientInfoFunction(response.log.recipient_ids, logID);
-
-                },
-                error: function (msg) {
-                    //alert(JSON.stringify(msg));
-                }
-            });
+        function getTimeSpanString(startTime, stopTime, daysLeft) {
+            var startTimeText;
+            var stopTimeText;
+            var dayText;
+            if (startTime > 12) {
+                startTime = startTime - 12;
+                startTimeText = 'pm';
+            }
+            else {
+                startTimeText = 'am';
+            }
+            if (stopTime > 12) {
+                stopTime = stopTime - 12;
+                stopTimeText = 'pm';
+            }
+            else {
+                stopTimeText = 'am';
+            }
+            if (daysLeft == 0) {
+                dayText = 'Today';
+            }
+            else if (daysLeft >= 7 && daysLeft <= 14) {
+                dayText = 'Next Week';
+            }
+            var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText + ' ' + dayText;
+            return timeSpanString;
         }
 
         function applyRecipientInfoFunction(recipientArray, logID) {
