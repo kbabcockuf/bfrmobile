@@ -145,14 +145,15 @@
                         $("#" + logID + " .recipient").append("<p>" + recipientName + " (Dropoff) <a class='infoLink' id='" + logID + "_" + response.id + "' href=''>Info</a></p>");
 
                         // Begin the creation of the map link
-                        var address = response.address;
-                        var hrefString = "http://maps.google.com/maps/dir/" + address + "/";
+                        var lat = response.lat;
+                        var long = response.lng;
+                        var hrefString = "http://maps.google.com/maps/dir/" + lat + "," + long + "/";
 
                         // If the link is already present, add current address to the end of the href
                         var linkElement = $("#" + logID + " > div.navDiv > ul > li.mapLink > a");
                         if (linkElement.length) {
                             var theHREF = linkElement.attr('href');
-                            linkElement.attr('href', theHREF + address);
+                            linkElement.attr('href', theHREF + lat + "," + long);
                         }
                         else {
                             $("#" + logID + " > div.navDiv > ul > li.mapLink").append("<a href='" + hrefString + "'>Map</a>");
@@ -177,14 +178,15 @@
                     $("#" + logID + " .donor").append("<p>" + donorName + " (Pickup) <a class='infoLink' id='" + logID + "_" + response.id + "' href=''>Info</a></p>");
 
                     // Create the map link
-                    var address = response.address;
-                    var hrefString = "http://maps.google.com/maps/dir/" + address + "/";
+                    var lat = response.lat;
+                    var long = response.lng;
+                    var hrefString = "http://maps.google.com/maps/dir/" + lat + "," + long + "/";
 
                     // If the link is already present, add current address to the end of the href
                     var linkElement = $("#" + logID + " > div.navDiv > ul > li.mapLink > a");
                     if (linkElement.length) {
                         var theHREF = linkElement.attr('href');
-                        linkElement.attr('href', theHREF + address);
+                        linkElement.attr('href', theHREF + lat + "," + long);
                     }
                     else {
                         $("#" + logID + " > div.navDiv > ul > li.mapLink").append("<a href='" + hrefString + "'>Map</a>");
