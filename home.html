@@ -38,9 +38,6 @@
                 window.location.href = "info.html?id=" + locationID;
             });
 
-//            if ($(".upcomingDiv").length == 0) {
-//                $("#headerDiv").after("<h3>No more shifts today!</h3>");
-//            }
         });
 
         $(function () {
@@ -65,14 +62,19 @@
             url: "http://dev.boulderfoodrescue.org/logs/mine_upcoming.json",
             data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
             success: function (response) {
-
+                // Variable to keep track of number of shifts for the day
+                var shiftNumber = 0;
                 $(response).each(function () {
 
                     // Check that the log is for today
                     var today = new Date();
                     var tripDate = new Date(this.when);
                     var sameDay = Boolean(today.getFullYear() == tripDate.getFullYear() && today.getDate() == tripDate.getDate() && today.getMonth() == tripDate.getMonth());
+                    //var sameDay = true;
                     if (sameDay) {
+
+                        shiftNumber++;
+
                         createDivs(this.id);
 
                         $.ajax({
@@ -84,9 +86,9 @@
                                 // Get the start and stop times, display with AM or PM times
                                 var startTime = new Date(response.schedule.detailed_start_time).getHours() + 1; // getHours() goes from 0-23
                                 var stopTime = new Date(response.schedule.detailed_stop_time).getHours() + 1;
-                                var logDate = new Date(response.log.when);
-                                var daysLeft = getCountDownDays(logDate);
-                                var timeSpanString = getTimeSpanString(startTime, stopTime, daysLeft);
+                                //var logDate = new Date(response.log.when);
+                                //var daysLeft = getCountDownDays(logDate);
+                                var timeSpanString = getTimeSpanString(startTime, stopTime);
                                 $("#" + logID + " .timeHeader").append("<h3>" + timeSpanString + "</h3>");
 
                                 // Grab the recipient and donor info
@@ -99,9 +101,13 @@
                             }
                         });
 
-                      }
+                    }
 
                 });
+                if (shiftNumber == 0) {
+                    // Create the div to say no more shifts
+                    $("#headerDiv").after("<h3>No shifts for today!</h3>");
+                }
             },
             error: function (msg) {
                 // alert(JSON.stringify(msg));
@@ -130,10 +136,10 @@
             return daysLeft;
         }
 
-        function getTimeSpanString(startTime, stopTime, daysLeft) {
+        function getTimeSpanString(startTime, stopTime) {
             var startTimeText;
             var stopTimeText;
-            var dayText;
+            var dayText = 'Today';
             if (startTime > 12) {
                 startTime = startTime - 12;
                 startTimeText = 'pm';
@@ -148,12 +154,7 @@
             else {
                 stopTimeText = 'am';
             }
-            if (daysLeft == 0) {
-                dayText = 'Today';
-            }
-            else if (daysLeft >= 7 && daysLeft <= 14) {
-                dayText = 'Next Week';
-            }
+            
             var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText + ' ' + dayText;
             return timeSpanString;
         }
