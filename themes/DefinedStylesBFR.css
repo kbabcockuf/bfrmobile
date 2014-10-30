@@ -80,27 +80,23 @@
             float: left;
             height: 1em;
             padding: 0.2em;
-            line-height: 0;
-        }
-        .foodDropDown
-        {
-            float:left;
+            line-height: 1;
+            margin: 0.2em;
         }
         .lbsClass
         {
             padding: 0.2em;
-            text-align: right;
-            padding-right: 1.2em;
+            padding-left: 8em;
             margin: 0;
+            line-height: 2;
         }
         .endOfForm p
         {
             width: 50%;
-            float: left;
             margin: 0;
             margin-top: 0.2em;
         }
-        .transportDropDown
+        select
         {
             padding: 0.2em;
             margin-top: 0;

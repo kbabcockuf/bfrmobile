@@ -39,9 +39,10 @@
 	            var pickUpID = container.attr('id');
 	            inputs.each(function () {
 	                console.log(this.name, this.value);
-	                data += this.name + ": '" + this.value + "', ";
+	                data += this.name + ": " + this.value + ", ";
 	            });
-	            data += "}";
+	            var subData = data.substring(0, data.length - 2);
+	            data = subData + "}";
 	            console.log(data);
 	        });
 
@@ -67,26 +68,14 @@
 	        url: "http://dev.boulderfoodrescue.org/logs/mine_past.json",
 	        data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
 	        success: function (response) {
-
+	            // Variable to keep track of number of logs
+	            var shiftNumber = 0;
 	            //Cycle through each open log
 	            $(response).each(function () {
-	                console.log(this);
+	                shiftNumber++;
 	                //Make a div with the id of the log
-	                //$("#headerDiv").after("<div id='" + this.id + "'>hi</div>");
-	                var modeOfTransportHTMLString = "<p>Mode of Transport</p>\
-                                                        <select class='transportDropDown' name='transport_type_id' id='Select4'>\
-                                                              <option value='1'>Bicycle</option>\
-                                                              <option value='2'>Foot</option>\
-                                                              <option value='3'>Car</option>\
-                                                              <option value='4'>Truck</option>\
-                                                              <option value='5'>Van</option>\
-                                                              <option value='6'>Motorcycle</option>\
-                                                              <option value='7'>Golf cart</option>\
-                                                        </select>";
-	                var notesHTMLString = "<p>Notes</p><textarea rows='4' cols='30' name='Notes'></textarea>";
-	                var saveChangesButtonHTMLString = "<div class='saveChangesButton'>Save Changes</div>";
-	                var endOfFormHTMLString = modeOfTransportHTMLString + notesHTMLString + saveChangesButtonHTMLString;
 
+	                var endOfFormHTMLString = createDivs();
 	                var middleDivs = "<div class='timeHeader'></div><div class='donor'></div><div class='endOfForm'>" + endOfFormHTMLString + "</div>";
 	                $(".upcomingDiv").append("<div class='clickCollapse' id='" + this.id + "'>" + middleDivs + "</div>");
 	                //$().appendTo("#headerDiv");
@@ -96,6 +85,7 @@
 	                    url: "http://dev.boulderfoodrescue.org/logs/" + this.id + ".json",
 	                    data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
 	                    success: function (response) {
+
 	                        var donorID = response.log.donor_id;
 	                        var logID = response.log.id;
 	                        var startTime = new Date(response.schedule.detailed_start_time).getHours() + 1;
@@ -103,28 +93,10 @@
 	                        var dayOfWeek = new Date(response.log.when).getDay();
 	                        var monthOfYear = new Date(response.log.when).getMonth(); // getMonth() goes from 0 to 11
 	                        var dayOfMonth = new Date(response.log.when).getDate(); // getDate() goes from 1-31
-	                        var weekDayNames = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
-	                        var monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+	                        var timeSpanString = getTimeSpanString(startTime, stopTime);
+	                        var fullDateString = getFullDateString(dayOfWeek, dayOfMonth, monthOfYear);
 
-	                        var startTimeText;
-	                        var stopTimeText;
-	                        if (startTime > 12) {
-	                            startTime = startTime - 12;
-	                            startTimeText = 'pm';
-	                        }
-	                        else {
-	                            startTimeText = 'am';
-	                        }
-	                        if (stopTime > 12) {
-	                            stopTime = stopTime - 12;
-	                            stopTimeText = 'pm';
-	                        }
-	                        else {
-	                            stopTimeText = 'am';
-	                        }
-	                        var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText;
-	                        var fullDateString = weekDayNames[dayOfWeek] + ', ' + monthNames[monthOfYear] + ' ' + dayOfMonth
-	                        var timeHeaderText = fullDateString + ', ' + timeSpanString
+	                        var timeHeaderText = fullDateString + ', ' + timeSpanString;
 	                        $("#" + logID + " .timeHeader").append("<h3>" + timeHeaderText + "</h3>");
 
 	                        applyDonorInfoFunction(donorID, logID);
@@ -135,12 +107,124 @@
 	                });
 
 	            });
-
+	            if (shiftNumber == 0) {
+	                // Create the div to say no more shifts
+	                $("#headerDiv").after("<h3>No logs to fill out!</h3>");
+	            }
 	        },
 	        error: function (msg) {
 	            // alert(JSON.stringify(msg));
 	        }
 	    });
+
+        function getTimeSpanString(startTime, stopTime) {
+            var startTimeText;
+            var stopTimeText;
+            if (startTime > 12) {
+                startTime = startTime - 12;
+                startTimeText = 'pm';
+            }
+            else {
+                startTimeText = 'am';
+            }
+            if (stopTime > 12) {
+                stopTime = stopTime - 12;
+                stopTimeText = 'pm';
+            }
+            else {
+                stopTimeText = 'am';
+            }
+            var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText;
+            return timeSpanString;
+        }
+
+        function getFullDateString(dayOfWeek, dayOfMonth, monthOfYear) {
+            var weekDayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thurs', 'Fri', 'Sat'];
+            var monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+            var fullDateString = weekDayNames[dayOfWeek] + ' - ' + dayOfMonth + ' ' + monthNames[monthOfYear];
+            return fullDateString;
+        }
+
+        function applyScaleDropDowns(divString, donorDiv) {
+            $.ajax({
+                type: "GET",
+                url: "http://dev.boulderfoodrescue.org/scale_types.json",
+                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                success: function (response) {
+                    $(response).each(function () {
+                        // Get the id and the name
+                        var scaleID = this.id;
+                        var scaleName = this.name;
+                        // Add to dropdown
+                        var element = document.createElement('option')
+                        element.textContent = scaleName;
+                        element.value = scaleID;
+                        $(divString).append(element);
+
+                    });
+                    //$(donorDiv + " .lbsClass").append(this.weight_unit + 's');
+                },
+                error: function (msg) {
+                    // alert(JSON.stringify(msg));
+                }
+            });
+        }
+
+        function applyFoodDropDowns(divString) {
+            $.ajax({
+                type: "GET",
+                url: "http://dev.boulderfoodrescue.org/food_types.json",
+                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                success: function (response) {
+                    $(response).each(function () {
+                        // Get the id and the name
+                        var foodID = this.id;
+                        var foodName = this.name;
+                        // Add to dropdown
+                        var element = document.createElement('option')
+                        element.textContent = foodName;
+                        element.value = foodID;
+                        $(divString).append(element);
+                    });
+                },
+                error: function (msg) {
+                    // alert(JSON.stringify(msg));
+                }
+            });
+        }
+
+        function applyTransportDropDowns(divString) {
+	        // Get the transport types
+            $.ajax({
+                type: "GET",
+                url: "http://dev.boulderfoodrescue.org/transport_types.json",
+                data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
+                success: function (response) {
+                    $(response).each(function () {
+                        // Get the id and the name
+                        var transportID = this.id;
+                        var transportName = this.name;
+                        // Add to dropdown
+                        var element = document.createElement('option')
+                        element.textContent = transportName;
+                        element.value = transportID;
+                        $(divString).append(element);
+                    });
+                },
+                error: function (msg) {
+                    // alert(JSON.stringify(msg));
+                }
+            });
+            // Insert them into the dropdown
+	    }
+	    function createDivs() {
+	        var modeOfTransportHTMLString = "<p>Mode of Transport</p><select class='transportDropDown' name='transport_type_id'></select>";
+	        var scaleTypeHTMLString = "<p>Scale Type</p><select class='scaleDropDown' name='scale_type_id'></select>";
+	        var notesHTMLString = "<textarea placeholder='Notes' rows='4' cols='30' name='Notes'></textarea>";
+	        var saveChangesButtonHTMLString = "<div class='saveChangesButton'>Save Changes</div>";
+	        var endOfFormHTMLString = scaleTypeHTMLString + modeOfTransportHTMLString + notesHTMLString + saveChangesButtonHTMLString;
+	        return endOfFormHTMLString;
+	    }
 
 	    function applyDonorInfoFunction(donorID, logID) {
 	        $.ajax({
@@ -150,15 +234,13 @@
 	            success: function (response) {
 	                //Grab the name, add to div
 	                var donorNameHTMLString = "<p class='donorNameClass'>" + response.name + "</p>";
-	                var itemsHTMLString = "<select class='foodDropDown' name='food_type_id'>\
-                                          <option>Food</option>\
-                                          <option value='1'>Produce</option>\
-                                          <option value='2'>Bread</option>\
-                                          <option value='3'>Water</option>\
-                                       </select>"
-	                var textInputHTMLString = "<input type='text' name='weight'><p class='lbsClass'>lbs/kg</p><br/>";
+	                var itemsHTMLString = "<select class='foodDropDown' name='food_type_id'></select>"
+	                var textInputHTMLString = "<input type='text' placeholder='Weight' name='weight'><p class='lbsClass'>lbs</p>";
 
 	                $("#" + logID + " .donor").append(donorNameHTMLString + itemsHTMLString + textInputHTMLString);
+	                applyFoodDropDowns("#" + logID + " .donor .foodDropDown");
+	                applyTransportDropDowns("#" + logID + " .transportDropDown");
+	                applyScaleDropDowns("#" + logID + " .scaleDropDown", "#" + logID + " .donor");
 	            },
 	            error: function (msg) {
 	                // alert(JSON.stringify(msg));

@@ -71,10 +71,11 @@
             url: "http://dev.boulderfoodrescue.org/logs/open.json",
             data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
             success: function (response) {
-
+                // Variable to keep track of number of logs
+                var shiftNumber = 0;
                 //Cycle through each open log
                 $(response).each(function () {
-
+                    shiftNumber++;
                     //Make a div with the id of the log
                     var middleDivs = "<div class='timeHeader'></div><div class='donor'></div><div class='recipient'></div>";
                     var navBar = "<div class='navDiv' data-role='navbar' style='margin-top: .5em;'>\
@@ -115,7 +116,10 @@
                     });
 
                 });
-
+                if (shiftNumber == 0) {
+                    // Create the div to say no more shifts
+                    $("#headerDiv").after("<h3>No shifts need covering!</h3>");
+                }
             },
             error: function (msg) {
                 // alert(JSON.stringify(msg));
