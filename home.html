@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="logApp">
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,10 +17,11 @@
 	
     <!--Make sure this is not commented out-->
     <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
-    
     <script type="text/javascript" src="themes/js/moment.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
-
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.18/angular-route.min.js"></script>
+    <script src="js/main.js" type="text/javascript"></script>
+    
     <script>
 
         window.onload = function () {
@@ -254,7 +255,25 @@
                     </ul>
                 </div>
             </div>
+
         </div>
+        <div class='upcomingDiv' ng-controller="homeCtrl">
+                <div class='clickCollapse' id='{{log.log.id}}'>
+                    <div class='timeHeader'>
+                        {{log.when | date: format: "EEE MMM d"}}
+                    </div>
+                    <div class='donor'> {{log.log.donor_id}}
+                    </div>
+                    <div class='recipient' ng-repeat="recipient in log.log.recipient_ids"> {{recipient}}
+                    </div>
+                    <div class='navDiv' data-role='navbar' style='margin-top: .5em;'>
+                        <ul>
+                            <li><a href='calshow://'>Calendar</a></li>
+                            <li class='mapLink'><a></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
     </div>
     </form>
 </body>
