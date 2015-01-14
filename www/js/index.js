@@ -15,16 +15,13 @@
 //     });
 // }
 
-function init() {
+/*function init() {
     document.addEventListener("deviceready", deviceReady, true);
     delete init;
 }
 
 function deviceReady() {
-    alert("Phonegap deviceready");
-
     $("#loginForm").on("submit",function(y) {
-        return alert("Phonegap onsubmit handler");
         
     //disable the button so we can't resubmit while we wait
     $("#submitButton",this).attr("disabled","disabled");
@@ -43,7 +40,7 @@ function deviceReady() {
     return false;
 });
 
-}
+}*/
 
 //function myFunction() {
 //    alert("You failed");

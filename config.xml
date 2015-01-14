@@ -56,6 +56,7 @@
     <gap:platform name="ios" />
     <gap:platform name="android" />
     <gap:platform name="winphone" />
+    <gap:platform name="browser" />
         
     <!-- GENERAL PREFERENCES -->
         
