@@ -15,12 +15,12 @@
 //     });
 // }
 
-/*function init() {
-    document.addEventListener("deviceready", deviceReady, true);
+function init() {
+    //document.addEventListener("deviceready", deviceReady, true);
     delete init;
 }
 
-function deviceReady() {
+/*function deviceReady() {
     $("#loginForm").on("submit",function(y) {
         
     //disable the button so we can't resubmit while we wait

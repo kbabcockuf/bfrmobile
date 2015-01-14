@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1" />
 	<title>Boulder Food Rescue</title>
-	<link rel="stylesheet" href="themes/Bootstrap.css">
-	<link rel="stylesheet" href="themes/application.css">
+	<link rel="stylesheet" href="themes/Bootstrap.css" />
+	<link rel="stylesheet" href="themes/application.css" />
 	
 <!--	<script href="themes/js/boostrap-dropdown.js"></script>
 	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
@@ -35,12 +35,13 @@
                     url: "http://dev.boulderfoodrescue.org/volunteers/sign_in.json",
                     data: { email: e, password: p },
                     success: function (data) {
-                        //alert('Success');
+                        console.log("Success (sign_in)");
                         window.sessionStorage.token = data.authentication_token;
                         window.sessionStorage.email = e;
                         window.location = ("home.html");
                     },
                     error: function (msg) {
+                        console.log("Error (sign_in)");
                         //alert(JSON.stringify(msg));
                        //var newAttachments = alert(JSON.stringify(msg));
                     }
@@ -112,7 +113,7 @@
 					</a>
 				</div>
  -->
-				<input type="submit" value="Login" id="submitButton">
+				<input type="submit" value="Login" id="submitButton" />
 		 		<!--<button onclick="myFunction()">Try it</button>
 				<button onclick="deviceReady()">What</button> -->
 			</form> 
