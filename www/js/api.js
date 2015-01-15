@@ -4,16 +4,38 @@ angular.module("BFRMobile-api", [])
 
     // Boulder Food Rescue API client
     .factory("bfrApi", [
-        "$http", "apiEndpoint",
-        function bfrApiFactory($http, apiEndpoint) {
-            return {
-                call: function(url) {
-                    var config = {
-                        url: apiEndpoint + url,
-                        method: "GET"
-                    };
+        "$http", "$q", "apiEndpoint",
+        function bfrApiFactory($http, $q, apiEndpoint) {
+            /**
+             * Map results from an API request.
+             *
+             * @param fn Map function for elements. Returns a new promise.
+             * @return Promise for resolution of all fn() results.
+             */
+            function map(fn) {
+                return this.then(function(result) {
+                    return $q.all(result.data.map(fn));
+                });
+            }
 
-                    return $http(config);
+            return {
+                /**
+                 * Call the BFR API.
+                 *
+                 * @param url Destination URL
+                 * @param config Optional $http config
+                 * @return Promise augmented with .map()
+                 */
+                call: function(url, config) {
+                    config = config || {};
+
+                    config.url = apiEndpoint + url;
+                    config.method = config.method || "GET";
+
+                    // Add .map() before returning the promise.
+                    var promise = $http(config);
+                    promise.map = map;
+                    return promise;
                 }
             };
         }
@@ -22,7 +44,13 @@ angular.module("BFRMobile-api", [])
     .factory("bfrCredentials", [
         "$location", "loginRedirect",
         function bfrCredentialsFactory($location, loginRedirect) {
-            return function() {
+            /**
+             * Return credentials, or redirect to the login page.
+             *
+             * @return An object containing authentication parameters for an
+             *         API request.
+             */
+            return function bfrCredentials() {
                 var auth = {
                     volunteer_email: window.sessionStorage.email,
                     volunteer_token: window.sessionStorage.token
@@ -40,6 +68,9 @@ angular.module("BFRMobile-api", [])
     .config([
         "$httpProvider",
         function bfrApiConfig($httpProvider) {
+            // Improve performance when making groups of requests
+            $httpProvider.useApplyAsync(true);
+
             // Add authentication information to each API request.
             $httpProvider.interceptors.push(function($location, bfrCredentials,
                                                      apiEndpoint) {
@@ -54,7 +85,7 @@ angular.module("BFRMobile-api", [])
 
                             //console.log("Transformed request:", config,
                             //            config.url.indexOf(apiEndpoint));
-                        }
+                        } // Else this was not an API request.
                         return config;
                     }
                 };

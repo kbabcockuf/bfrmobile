@@ -9,11 +9,19 @@ app.config([
     '$locationProvider',
     function($routeProvider, $locationProvider) {
         $locationProvider.html5Mode(false);
-        
+
         $routeProvider
             .when('/upcoming', {
                 templateUrl: '/partials/upcoming.html',
                 controller: 'UpcomingCtrl'
+            })
+            .when('/pickup', {
+                templateUrl: '/partials/pickup.html',
+                controller: 'PickupCtrl'
+            })
+            .when('/report', {
+                templateUrl: '/partials/report.html',
+                controller: 'ReportCtrl'
             })
             .otherwise({
                 redirectTo: '/upcoming'

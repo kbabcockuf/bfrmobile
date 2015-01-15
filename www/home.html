@@ -10,8 +10,19 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
-    
+
 	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        // Must run before jQuery Mobile
+        $(document).bind("mobileinit", function () {
+            // Let angular-router handle routing instead of jQuery Mobile
+            $.mobile.ajaxEnabled = false;
+            $.mobile.linkBindingEnabled = false;
+            $.mobile.pushStateEnabled = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.changePage.defaults.changeHash = false;
+        });
+    </script>
     <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
     <script type="text/javascript" src="themes/js/moment.min.js"></script>
 
