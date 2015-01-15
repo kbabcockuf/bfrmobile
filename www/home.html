@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="BFRMobile">
 <head>
     <meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
@@ -7,21 +7,22 @@
 	<link rel="stylesheet" href="themes/Bootstrap.css">
 	<link rel="stylesheet" href="themes/application.css">
 	<link rel="stylesheet" type="text/css" href="themes/DefinedStylesBFR.css">
-<!--	<script href="themes/js/boostrap-dropdown.js"></script>
-	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
-
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
 	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
-	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
-	
-    <!--Make sure this is not commented out-->
-    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
     
+	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
     <script type="text/javascript" src="themes/js/moment.min.js"></script>
-    <script type="text/javascript" src="js/angular.min.js"></script>
 
-    <script>
+    <script type="text/javascript" src="js/angular.js"></script>
+    <script type="text/javascript" src="js/angular-route.js"></script>
+
+    <script type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript" src="js/api.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!--<script>
 
         window.onload = function () {
             //alert("window loaded");
@@ -155,7 +156,7 @@
             else {
                 stopTimeText = 'am';
             }
-            
+
             var timeSpanString = startTime + startTimeText + ' - ' + stopTime + stopTimeText + ' ' + dayText;
             return timeSpanString;
         }
@@ -227,9 +228,9 @@
         }
 
 
-           
-    </script>
-    
+
+    </script>-->
+
 </head>
 <body>
     <form id="frmHome">
@@ -245,16 +246,17 @@
             <div data-role="header">
                 <div data-role="navbar">
                     <ul>
-                        <li><a href="" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
-                            Today</a></li>
-                        <li><a href="take.html" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
-                            Cover</a></li>
-                        <li><a href="report.html" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
-                            Due</a></li>
+                        <li><a href="#/upcoming" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                            Upcoming</a></li>
+                        <li><a href="#/pickup" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                            Pick-Up</a></li>
+                        <li><a href="#/report" data-ajax="false" style="border: .1em solid #4b7333; color: White;">
+                            Enter Data</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div ng-view></div>
     </div>
     </form>
 </body>
