@@ -17,6 +17,7 @@ Array.prototype.pick = function() {
 
 var app = angular.module('BFRMobile', [
     'ngRoute',
+    'ngTouch',
     'BFRMobile.controllers',
     'BFRMobile.api',
     'BFRMobile.directives'
@@ -30,16 +31,24 @@ app.config([
 
         $routeProvider
             .when('/upcoming', {
-                templateUrl: '/partials/upcoming.html',
+                templateUrl: 'partials/upcoming.html',
                 controller: 'UpcomingCtrl'
             })
             .when('/pickup', {
-                templateUrl: '/partials/pickup.html',
+                templateUrl: 'partials/pickup.html',
                 controller: 'PickUpCtrl'
             })
             .when('/report', {
-                templateUrl: '/partials/report.html',
+                templateUrl: 'partials/report.html',
                 controller: 'ReportCtrl'
+            })
+            .when('/detail/:logId', {
+                templateUrl: 'partials/detail.html',
+                controller: 'DetailCtrl'
+            })
+            .when('/settings', {
+                templateUrl: 'partials/settings.html',
+                controller: 'SettingsCtrl'
             })
             .otherwise({
                 redirectTo: '/upcoming'

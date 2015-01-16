@@ -34,4 +34,21 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
                 console.log("API call failed:", result);
                 $scope.errorMsg = result.statusText || "Failed to load shifts.";
             });
-    }]);
+    }])
+
+    .controller("SettingsCtrl", ['$scope', function($scope) {
+
+    }])
+
+    .controller("DetailCtrl", [
+        '$scope', '$routeParams', 'bfrApi',
+        function($scope, $routeParams, bfrApi) {
+            bfrApi.logById($routeParams.logId)
+                .then(function(result) {
+                    $scope.shift = result.data.log;
+                }, function(result) {
+                    console.log("API call failed:", result);
+                    $scope.errorMsg = result.statusText
+                        || "Failed to load shift details.";
+                });
+        }]);

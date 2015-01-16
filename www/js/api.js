@@ -1,8 +1,16 @@
 angular.module("BFRMobile.api", [])
     .value("loginRedirect", "index.html")
+
+    /**
+     * API endpoint to be prepended to API calls.
+     *
+     * Should not have a trailing slash.
+     */
     .value("apiEndpoint", "http://dev.boulderfoodrescue.org")
 
-    // Boulder Food Rescue API client
+    /**
+     * Boulder Food Rescue API client
+     */
     .factory("bfrApi", [
         "$http", "$q", "$location", "apiEndpoint", "loginRedirect",
         function bfrApiFactory($http, $q, $location, apiEndpoint,
