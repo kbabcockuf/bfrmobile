@@ -18,7 +18,8 @@ Array.prototype.pick = function() {
 var app = angular.module('BFRMobile', [
     'ngRoute',
     'BFRMobile.controllers',
-    'BFRMobile.api'
+    'BFRMobile.api',
+    'BFRMobile.directives'
 ]);
 
 app.config([
@@ -34,7 +35,7 @@ app.config([
             })
             .when('/pickup', {
                 templateUrl: '/partials/pickup.html',
-                controller: 'PickupCtrl'
+                controller: 'PickUpCtrl'
             })
             .when('/report', {
                 templateUrl: '/partials/report.html',

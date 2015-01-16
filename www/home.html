@@ -30,6 +30,7 @@
     <script type="text/javascript" src="js/angular-route.js"></script>
 
     <script type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
     <script type="text/javascript" src="js/api.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
 
@@ -243,17 +244,17 @@
     </script>-->
 
 </head>
-<body>
+<body ng-controller="BfrAppCtrl">
     <form id="frmHome">
     <div data-role="page" id="home">
         <div id="headerDiv" data-position="fixed" data-role="header" data-theme="a">
             <a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext"
-                href="home.html">Home</a>
+                href="#/">Home</a>
             <h1 style="font: 13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
                 Food Rescue Robot
             </h1>
             <a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="power"
-                id="logout" data-iconpos="notext">Log Out</a>
+                id="logout" data-iconpos="notext" ng-click="signOut()">Log Out</a>
             <div data-role="header">
                 <div data-role="navbar">
                     <ul>

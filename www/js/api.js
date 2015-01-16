@@ -4,8 +4,9 @@ angular.module("BFRMobile.api", [])
 
     // Boulder Food Rescue API client
     .factory("bfrApi", [
-        "$http", "$q", "apiEndpoint",
-        function bfrApiFactory($http, $q, apiEndpoint) {
+        "$http", "$q", "$location", "apiEndpoint", "loginRedirect",
+        function bfrApiFactory($http, $q, $location, apiEndpoint,
+                               loginRedirect) {
             /**
              * Map results from an API request.
              *
@@ -44,12 +45,25 @@ angular.module("BFRMobile.api", [])
                  * Equivalent to:
                  * bfrApi.call("/logs/" + id + ".json");
                  *
-                 * @param item Id, or an object with an id property.
+                 * @param item Id, or an object with an id property
                  * @return Object representing the log entry
                  */
                 logById: function(item) {
                     var id = item.id || item;
                     return api.call("/logs/" + id + ".json");
+                },
+
+                /**
+                 * End the user's session and redirect to the login page.
+                 *
+                 * @return Promise for the result of the sign out API call.
+                 */
+                signOut: function() {
+                    return api.call("/volunteers/sign_out.json")
+                        .then(function(result) {
+                            window.location = loginRedirect;
+                            return result;
+                        });
                 }
             };
 
@@ -58,8 +72,8 @@ angular.module("BFRMobile.api", [])
     ])
 
     .factory("bfrCredentials", [
-        "$location", "loginRedirect",
-        function bfrCredentialsFactory($location, loginRedirect) {
+        "loginRedirect",
+        function bfrCredentialsFactory(loginRedirect) {
             /**
              * Return credentials, or redirect to the login page.
              *
