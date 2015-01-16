@@ -1,15 +1,33 @@
-angular.module("BFRMobile-controllers", ["BFRMobile-api"])
-    .controller("UpcomingCtrl", [
-        '$q', 'bfrApi',
-        function($q, bfrApi) {
-            bfrApi.call("/logs/mine_past.json")
-                .map(function(i) {
-                    return bfrApi.call("/logs/" + i.id + ".json");
-                })
-                .then(console.log.bind(console));
-        }
-    ])
+angular.module("BFRMobile.controllers", ["BFRMobile.api"])
+    .controller("UpcomingCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
+        $scope.upcoming = bfrApi.call("/log/mine_upcoming.json")
+            .map(bfrApi.logById)
+            .then(function(result) {
+                $scope.upcomingShifts = result.pick('data', 'log');
+            }, function(result) {
+                console.log("API call failed:", result);
+                $scope.errorMsg = result.statusText || "Failed to load shifts.";
+            });
+    }])
 
-    .controller("PickUpCtrl", function() {})
+    .controller("PickUpCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
+        $scope.open = bfrApi.call("/log/open.json")
+            .map(bfrApi.logById)
+            .then(function(result) {
+                $scope.openShifts = result.pick('data', 'log');
+            }, function(result) {
+                console.log("API call failed:", result);
+                $scope.errorMsg = result.statusText || "Failed to load shifts.";
+            });
+    }])
 
-    .controller("ReportCtrl", function() {});
+    .controller("ReportCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
+        bfrApi.call("/Xlogs/mine_past.json")
+            .map(bfrApi.logById)
+            .then(function(result) {
+                $scope.pastShifts = result.pick('data', 'log');
+            }, function(result) {
+                console.log("API call failed:", result);
+                $scope.errorMsg = result.statusText || "Failed to load shifts.";
+            });
+    }]);

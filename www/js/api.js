@@ -1,4 +1,4 @@
-angular.module("BFRMobile-api", [])
+angular.module("BFRMobile.api", [])
     .value("loginRedirect", "index.html")
     .value("apiEndpoint", "http://dev.boulderfoodrescue.org")
 
@@ -18,7 +18,7 @@ angular.module("BFRMobile-api", [])
                 });
             }
 
-            return {
+            var api = {
                 /**
                  * Call the BFR API.
                  *
@@ -33,11 +33,27 @@ angular.module("BFRMobile-api", [])
                     config.method = config.method || "GET";
 
                     // Add .map() before returning the promise.
-                    var promise = $http(config);
+                    var promise = $http(config)
                     promise.map = map;
                     return promise;
+                },
+
+                /**
+                 * Convenience method for accessing logs.
+                 *
+                 * Equivalent to:
+                 * bfrApi.call("/logs/" + id + ".json");
+                 *
+                 * @param item Id, or an object with an id property.
+                 * @return Object representing the log entry
+                 */
+                logById: function(item) {
+                    var id = item.id || item;
+                    return api.call("/logs/" + id + ".json");
                 }
             };
+
+            return api;
         }
     ])
 
