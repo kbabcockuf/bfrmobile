@@ -59,7 +59,8 @@ angular.module("BFRMobile.api", [])
                  * @return Promise for the result of the sign out API call.
                  */
                 signOut: function() {
-                    return api.call("/volunteers/sign_out.json")
+                    return api.call("/volunteers/sign_out.json",
+                                    {method: 'DELETE'})
                         .then(function(result) {
                             window.location = loginRedirect;
                             return result;
