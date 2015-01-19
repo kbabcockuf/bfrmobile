@@ -7,7 +7,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         $scope.upcoming = bfrApi.call("/logs/mine_upcoming.json")
             .map(bfrApi.logById)
             .then(function(result) {
-                $scope.upcomingShifts = result.pick('data', 'log');
+                $scope.upcomingShifts = result.pick('log');
             }, function(result) {
                 console.log("API call failed:", result);
                 $scope.errorMsg = result.statusText || "Failed to load shifts.";
@@ -18,7 +18,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         $scope.open = bfrApi.call("/logs/open.json")
             .map(bfrApi.logById)
             .then(function(result) {
-                $scope.openShifts = result.pick('data', 'log');
+                $scope.openShifts = result.pick('log');
             }, function(result) {
                 console.log("API call failed:", result);
                 $scope.errorMsg = result.statusText || "Failed to load shifts.";
@@ -29,7 +29,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         bfrApi.call("/logs/mine_past.json")
             .map(bfrApi.logById)
             .then(function(result) {
-                $scope.pastShifts = result.pick('data', 'log');
+                $scope.pastShifts = result.pick('log');
             }, function(result) {
                 console.log("API call failed:", result);
                 $scope.errorMsg = result.statusText || "Failed to load shifts.";
@@ -45,7 +45,17 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         function($scope, $routeParams, bfrApi) {
             bfrApi.logById($routeParams.logId)
                 .then(function(result) {
-                    $scope.shift = result.data.log;
+                    $scope.shift = result.log;
+                    return bfrApi.loadLocationDetail($scope.shift);
+                })
+                .then(function(result) {
+                    var points = [result.donor];
+                    Array.prototype.push.apply(points, result.recipients);
+                    $scope.mapUrl = "https://www.google.com/maps/dir/" + points
+                        .map(function(i) {
+                                return encodeURIComponent(i.lat + ',' + i.lng);
+                            })
+                        .join('/');
                 }, function(result) {
                     console.log("API call failed:", result);
                     $scope.errorMsg = result.statusText

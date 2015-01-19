@@ -2,9 +2,7 @@ angular.module("BFRMobile.api", [])
     .value("loginRedirect", "index.html")
 
     /**
-     * API endpoint to be prepended to API calls.
-     *
-     * Should not have a trailing slash.
+     * API endpoint to be prepended to API calls (without trailing '/').
      */
     .value("apiEndpoint", "http://dev.boulderfoodrescue.org")
 
@@ -15,56 +13,92 @@ angular.module("BFRMobile.api", [])
         "$http", "$q", "$location", "apiEndpoint", "loginRedirect",
         function bfrApiFactory($http, $q, $location, apiEndpoint,
                                loginRedirect) {
-            /**
-             * Map results from an API request.
-             *
-             * @param fn Map function for elements. Returns a new promise.
-             * @return Promise for resolution of all fn() results.
-             */
-            function map(fn) {
-                return this.then(function(result) {
-                    return $q.all(result.data.map(fn));
-                });
+            // Used to extend promises returned from API calls.
+            var apiPromise = {
+                /**
+                 * Map results from an API request.
+                 *
+                 * @param fn {function} Map function for elements that returns a
+                 * Promise
+                 * @returns {Promise} The result of all fn() falls
+                 */
+                map: function(fn) {
+                    return this.then(function(result) {
+                        return $q.all(result.map(fn));
+                    });
+                }
             }
 
             var api = {
                 /**
                  * Call the BFR API.
                  *
-                 * @param url Destination URL
-                 * @param config Optional $http config
-                 * @return Promise augmented with .map()
+                 * @param url {string} Destination URL
+                 * @param config {object} Optional $http config
+                 * @param raw {boolean} Include response code in result callback
+                 * @return {Promise} Promise augmented with .map()
                  */
-                call: function(url, config) {
+                call: function(url, config, raw) {
                     config = config || {};
-
                     config.url = apiEndpoint + url;
                     config.method = config.method || "GET";
 
-                    // Add .map() before returning the promise.
                     var promise = $http(config)
-                    promise.map = map;
-                    return promise;
+                    if (!raw) {
+                        promise = promise.then(function(result) {
+                            return result.data;
+                        });
+                    }
+                    return angular.extend(promise, apiPromise);
                 },
 
                 /**
-                 * Convenience method for accessing logs.
+                 * Convenience method for accessing logs (useful with .map()).
                  *
                  * Equivalent to:
                  * bfrApi.call("/logs/" + id + ".json");
                  *
-                 * @param item Id, or an object with an id property
-                 * @return Object representing the log entry
+                 * @param item {object|Number} Id, or an object with an id
+                 * property
+                 * @return {object} Object representing the log entry
                  */
                 logById: function(item) {
-                    var id = item.id || item;
+                    var id = (item.id || item);
                     return api.call("/logs/" + id + ".json");
+                },
+
+                /**
+                 * Convenience method for loading locations.
+                 *
+                 * Equivalent to:
+                 * bfrApi.call("/locations/" + id + ".json");
+                 *
+                 * @param id {Number} A location ID
+                 * @return {object} Details about the location
+                 */
+                locationById: function(id) {
+                    return api.call('/locations/' + id + '.json');
+                },
+
+                /**
+                 * Load details about locations in a log item.
+                 *
+                 * @param item {object} The log item
+                 * @return {Promise} The log item with location information
+                 * added
+                 */
+                loadLocationDetail: function(item) {
+                    item.donor = api.locationById(item.donor_id);
+                    item.recipients = $q.all(
+                        item.recipient_ids.map(api.locationById));
+
+                    return $q.all(item);
                 },
 
                 /**
                  * End the user's session and redirect to the login page.
                  *
-                 * @return Promise for the result of the sign out API call.
+                 * @return {Promise} The result of the sign out API call
                  */
                 signOut: function() {
                     return api.call("/volunteers/sign_out.json",
@@ -75,7 +109,6 @@ angular.module("BFRMobile.api", [])
                         });
                 }
             };
-
             return api;
         }
     ])
@@ -86,8 +119,7 @@ angular.module("BFRMobile.api", [])
             /**
              * Return credentials, or redirect to the login page.
              *
-             * @return An object containing authentication parameters for an
-             *         API request.
+             * @return {object} Authentication parameters for API requests
              */
             return function bfrCredentials() {
                 var auth = {

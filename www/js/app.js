@@ -1,8 +1,8 @@
 /**
  * Extract properties from each element in an Array of objects.
  *
- * @param * Key(s) to extract
- * @return An array containing the extracted value for each input element
+ * @param * {string} Key(s) to extract
+ * @return {Array} The extracted values for each input element
  */
 Array.prototype.pick = function() {
     var keys = arguments;
