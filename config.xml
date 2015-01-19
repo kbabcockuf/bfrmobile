@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Mobile Boulder Food Rescue</name>
+    <name>Boulder Food Rescue</name>
     <description>
         Mobile Boulder Food Rescue
     </description>
@@ -58,6 +58,7 @@
     <icon gap:platform="ios" height="152" src="img/icons/ios/icon152.png" width="152" />
     <icon gap:platform="winphone" src="img/icons/winphone/icon.png" />
     <icon gap:platform="winphone" gap:role="background" src="img/icons/winphone/icon.png" />
+    <gap:splash src="splash.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="img/splash/android/ldpi.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="img/splash/android/mdpi.png" />
     <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="img/splash/android/hdpi.png" />
