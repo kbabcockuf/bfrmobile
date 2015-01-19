@@ -4,13 +4,22 @@ angular.module("BFRMobile.directives", [])
      *
      * @param bfrShow Bound variable indicating drawer content visibility
      * @param bfrTitle Drawer title
+     * @param bfrLoad Code to run the first time the drawer is open
      */
     .directive("bfrDrawer", function() {
         return {
             templateUrl: 'partials/drawer.html',
             transclude: true,
-            scope: {show: '=?bfrShow', title: '=bfrTitle'},
-            //link: function(scope, element, attrs, controller, transcludeFn) {}
+            scope: {show: '=?bfrShow', title: '=bfrTitle', load: '&bfrLoad'},
+            link: function(scope, element, attrs, controller, transcludeFn) {
+                console.log("link", scope);
+                var unwatch = scope.$watch('show', function(show) {
+                    if (show) {
+                        scope.load();
+                        unwatch();
+                    }
+                });
+            }
         };
     })
 

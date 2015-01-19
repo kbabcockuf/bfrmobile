@@ -2,7 +2,7 @@ angular.module("BFRMobile.api", [])
     .value("loginRedirect", "index.html")
 
     /**
-     * API endpoint to be prepended to API calls (without trailing '/').
+     * API endpoint to be prepended to API calls (excludes trailing '/').
      */
     .value("apiEndpoint", "http://dev.boulderfoodrescue.org")
 
@@ -28,7 +28,7 @@ angular.module("BFRMobile.api", [])
                     });
                 }
             }
-
+            
             var api = {
                 /**
                  * Call the BFR API.
