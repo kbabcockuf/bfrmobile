@@ -1,8 +1,4 @@
 <strong>{{errorMsg}}</strong>
-<!--<ul ng-repeat="item in pastShifts">
-    <li>{{item.id}}</li>
-</ul>-->
-<bfr-drawer bfr-title="'Sample Title'" bfr-load="test = 'load'">
-    <h5>Contents</h5>
-    <p>{{test}}</p>
+<bfr-drawer ng-repeat="item in pastShifts" bfr-title="item.log.id" bfr-load="test = 'load'">
+    Item<br>Item<br>Item
 </bfr-drawer>

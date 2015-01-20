@@ -12,7 +12,6 @@ angular.module("BFRMobile.directives", [])
             transclude: true,
             scope: {show: '=?bfrShow', title: '=bfrTitle', load: '&bfrLoad'},
             link: function(scope, element, attrs, controller, transcludeFn) {
-                console.log("link", scope);
                 var unwatch = scope.$watch('show', function(show) {
                     if (show) {
                         scope.load();

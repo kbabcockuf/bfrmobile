@@ -7,20 +7,20 @@
 /* Sections
 -----------------------------------------------------------------------------------------------------------*/
 .section_div {
-	margin: 15px; 
+	margin: 15px;
 	font-size: 20px;
-/*	font-weight: normal; */	
-	border-bottom: 1px solid #dddddd !important; 
-	margin-top: 30px; 
+/*	font-weight: normal; */
+	border-bottom: 1px solid #dddddd !important;
+	margin-top: 30px;
 	border-top: 1px solid #dddddd !important;
 	padding-bottom: 8px !important;
 	padding-top: 8px !important;
-	color: #4a4a4a; 
+	color: #4a4a4a;
 	font:20px/1.5 'Trebuchet MS', Arial;
 }
 
 .info_div {
-	margin-top: 20px; 
+	margin-top: 20px;
 	padding-bottom: 0px !important;
 	font: 15px/1 'Trebuchet MS', Arial;"
 }
@@ -66,13 +66,13 @@
 }
 
 .field_title {
-	margin: 12px; 
+	margin: 12px;
 	color: black;
 }
 
-input.bigCheckbox { 
-	width: 40px; 
-	height: 40px; 
+input.bigCheckbox {
+	width: 40px;
+	height: 40px;
 }
 
 .bb div, .bb td.bb th {
@@ -86,7 +86,7 @@ input.bigCheckbox {
   left: 0;
 }
 
-.header 
+.header
 {
     color: #4a4a4a;
     background-color: #eeeeee;
@@ -94,7 +94,7 @@ input.bigCheckbox {
     border-bottom: 1px solid #c5c5c5 !important;
 }
 
-.header2 
+.header2
 {
     color: #4a4a4a;
     background-color: #eeeeee;
@@ -103,7 +103,7 @@ input.bigCheckbox {
     line-height: 1.3em;
 }
 
-.subheader 
+.subheader
 {
     color: #4a4a4a;
     background-color: #eeeeee;
@@ -122,4 +122,37 @@ input.bigCheckbox {
 {
     font-weight: bold;
     margin-top: .5em !important;
+}
+
+bfr-drawer {
+    margin: 8px;
+    display: block;
+    box-shadow: 2px 2px 4px grey;
+}
+
+.bfr-carat {
+    float:right;
+    background: url('icons/carat-u-white.png');
+    width: 16px;
+    height: 16px;
+    -webkit-transition: all linear 0.5s;
+}
+
+.bfr-carat-open {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.bfr-title {
+    background: #4B7333;
+    color: white;
+    text-shadow: 0px -1px rgba(0, 0, 0, 0.5);
+}
+
+.bfr-title, .bfr-content-inner {
+    padding: 8px;
+}
+
+.bfr-animate-grow {
+    overflow: hidden;
 }

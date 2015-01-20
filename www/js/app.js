@@ -18,9 +18,11 @@ Array.prototype.pick = function() {
 var app = angular.module('BFRMobile', [
     'ngRoute',
     'ngTouch',
+    'ngAnimate',
     'BFRMobile.controllers',
     'BFRMobile.api',
-    'BFRMobile.directives'
+    'BFRMobile.directives',
+    'BFRMobile.animation'
 ]);
 
 app.config([
