@@ -41,6 +41,10 @@ app.config([
                 controller: 'PickUpCtrl'
             })
             .when('/report', {
+                templateUrl: 'partials/past.html',
+                controller: 'PastCtrl'
+            })
+            .when('/report/:logId', {
                 templateUrl: 'partials/report.html',
                 controller: 'ReportCtrl'
             })

@@ -46,19 +46,27 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             .catch(storeErrorIn($scope, 'errorMsg'));
     }])
 
-    .controller("ReportCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
-        bfrApi.call("/food_types.json")
-            .then(storeIn($scope, 'foodTypes'));
-        bfrApi.call("/scale_types.json")
-            .then(storeIn($scope, 'scaleTypes'));
-        bfrApi.call("/transport_types.json")
-            .then(storeIn($scope, 'transportTypes'));
-
+    .controller("PastCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
         bfrApi.call("/logs/mine_past.json")
             .map(bfrApi.logById)
             .then(storeIn($scope, 'pastShifts'))
             .catch(storeErrorIn($scope, 'errorMsg'));
     }])
+
+    .controller("ReportCtrl", [
+        '$scope', '$routeParams', 'bfrApi',
+        function($scope, $routeParams, bfrApi) {
+            bfrApi.call("/food_types.json")
+                .then(storeIn($scope, 'foodTypes'));
+            bfrApi.call("/scale_types.json")
+                .then(storeIn($scope, 'scaleTypes'));
+            bfrApi.call("/transport_types.json")
+                .then(storeIn($scope, 'transportTypes'));
+                
+            bfrApi.logById($routeParams.logId)
+                .then(storeIn($scope, 'pastShifts'))
+                .catch(storeErrorIn($scope, 'errorMsg'));
+        }])
 
     .controller("SettingsCtrl", ['$scope', function($scope) {
 

@@ -28,7 +28,7 @@ angular.module("BFRMobile.api", [])
                     });
                 }
             }
-            
+
             var api = {
                 /**
                  * Call the BFR API.
