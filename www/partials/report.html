@@ -1,83 +1,66 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<div class="header">
+    <h4>
+        Whole Foods Baseline -> Vitamin Cottage -> Attention Homes
+    </h4>
+</div>
 
-    <head>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-	    <title>Boulder Food Rescue</title>
-	    <link type="text/css" rel ="stylesheet" href="themes/BFRmain.css" />
-    </head>
+<div class="collapsable-tab">
+    <h4>
+        Whole Foods Baseline
+    </h4>
+</div>
 
-    <body>
-        <div class ="header">
-            <h4>
-                Whole Foods Baseline -> Vitamin Cottage -> Attention Homes
-            </h4>
-        </div>
+<form id="enter-data-container">
+    <div class="products" ng-repeat="entry in shiftItems">
+        <br><select class="dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in foodTypes">
+        </select>
+        <input class="food-input" type="text" size="15" />
+        <input class="lb-input" type="text" size="1" /> lbs
+    </div>
 
-        <div class ="collapsable-tab">
-            <h4>
-                Whole Foods Baseline
-            </h4>
-        </div>
+    <!--<div class="products">
+        <br><select class="dropdown-box">
+            <option value="Bread">Bread</option>
+        </select>
+        <input type="text" size="15" />
+        <input type="text"size="1" /> lbs
+    </div>
 
-        <form id ="enter-data-container">
-            <div class ="products">
-                <br><select class ="dropdown-box">
-                    <option value ="Produce">Produce</option>
-                </select>
-                <input class ="food-input" type ="text" size ="15" />
-                <input class ="lb-input" type ="text"size ="1" /> lbs
-            </div>
+    <div class="products">
+        <br><select class="dropdown-box">
+            <option value="Meat">Meat</option>
+        </select>
+        <input class="food-input" type="text" size="15" />
+        <input class="lb-input" type="text"size="1" /> lbs
+    </div>--><br>
+</form>
 
-            <div class ="products">
-                <br><select class ="dropdown-box">
-                    <option value ="Bread">Bread</option>
-                </select>
-                <input type ="text" size ="15" />
-                <input type ="text"size ="1" /> lbs
-            </div>
+<div class="collapsable-tab">
+    <h4>
+        Vitamin Cottage
+    </h4>
+</div>
 
-            <div class ="products">
-                <br><select class ="dropdown-box">
-                    <option value ="Meat">Meat</option>
-                </select>
-                <input class ="food-input" type ="text" size ="15" />
-                <input class ="lb-input" type ="text"size ="1" /> lbs
-            </div><br>
-        </form>
+<form id="transportation-container">
+    <br>
+    Transportation
 
-        <div class ="collapsable-tab">
-            <h4>
-                Vitamin Cottage
-            </h4>
-        </div>
+    <select class="transportaion-dropdown-box">
+        <option value="bicycle">Bicycle</option>
+        <option value="bicycle">Motorcycle</option>
+        <option value="bicycle">Car</option>
+        <option value="bicycle">Truck</option>
+        <option value="bicycle">Golf cart</option>
+        <option value="bicycle">Foot</option>
+    </select>
 
-        <form id ="transportation-container">
-            <br>
-            Transportation
 
-            <select class ="transportaion-dropdown-box">
-                <option value ="bicycle">Bicycle</option>
-                <option value ="bicycle">Motorcycle</option>
-                <option value ="bicycle">Car</option>
-                <option value ="bicycle">Truck</option>
-                <option value ="bicycle">Golf cart</option>
-                <option value ="bicycle">Foot</option>
-            </select>
-                
-            
-            <div id ="transportation-notes">
-                <br>
-                <textarea type ="text" cols ="32" rows ="2" placeholder ="Notes about the shift. Equipment issues?"></textarea>
-            </div>
-        </form>
+    <div id="transportation-notes">
         <br>
-        <div id ="save">
-            <h4>Save</h4>
-        </div>
-
-    </body>
-
-
-
-</html>
+        <textarea type="text" cols="32" rows="2" placeholder="Notes about the shift. Equipment issues?"></textarea>
+    </div>
+</form>
+<br>
+<div id="save">
+    <h4>Save</h4>
+</div>

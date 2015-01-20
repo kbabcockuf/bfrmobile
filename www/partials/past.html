@@ -1,0 +1,14 @@
+﻿<div class="header">
+    <h4>Past Shifts</h4>
+</div>
+
+
+<ol>
+
+<li ng-repeat="shift in pastShifts">
+    <a ng-href="#/report/{{shift.log.id}}">
+        {{shift.schedule.detailed_start_time}}
+    </a>
+</li>
+
+</ol>

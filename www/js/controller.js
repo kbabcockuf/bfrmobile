@@ -56,13 +56,17 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     .controller("ReportCtrl", [
         '$scope', '$routeParams', 'bfrApi',
         function($scope, $routeParams, bfrApi) {
+            $scope.shiftItems = [{}];
+
+            //$scope.$watch();
+
             bfrApi.call("/food_types.json")
                 .then(storeIn($scope, 'foodTypes'));
             bfrApi.call("/scale_types.json")
                 .then(storeIn($scope, 'scaleTypes'));
             bfrApi.call("/transport_types.json")
                 .then(storeIn($scope, 'transportTypes'));
-                
+
             bfrApi.logById($routeParams.logId)
                 .then(storeIn($scope, 'pastShifts'))
                 .catch(storeErrorIn($scope, 'errorMsg'));
