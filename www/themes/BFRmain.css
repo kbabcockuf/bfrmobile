@@ -1,0 +1,160 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+    
+}
+#index-header {
+    background-color: #3D1F00;
+    text-align: center;
+    font: 13px;
+    color: white; 
+    line-height: 2.3;
+}
+    
+.header {
+    background-color: saddlebrown;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+}
+
+.collapsable-tab{
+    background-color: peru;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+} 
+
+.header-tabs {
+    width: 33.33%;
+    float: left;
+    background: saddlebrown;
+    clear: right;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+}
+.header-tabs:hover, #settings-log:hover, #info:hover, #map:hover, #calender:hover, #save:hover {
+    background: grey;
+    color: white;
+}
+
+#upcoming-container{
+    text-indent: 20px; 
+}
+
+#info-container{
+    background-color: darkkhaki;
+}        
+
+#settings-container{
+    background-color: darkkhaki;
+    text-align: left;
+    line-height: 2.0;
+    
+}
+
+#transportation-container{
+    background-color: darkkhaki;
+    text-indent: 20px; 
+}
+
+
+#notification-box{
+    background-color: darkkhaki;
+    text-align: left;
+    line-height: 2.0;
+    border: 2px solid black;
+}
+#notif{
+    background-color: darkkhaki;
+    text-align: center;
+    line-height: 2.0;
+}
+
+
+#home-icon {
+    float: left;
+    height: 30px;
+    
+}
+#logout-icon {
+    float: right;
+    height:30px;
+}
+#main{
+
+height:30px;
+}
+
+
+h2,h4,h3 {
+    display: -webkit-inline-box;
+}
+
+li{
+    line-height: 200%;    
+}
+
+ol{
+    background-color: darkkhaki;
+}
+
+#info,#map,#calender {
+    width: 33.33%;
+    float: left;
+    background: saddlebrown;
+    clear: right;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+}
+
+#settings-log{
+    background-color: darkkhaki;
+    width: 33.33%;
+    margin-left: auto;
+    margin-right: auto;
+    background: saddlebrown;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+}
+
+#save{
+    background-color: darkkhaki;
+    width: 33.33%;
+    margin-left: auto;
+    margin-right: auto;
+    background: saddlebrown;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+}  
+
+a{
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    background-color: White;
+    border: 1px solid black;
+}
+
+#enter-data-container{
+    background-color: darkkhaki;
+    
+}
+
+.dropdown-box{
+    width: 70px;
+}
+
+.transportaion-dropdown-box{
+    width: 70px;
+    float: right;
+   
+}
+
+#transportation-notes{
+    text-align: center;
+}    
