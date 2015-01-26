@@ -14,8 +14,8 @@
     <div class="products" ng-repeat="entry in shiftItems">
         <br><select class="dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in foodTypes">
         </select>
-        <input class="food-input" type="text" size="15" />
-        <input class="lb-input" type="text" size="1" /> lbs
+        <input class="food-input" type="text" size="15" ng-model="entry.name"/>
+        <input class="lb-input" type="text" size="1" ng-model ="entry.weight"/> lbs
     </div>
 
     <!--<div class="products">
@@ -41,17 +41,12 @@
     </h4>
 </div>
 
-<form id="transportation-container">
+<div id="transportation-container">
+    <form id="transportation-form-container">
     <br>
     Transportation
 
-    <select class="transportaion-dropdown-box">
-        <option value="bicycle">Bicycle</option>
-        <option value="bicycle">Motorcycle</option>
-        <option value="bicycle">Car</option>
-        <option value="bicycle">Truck</option>
-        <option value="bicycle">Golf cart</option>
-        <option value="bicycle">Foot</option>
+    <select class="transportaion-dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in transportTypes">
     </select>
 
 
@@ -59,8 +54,10 @@
         <br>
         <textarea type="text" cols="32" rows="2" placeholder="Notes about the shift. Equipment issues?"></textarea>
     </div>
-</form>
-<br>
-<div id="save">
-    <h4>Save</h4>
+
+    <br>
+    </form>
+        <div id="save">
+            <h4>Save</h4>
+        </div>
 </div>

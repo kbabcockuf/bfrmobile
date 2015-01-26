@@ -57,8 +57,26 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         '$scope', '$routeParams', 'bfrApi',
         function($scope, $routeParams, bfrApi) {
             $scope.shiftItems = [{}];
+              
+             
+            $scope.$watch('shiftItems[shiftItems.length-1]', function(last){
+                
+                if(last.type && last.name &&last.weight)
+                {
+                    
+                    $scope.shiftItems.push({});
 
-            //$scope.$watch();
+                }
+                
+            }
+
+            ,true
+            
+            );
+
+
+           
+
 
             bfrApi.call("/food_types.json")
                 .then(storeIn($scope, 'foodTypes'));
