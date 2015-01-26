@@ -10,7 +10,11 @@ angular.module("BFRMobile.animation", [])
                 el.css('height', 0);
                 el.animate({
                     opacity: 1,
-                    height: autoHeight}, 300, 'swing', done);
+                    height: autoHeight
+                }, 300, 'swing', function() {
+                    el.css('height', 'auto');
+                    done();
+                });
             },
             leave: function(el, done) {
                 el.animate({opacity: 0, height: 0}, 300, 'swing', done);

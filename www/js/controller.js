@@ -57,26 +57,12 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         '$scope', '$routeParams', 'bfrApi',
         function($scope, $routeParams, bfrApi) {
             $scope.shiftItems = [{}];
-              
-             
-            $scope.$watch('shiftItems[shiftItems.length-1]', function(last){
-                
-                if(last.type && last.name &&last.weight)
-                {
-                    
+
+            $scope.$watch('shiftItems[shiftItems.length-1]', function(last) {
+                if (last.type && last.name &&last.weight) {
                     $scope.shiftItems.push({});
-
                 }
-                
-            }
-
-            ,true
-            
-            );
-
-
-           
-
+            }, true);
 
             bfrApi.call("/food_types.json")
                 .then(storeIn($scope, 'foodTypes'));
@@ -86,8 +72,17 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
                 .then(storeIn($scope, 'transportTypes'));
 
             bfrApi.logById($routeParams.logId)
-                .then(storeIn($scope, 'pastShifts'))
+                .then(function(result) {
+                    return bfrApi.loadLocationDetail(result.log);
+                })
+                .then(storeIn($scope, 'log'))
                 .catch(storeErrorIn($scope, 'errorMsg'));
+
+            console.log($scope);
+
+            $scope.submit = function() {
+
+            };
         }])
 
     .controller("SettingsCtrl", ['$scope', function($scope) {

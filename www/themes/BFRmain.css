@@ -18,7 +18,7 @@
     line-height: 2.0;
 }
 
-.collapsable-tab{
+.bfr-title {
     background-color: peru;
     text-align: center;
     color: White;
@@ -34,7 +34,7 @@
     color: White;
     line-height: 2.0;
 }
-.header-tabs:hover, #settings-log:hover, #info:hover, #map:hover, #calender:hover, #save:hover, .collapsable-tab:hover, #home-icon:hover, #logout-icon:hover {
+.header-tabs:hover, #settings-log:hover, #info:hover, #map:hover, #calender:hover, #save:hover, .bfr-title:hover, #home-icon:hover, #logout-icon:hover {
     background: grey;
     color: white;
 }
@@ -108,7 +108,7 @@
     background: #3D1F00;
     box-shadow: 0 0 3px gray;
     font-size:20px;
-         
+
 }
 
 #home-icon img {
@@ -136,8 +136,8 @@
 }
 
 
-    
-    
+
+
 #main{
 
 height:30px;
