@@ -53,10 +53,7 @@ angular.module("BFRMobile.api", [])
                 },
 
                 /**
-                 * Convenience method for accessing logs (useful with .map()).
-                 *
-                 * Equivalent to:
-                 * bfrApi.call("/logs/" + id + ".json");
+                 * Get details about a log item (useful with .map()).
                  *
                  * @param item {object|Number} Id, or an object with an id
                  * property
@@ -69,9 +66,6 @@ angular.module("BFRMobile.api", [])
 
                 /**
                  * Convenience method for loading locations.
-                 *
-                 * Equivalent to:
-                 * bfrApi.call("/locations/" + id + ".json");
                  *
                  * @param id {Number} A location ID
                  * @return {object} Details about the location

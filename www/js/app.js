@@ -22,7 +22,8 @@ var app = angular.module('BFRMobile', [
     'BFRMobile.controllers',
     'BFRMobile.api',
     'BFRMobile.directives',
-    'BFRMobile.animation'
+    'BFRMobile.animation',
+    'BFRMobile.filters'
 ]);
 
 app.config([
