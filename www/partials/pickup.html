@@ -1,1 +1,37 @@
-Contents of "pickup.html"
+<bfr-drawer ng-repeat="shift in openShifts" bfr-title="shift.schedule.detailed_start_time">
+    <div id="pickup-header">
+        <h4>
+            Shifts Needing Covering!
+        </h4>
+    </div>
+
+    <div id="pickup-container">
+        <div id="location">
+            <h4>Location</h4>
+        </div>
+            <div id="location-contents">
+                <h4>
+                    Whole Foods Baseline -> Vitamin Cottage -> Attention Homes
+                </h4>
+            </div>
+        
+        <div id="date">
+            <h4>Date</h4>
+        </div>
+            <div id="date-contents">
+                <h4>Thu Jan 29 (3 days from now) 
+                between 1PM and 3PM</h4>
+            </div>
+            
+    </div>
+  
+    <div class="tabs-container">
+       
+        <div id="take">
+            <h4>Take</h4>
+        </div>
+        <div id="info-pickup">
+            <h4>Info</h4>
+        </div>
+    </div>
+</bfr-drawer>

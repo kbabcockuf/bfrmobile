@@ -1,10 +1,10 @@
-﻿<div class="header">
+﻿<div class="info-header">
     <h4>
         Whole Foods Baseline -> Vitamin Cottage -> Attention Homes
     </h4>
 </div>
 
-<div class="collapsable-tab">
+<div class="report-title">
     <h4>
         Whole Foods Baseline
     </h4>
@@ -12,30 +12,14 @@
 
 <form id="enter-data-container">
     <div class="products" ng-repeat="entry in shiftItems">
-        <br><select class="dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in foodTypes">
+        <select class="dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in foodTypes">
         </select>
         <input class="food-input" type="text" size="15" ng-model="entry.name"/>
         <input class="lb-input" type="text" size="1" ng-model ="entry.weight"/> lbs
     </div>
-
-    <!--<div class="products">
-        <br><select class="dropdown-box">
-            <option value="Bread">Bread</option>
-        </select>
-        <input type="text" size="15" />
-        <input type="text"size="1" /> lbs
-    </div>
-
-    <div class="products">
-        <br><select class="dropdown-box">
-            <option value="Meat">Meat</option>
-        </select>
-        <input class="food-input" type="text" size="15" />
-        <input class="lb-input" type="text"size="1" /> lbs
-    </div>--><br>
 </form>
 
-<div class="collapsable-tab">
+<div class="report-title">
     <h4>
         Vitamin Cottage
     </h4>
@@ -43,7 +27,6 @@
 
 <div id="transportation-container">
     <form id="transportation-form-container">
-    <br>
     Transportation
 
     <select class="transportaion-dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in transportTypes">
@@ -54,8 +37,6 @@
         <br>
         <textarea type="text" cols="32" rows="2" placeholder="Notes about the shift. Equipment issues?"></textarea>
     </div>
-
-    <br>
     </form>
         <div id="save">
             <h4>Save</h4>
