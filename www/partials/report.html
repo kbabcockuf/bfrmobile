@@ -1,4 +1,5 @@
-﻿<div class="info-header">
+﻿
+﻿<div class="header">
     <h4>
         <span>{{log.donor.name}}</span>
         <span ng-repeat="recipient in log.recipients">
@@ -7,24 +8,6 @@
     </h4>
 </div>
 
-<<<<<<< HEAD
-<div class="report-title">
-    <h4>
-        Whole Foods Baseline
-    </h4>
-</div>
-
-<form id="enter-data-container">
-    <div class="products" ng-repeat="entry in shiftItems">
-        <select class="dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in foodTypes">
-        </select>
-        <input class="food-input" type="text" size="15" ng-model="entry.name"/>
-        <input class="lb-input" type="text" size="1" ng-model ="entry.weight"/> lbs
-    </div>
-</form>
-
-<div class="report-title">
-=======
 <bfr-drawer bfr-title="log.donor.name">
     <form id="enter-data-container">
         <div class="products" ng-repeat="entry in shiftItems">
@@ -41,7 +24,6 @@
             <input type="text" size="15" />
             <input type="text"size="1" /> lbs
         </div>
-
         <div class="products">
             <br><select class="dropdown-box">
                 <option value="Meat">Meat</option>
@@ -53,35 +35,21 @@
 
 </bfr-drawer>
 <!--<div class="collapsable-tab">
->>>>>>> origin/PhoneGap
     <h4>
         Whole Foods Baseline
     </h4>
 </div>-->
 
-<<<<<<< HEAD
-<div id="transportation-container">
-    <form id="transportation-form-container">
-    Transportation
-=======
 <bfr-drawer ng-repeat="recipient in log.recipients" bfr-title="recipient.name">
     <div id="transportation-container">
         <form id="transportation-form-container">
             <br>
             Transportation
->>>>>>> origin/PhoneGap
 
             <select class="transportaion-dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in transportTypes">
             </select>
 
 
-<<<<<<< HEAD
-    <div id="transportation-notes">
-        <br>
-        <textarea type="text" cols="32" rows="2" placeholder="Notes about the shift. Equipment issues?"></textarea>
-    </div>
-    </form>
-=======
             <div id="transportation-notes">
                 <br>
                 <textarea type="text" cols="32" rows="2" placeholder="Notes about the shift. Equipment issues?"></textarea>
@@ -89,7 +57,6 @@
 
             <br>
         </form>
->>>>>>> origin/PhoneGap
         <div id="save">
             <h4>Save</h4>
         </div>

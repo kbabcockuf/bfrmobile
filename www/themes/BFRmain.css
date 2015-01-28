@@ -56,7 +56,13 @@ body{
     border-bottom: 2px solid black;
 }
 
-<<<<<<< HEAD
+
+.bfr-title{
+     background-color: peru;
+     text-align: center;
+     color: White;
+}
+
 .collapsable-tab{
     background-color: white;
     text-align: center;
@@ -68,10 +74,6 @@ body{
 
 .report-title{
     background-color: white;
-=======
-.bfr-title {
-    background-color: peru;
->>>>>>> origin/PhoneGap
     text-align: center;
     color: White;
     line-height: 2.0;
@@ -91,11 +93,7 @@ body{
     font-size: 14px;
     
 }
-<<<<<<< HEAD
-.header-tabs:hover, #settings-log:hover, #info:hover, #map:hover, #calender:hover, #save:hover, .collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover{
-=======
-.header-tabs:hover, #settings-log:hover, #info:hover, #map:hover, #calender:hover, #save:hover, .bfr-title:hover, #home-icon:hover, #logout-icon:hover {
->>>>>>> origin/PhoneGap
+.header-tabs:hover, #settings-log:hover, #info:hover, #map:hover, #calender:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, {
     background: grey;
     color: white;
 }
@@ -156,55 +154,6 @@ body{
     line-height: 2.0;
 }
 
-<<<<<<< HEAD
-=======
-
-#home-icon {
-    float: left;
-    margin-left:10px;
-    margin-top: 4px;
-    display:block;
-    width:25px;
-    height:25px;
-    border: 1px solid black;
-    border-radius: 50%;
-    color:#f5f5f5;
-    text-align:center;
-    text-decoration:none;
-    background: #3D1F00;
-    box-shadow: 0 0 3px gray;
-    font-size:20px;
-
-}
-
-#home-icon img {
-    display: block;
-    width: 76%;
-    padding: 12%;
-    height: auto;
-}
-
-#logout-icon {
-    float: right;
-    margin-right:10px;
-    margin-top: 4px;
-    display:block;
-    width:25px;
-    height:25px;
-    border: 1px solid black;
-    border-radius: 50%;
-    color:#f5f5f5;
-    text-align:center;
-    text-decoration:none;
-    background: #3D1F00;
-    box-shadow: 0 0 3px gray;
-    font-size:20px;
-}
-
-
-
-
->>>>>>> origin/PhoneGap
 #main{
     height:30px;
     background-color: #333;
@@ -297,7 +246,6 @@ ul{
 
 #transportation-form-container{
    text-align:center;
-<<<<<<< HEAD
 }
     
 #pickup-container{
@@ -333,6 +281,4 @@ ul{
     padding-top: 10px;
     padding-bottom: 10px;
 
-=======
->>>>>>> origin/PhoneGap
 }
