@@ -39,6 +39,7 @@ body{
     text-align: center;
     line-height: 2.0;
     font-size: 14px;
+    border-bottom: 2px solid black;
 }
 
 #pickup-header{
@@ -58,9 +59,12 @@ body{
 
 
 .bfr-title{
-     background-color: peru;
+     background-color: #999;
      text-align: center;
      color: White;
+     text-transform: uppercase;
+     line-height: 2.0;
+     
 }
 
 .collapsable-tab{
@@ -93,10 +97,11 @@ body{
     font-size: 14px;
     
 }
-.header-tabs:hover, #settings-log:hover, #info:hover, #map:hover, #calender:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, {
+.header-tabs:hover, #settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calender:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover {
     background: grey;
     color: white;
 }
+
 
 .header-tabs > a {
     text-decoration: inherit;
@@ -170,7 +175,9 @@ li{
     line-height: 200%;
 }
 
-ol{
+ol
+{
+    padding-top: 10px;
     background-color: white;
     margin:0px;
 }
