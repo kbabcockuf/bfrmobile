@@ -19,67 +19,65 @@ body{
 .header {
     background-color: white;
     text-align: center;
-    line-height: 2.0;
     font-size: 12px;
+    line-height: 2.0;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 .info-header{
-    display:inline-block;
     background-color: white;
     text-align: center;
     font-size: 12px;
     padding-top: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid black;
     
 }
 
-#past-header{  
+#info-title{
+    background-color: #999;
+    color: White;
+    text-align: center;
+    line-height: 2.0;
+}
+
+#past-header  {
     background-color: white;
     text-align: center;
     line-height: 2.0;
     font-size: 14px;
-    border-bottom: 2px solid black;
 }
 
 #pickup-header{
     background-color: white;
     text-align: center;
+    font-size: 12px;
     line-height: 2.0;
-    font-size: 14px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 #settings-header{
     background-color: white;
     text-align: center;
+    font-size: 12px;
     line-height: 2.0;
-    font-size: 14px;
-    border-bottom: 2px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-
-.bfr-title{
-     background-color: #999;
-     text-align: center;
-     color: White;
-     text-transform: uppercase;
-     line-height: 2.0;
-     
-}
-
-.collapsable-tab{
-    background-color: white;
+.collapsable-tab, .bfr-title{
+    background-color: #999;
     text-align: center;
     line-height: 2.0;
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    color: white; 
+    font-size: 14px;
     
 }
 
 .report-title{
     background-color: white;
     text-align: center;
-    color: White;
     line-height: 2.0;
     text-transform: uppercase;
     font-size: 14px;
@@ -108,12 +106,6 @@ body{
     color: inherit;
 }
 
-.tabs-container {
-    clear: both;
-    line-height: 2.0;
-    text-align: center;
-    background-color: white;
-}
 
 #upcoming-container{
     text-indent: 20px;
@@ -121,6 +113,12 @@ body{
 
 #info-container{
     background-color: white;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+#notes-container{
+    font-size: 12px;
 }
 
 #settings-container{
@@ -139,14 +137,18 @@ body{
     text-indent: 20px;
 }
 
+#transportation, #lbs{
+    font-size: 12px;
+}
+
 
 #notification-box{
     background-color: white;
     text-align: left;
     line-height: 2.0;
-    border: 2px solid black;
     margin-left:10px;
     margin-right:10px;
+    /*font-size: 12px;*/
 }
 
 .box{
@@ -154,9 +156,11 @@ body{
 }
 
 #notif{
-    background-color: white;
+    background-color: #999;
+    color: White;
     text-align: center;
     line-height: 2.0;
+    
 }
 
 #main{
@@ -173,11 +177,13 @@ h2,h4,h3 {
 
 li{
     line-height: 200%;
+    font-size: 12px;
 }
 
 ol
 {
     padding-top: 10px;
+    padding-bottom: 10px;
     background-color: white;
     margin:0px;
 }
@@ -197,16 +203,17 @@ ul{
     line-height: 2.0;    
 }
 
-
-
 #info-pickup,#take{
-    float: center;
     width: 33.33%;    
     display: inline-block;
     background: #666;
     text-align: center;
     color: White;
     line-height: 2.0;
+}
+
+#info-tabs-container{
+    
 }
 
 #settings-log{
@@ -221,14 +228,16 @@ ul{
 }
 
 #save{
-    background-color: white;
+    background-color: #666;
     width: 75.00%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     background: #666;
     text-align: center;
     color: White;
     line-height: 2.0;
+    
 }
 
 #enter-data-container{
@@ -261,10 +270,11 @@ ul{
     line-height: 2.0;
 }
 
-#location{
-    
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
+#location, #date{
+    background-color: #999;
+    color: White;
+    text-align: center;
+    line-height: 2.0;
 }
 
 #location-contents{
@@ -273,12 +283,6 @@ ul{
     font-size: 12px;
     padding-top: 10px;
     padding-bottom: 10px;
-}
-
-
-#date{
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
 }
 
 #date-contents{

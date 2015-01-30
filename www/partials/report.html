@@ -14,7 +14,7 @@
             <br><select class="dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in foodTypes">
             </select>
             <input class="food-input" type="text" size="15" ng-model="entry.name"/>
-            <input class="lb-input" type="text" size="1" ng-model ="entry.weight"/> lbs
+            <input class="lb-input" type="text" size="1" ng-model ="entry.weight"/> <span id ="lbs">lbs</span>
         </div>
 
         <!--<div class="products">
@@ -44,7 +44,7 @@
     <div id="transportation-container">
         <form id="transportation-form-container">
             <br>
-            Transportation
+            <span id ="transportation">Transportation<span>
 
             <select class="transportaion-dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in transportTypes">
             </select>
@@ -55,10 +55,13 @@
                 <textarea type="text" cols="32" rows="2" placeholder="Notes about the shift. Equipment issues?"></textarea>
             </div>
         </form>
+        
+    </div>
+
         <div id="save">
             <h4>Save</h4>
         </div>
-    </div>
+
 </bfr-drawer>
 <!--<div class="collapsable-tab">
     <h4>
