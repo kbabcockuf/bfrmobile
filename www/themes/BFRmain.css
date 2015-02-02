@@ -3,6 +3,11 @@
     padding: 0px;
 
 }
+
+#submitButton{
+    background-color: #666;
+}
+
 body{
     font-family: arial, helvetica;
     color: black;
@@ -25,12 +30,14 @@ body{
 #home-icon{
    float: left;
    padding-left: 30px;
+   vertical-align: middle;
    
 }
 
 #logout-icon{
     float: right;
     padding-right: 30px;
+    vertical-align: middle; 
 }
 
 .header {
@@ -160,12 +167,13 @@ body{
 
 
 #notification-box{
+    padding-top: 10px;
     background-color: white;
     text-align: left;
     line-height: 2.0;
     margin-left:10px;
     margin-right:10px;
-    /*font-size: 12px;*/
+    font-size: 14px;
 }
 
 .box{
@@ -214,17 +222,29 @@ ul{
     line-height: 2.0;    
 }
 
-#info-pickup,#take{
+#info-tabs-container{
+    text-align: center;
+}
+
+#take{
+    float: center;
     width: 33.33%;    
     display: inline-block;
     background: #666;
     text-align: center;
     color: White;
-    line-height: 2.0;
+    line-height: 2.0; 
+    
 }
 
-#info-tabs-container{
-    
+#info-pickup{
+    float: center;
+    width: 33.33%;    
+    display: inline-block;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;    
 }
 
 #settings-log{

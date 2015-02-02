@@ -294,8 +294,8 @@ html .ui-bar-a .ui-btn:visited,
 html .ui-body-a .ui-btn:visited,
 html body .ui-group-theme-a .ui-btn:visited,
 html head + body .ui-btn.ui-btn-a:visited {
-	background: #51A351 /*{a-bup-background-color}*/;
-	border-color: #00a84c /*{a-bup-border}*/;
+	background: #666 /*{a-bup-background-color}*/;
+	border-color: #666 /*{a-bup-border}*/;
 	color: #FFFFFF /*{a-bup-color}*/;
 	text-shadow: undefined /*{a-bup-shadow-x}*/ undefined /*{a-bup-shadow-y}*/ undefined /*{a-bup-shadow-radius}*/ undefined /*{a-bup-shadow-color}*/;
 }
