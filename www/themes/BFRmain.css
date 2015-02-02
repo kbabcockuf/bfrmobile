@@ -16,6 +16,23 @@ body{
     line-height: 2.3;
 }
 
+#main{
+    height:30px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+#home-icon{
+   float: left;
+   padding-left: 30px;
+   
+}
+
+#logout-icon{
+    float: right;
+    padding-right: 30px;
+}
+
 .header {
     background-color: white;
     text-align: center;
@@ -163,12 +180,6 @@ body{
     
 }
 
-#main{
-    height:30px;
-    background-color: #333;
-    text-transform: uppercase;
-    font-size: 14px;
-}
 
 
 h2,h4,h3 {

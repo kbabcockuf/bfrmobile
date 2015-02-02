@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html ng-app="BFRMobile">
-<head>
+  <head>
 
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Boulder Food Rescue</title>
@@ -24,13 +24,16 @@
 
   </head>
 <body ng-controller="BfrAppCtrl">
-<div id="index-header">
-    <div class="icons">
-        <a id="home-icon">&nbsp;</a>
-        <a id="logout-icon" ng-click="signOut()"></a>
-        <h4 id="main">Boulder Food Rescue</h4>
+    <div id="index-header">
+
+                <span id="home-icon"><a ><img src="icons/home-white.png" />&nbsp;</a></span>
+                
+                
+                <h4 id="main">Boulder Food Rescue</h4>
+                
+                
+                <span id="logout-icon"><a ng-click="signOut()"><img src="icons/power-white.png" /></a></span>  
     </div>
-</div>
 
 <div class="tabs-container">
     <div class="header-tabs">
