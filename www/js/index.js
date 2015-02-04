@@ -1,3 +1,28 @@
+$(function () {
+    $("#loginForm").on("submit", function (y) {
+        //disable the button so we can't resubmit while we wait
+        $("#submitButton", this).attr("disabled", "disabled");
+        var e = $("#email").val();
+        var p = $("#password").val();
+        $.ajax({
+            type: "POST",
+            url: "http://dev.boulderfoodrescue.org/volunteers/sign_in.json",
+            data: { email: e, password: p },
+            success: function (data) {
+                console.log("Success (sign_in)");
+                window.sessionStorage.token = data.authentication_token;
+                window.sessionStorage.email = e;
+                window.location = ("home.html");
+            },
+            error: function (msg) {
+                console.log("Error (sign_in)");
+            }
+        });
+        $("#submitButton").removeAttr("disabled");
+        return false;
+    });
+});
+
 // $('#reposHome').bind('pageinit', function(event) {
 // 	loadRepos();
 // });

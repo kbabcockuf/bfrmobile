@@ -100,6 +100,14 @@ body{
     padding-bottom: 10px;
 }
 
+#forgot_password-header{
+    background-color: white;
+    text-align: center;
+    line-height: 2.0;
+    font-size: 14px;
+}
+
+
 .collapsable-tab, .bfr-title{
     background-color: #999;
     text-align: center;
@@ -139,6 +147,16 @@ body{
     text-decoration: inherit;
     color: inherit;
 }
+
+#forgot_password_form{
+    padding-top: 20px;
+    text-align: center;
+}
+
+.email_reset label{
+    display: inline-block;
+}
+
 
 
 #upcoming-container{
@@ -260,7 +278,7 @@ ul{
 
 #settings-log{
     background-color: white;
-    width: 33.33%;
+    width: 75%;
     margin-left: auto;
     margin-right: auto;
     background: #666;
