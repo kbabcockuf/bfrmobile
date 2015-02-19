@@ -65,6 +65,19 @@ angular.module("BFRMobile.api", [])
                 },
 
                 /**
+                 * Send an updated log item to the API.
+                 *
+                 * @param log {object} Object with .log and .log_parts
+                 * @return {Promise}
+                 */
+                updateLog: function(log) {
+                    return api.call("/logs/" + log.log.id + ".json", {
+                        method: 'PUT',
+                        data: log
+                    });
+                },
+
+                /**
                  * Convenience method for loading locations.
                  *
                  * @param id {Number} A location ID

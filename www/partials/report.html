@@ -1,5 +1,5 @@
 ﻿
-﻿<div class="header">
+<div class="header">
     <h4>
         <span>{{log.donor.name}}</span>
         <span ng-repeat="recipient in log.recipients">
@@ -10,11 +10,11 @@
 
 <bfr-drawer bfr-title="log.donor.name">
     <form id="enter-data-container">
-        <div class="products" ng-repeat="entry in shiftItems">
-            <br><select class="dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in foodTypes">
+        <div class="products" ng-repeat="(id, entry) in log_parts">
+            <br><select class="dropdown-box" ng-model="entry.food_type_id" ng-options="item.id as item.name for item in foodTypes">
             </select>
-            <input class="food-input" type="text" size="15" ng-model="entry.name"/>
-            <input class="lb-input" type="text" size="1" ng-model ="entry.weight"/> <span id ="lbs">lbs</span>
+            <input class="food-input" type="text" size="15" ng-model="entry.description"/>
+            <input class="lb-input" type="text" size="1" ng-model="entry.weight"/> <span id ="lbs">lbs</span>
         </div>
 
         <!--<div class="products">
@@ -58,7 +58,7 @@
         
     </div>
 
-        <div id="save">
+        <div id="save" ng-click="submit()">
             <h4>Save</h4>
         </div>
 
