@@ -84,7 +84,8 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             $scope.submit = function() {
                 console.log({log: $scope.log, log_parts: $scope.log_parts});
                 bfrApi.updateLog(
-                    {log: $scope.log, log_parts: $scope.log_parts});
+                    {log: $scope.log, log_parts: $scope.log_parts})
+                    .catch(storeErrorIn($scope, 'errorMsg'));
             };
         }])
 

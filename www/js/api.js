@@ -71,6 +71,23 @@ angular.module("BFRMobile.api", [])
                  * @return {Promise}
                  */
                 updateLog: function(log) {
+                    // Don't modify the caller's object
+                    log = angular.copy(log);
+
+                    // Log parts are returned with 'count' as a string, but
+                    // expect a number when updating
+                    for (var id in log.log_parts) {
+                        log.log_parts[id].count =
+                            String(log.log_parts[id].count);
+                    }
+
+                    // Remove read-only properties from the log object.
+                    var read_only_properties =
+                        ['volunteer_names', 'donor','recipients'];
+                    read_only_properties.forEach(function(key) {
+                        delete log.log[key];
+                    });
+
                     return api.call("/logs/" + log.log.id + ".json", {
                         method: 'PUT',
                         data: log
