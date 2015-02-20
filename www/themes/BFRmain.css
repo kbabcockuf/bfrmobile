@@ -69,8 +69,12 @@ body{
     text-align: center;
     font-size: 12px;
     line-height: 2.0;
-    padding-top: 36px;
+    /*padding-top: 10px;*/
     padding-bottom: 10px;
+}
+
+#donor-recipient {
+    padding-top: 10px;
 }
 
 .info-header{
@@ -332,4 +336,15 @@ form #email, form #password, form label {
     width: 75%;
     padding: 10px;
     display: inline-flex;
+}
+
+.error{
+    text-align: center;
+    font-size: 14px;
+    padding-top: 38px;
+}
+
+#alert
+{
+    padding-right: 4px;
 }

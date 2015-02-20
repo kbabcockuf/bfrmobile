@@ -1,10 +1,14 @@
-﻿
+﻿<div>
+    <div class="error" ng-if="errorMsg">
+    <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
+</div>
+
 <div class="header">
     <h4>
-        <span>{{log.donor.name}}</span>
+        <div id="donor-recipient"><span>{{log.donor.name}}</span>
         <span ng-repeat="recipient in log.recipients">
             &rarr; {{recipient.name}}
-        </span>
+        </span></div>
     </h4>
 </div>
 
@@ -60,11 +64,19 @@
 
         <div id="save" ng-click="submit()">
             <h4>Save</h4>
-        </div>
 
+        </div>
+        
+
+        
 </bfr-drawer>
 <!--<div class="collapsable-tab">
     <h4>
         Vitamin Cottage
     </h4>
 </div>-->
+
+
+
+
+
