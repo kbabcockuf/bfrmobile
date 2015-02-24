@@ -1,4 +1,11 @@
 <bfr-drawer ng-repeat="shift in openShifts" bfr-title="shift.schedule.detailed_start_time">
+    
+    <div>
+        <div class="error" ng-if="errorMsg">
+        <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
+    </div>
+    
+    
     <div id="pickup-header">
         <h4>
             Shifts Needing Covering!

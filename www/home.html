@@ -45,6 +45,11 @@
         <a href="#/report"><h4>Enter Data</h4></a>
     </div>
 
+    <div>
+        <div class="error" ng-if="errorMsg">
+        <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
+    </div>
+
 
 <div ng-view></div>
 
