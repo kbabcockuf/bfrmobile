@@ -42,19 +42,15 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     .controller("PickUpCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
         $scope.open = bfrApi.call("/logs/mine_past.json")
             .map(function(result) {
-                bfrApi.logById(result)
-                .then(function(result){
-
-                    return bfrApi.loadLocationDetail(result.log);
-                })
+                return bfrApi.logById(result)
+                    .then(bfrApi.loadLocationDetail)
             })
             .then(function(result){
                 console.log(result);
                 return result;
-                })
+            })
             .then(storeIn($scope, 'openShifts'))
             .catch(storeErrorIn($scope, 'errorMsg'));
-                
     }])
 
     .controller("PastCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
@@ -83,19 +79,14 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
                 .then(storeIn($scope, 'transportTypes'));
 
             bfrApi.logById($routeParams.logId)
-                .then(function(result) {
-                    $scope.log_parts = result.log_parts;
-                    return bfrApi.loadLocationDetail(result.log);
-                })
-                .then(storeIn($scope, 'log'))
+                .then(bfrApi.loadLocationDetail)
+                .then(storeIn($scope, 'item'))
                 .catch(storeErrorIn($scope, 'errorMsg'));
 
             console.log($scope);
 
             $scope.submit = function() {
-                console.log({log: $scope.log, log_parts: $scope.log_parts});
-                bfrApi.updateLog(
-                    {log: $scope.log, log_parts: $scope.log_parts})
+                bfrApi.updateLog($scope.item)
                     .catch(storeErrorIn($scope, 'errorMsg'));
             };
         }])

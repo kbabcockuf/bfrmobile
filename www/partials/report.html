@@ -5,16 +5,16 @@
 
 <div class="header">
     <h4>
-        <div id="donor-recipient"><span>{{log.donor.name}}</span>
-        <span ng-repeat="recipient in log.recipients">
+        <div id="donor-recipient"><span>{{item.log.donor.name}}</span>
+        <span ng-repeat="recipient in item.log.recipients">
             &rarr; {{recipient.name}}
         </span></div>
     </h4>
 </div>
 
-<bfr-drawer bfr-title="log.donor.name">
+<bfr-drawer bfr-title="item.log.donor.name">
     <form id="enter-data-container">
-        <div class="products" ng-repeat="(id, entry) in log_parts">
+        <div class="products" ng-repeat="(id, entry) in item.log_parts">
             <br><select class="dropdown-box" ng-model="entry.food_type_id" ng-options="item.id as item.name for item in foodTypes">
             </select>
             <input class="food-input" type="text" size="15" ng-model="entry.description"/>
@@ -44,7 +44,7 @@
     </h4>
 </div>-->
 
-<bfr-drawer ng-repeat="recipient in log.recipients" bfr-title="recipient.name">
+<bfr-drawer ng-repeat="recipient in item.log.recipients" bfr-title="recipient.name">
     <div id="transportation-container">
         <form id="transportation-form-container">
             <br>

@@ -110,15 +110,16 @@ angular.module("BFRMobile.api", [])
                 /**
                  * Load details about locations in a log item.
                  *
-                 * @param item {object} The log item
+                 * @param item {object} The log item (from /logs/id.json)
                  * @return {Promise} The log item with location information
                  * added
                  */
                 loadLocationDetail: function(item) {
-                    item.donor = api.locationById(item.donor_id);
-                    item.recipients = $q.all(
-                        item.recipient_ids.map(api.locationById));
-
+                    console.log("item", item);
+                    item.log.donor = api.locationById(item.log.donor_id);
+                    item.log.recipients = $q.all(
+                        item.log.recipient_ids.map(api.locationById));
+                    item.log = $q.all(item.log);
                     return $q.all(item);
                 },
 
