@@ -33,7 +33,7 @@ app.config([
         $locationProvider.html5Mode(false);
 
         $routeProvider
-            .when('/upcoming/:logId', {
+            .when('/upcoming', {
                 templateUrl: 'partials/upcoming.html',
                 controller: 'UpcomingCtrl'
             })

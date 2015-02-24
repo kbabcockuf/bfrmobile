@@ -33,6 +33,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     }])
 
     .controller("UpcomingCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
+        console.log("Upcoming");
         $scope.upcoming = bfrApi.call("/logs/mine_upcoming.json")
             .map(bfrApi.logById)
             .then(storeIn($scope, 'upcomingShifts'))
@@ -40,7 +41,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     }])
 
     .controller("PickUpCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
-        $scope.open = bfrApi.call("/logs/mine_past.json")
+        $scope.open = bfrApi.call("/logs/open.json")
             .map(function(result) {
                 return bfrApi.logById(result)
                     .then(bfrApi.loadLocationDetail)
