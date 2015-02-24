@@ -1,5 +1,5 @@
 angular.module("BFRMobile.api", [])
-    .value("loginRedirect", "index.html")
+    .value("loginRedirect", "login.html")
 
     /**
      * API endpoint to be prepended to API calls (excludes trailing '/').
@@ -65,7 +65,10 @@ angular.module("BFRMobile.api", [])
                 },
 
                 /**
-                 * Send an updated log item to the API.
+                 * Send an updated log item to .then(function(result) {
+                    $scope.log_parts = result.log_parts;
+                    return bfrApi.loadLocationDetail(result.log);
+                })the API.
                  *
                  * @param log {object} Object with .log and .log_parts
                  * @return {Promise}
