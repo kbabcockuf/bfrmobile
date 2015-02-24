@@ -6,6 +6,12 @@
 	    <link type="text/css" rel ="stylesheet" href="themes/BFRmain.css" />
     </head>
         <body>
+            
+            <div>
+                <div class="error" ng-if="errorMsg">
+                <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
+            </div>
+            
             <div id="settings-header">
                 <h4>
                     Settings
