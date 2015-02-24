@@ -69,12 +69,19 @@ body{
     text-align: center;
     font-size: 12px;
     line-height: 2.0;
-    /*padding-top: 10px;*/
-    padding-bottom: 10px;
 }
 
-#donor-recipient {
+#pickup-header, #settings-header{
+    background-color: white;
+    text-align: center;
+    font-size: 12px;
+    line-height: 2.0;
+}
+
+
+#donor-recipient, #shifts, #settings {
     padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .info-header{
@@ -98,15 +105,6 @@ body{
     text-align: center;
     line-height: 2.0;
     font-size: 14px;
-}
-
-#pickup-header, #settings-header{
-    background-color: white;
-    text-align: center;
-    font-size: 12px;
-    line-height: 2.0;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .collapsable-tab, .bfr-title{
@@ -243,8 +241,9 @@ ul{
     line-height: 2.0;    
 }
 
-#info-tabs-container{
+.tabs-container{
     text-align: center;
+    margin-bottom: 0px;
 }
 
 #take, #info-pickup{

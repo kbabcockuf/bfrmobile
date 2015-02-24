@@ -1,15 +1,14 @@
+<div id="pickup-header">
+        <h4>
+            <div id="shifts">Shifts Needing Covering!</div>
+        </h4>
+    </div>
+
 <bfr-drawer ng-repeat="shift in openShifts" bfr-title="shift.schedule.detailed_start_time">
     
     <div>
         <div class="error" ng-if="errorMsg">
         <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
-    </div>
-    
-    
-    <div id="pickup-header">
-        <h4>
-            Shifts Needing Covering!
-        </h4>
     </div>
 
     <div id="pickup-container">
@@ -18,7 +17,10 @@
         </div>
             <div id="location-contents">
                 <h4>
-                    Whole Foods Baseline -> Vitamin Cottage -> Attention Homes
+                    <div id="donor-recipient"><span>{{log.donor.name}}</span>
+                        <span ng-repeat="recipient in log.recipients">
+                        &rarr; {{recipient.name}}
+                    </span></div>
                 </h4>
             </div>
         
@@ -26,19 +28,20 @@
             <h4>Date</h4>
         </div>
             <div id="date-contents">
-                <h4>Thu Jan 29 (3 days from now) 
-                between 1PM and 3PM</h4>
+                <h4>{{shift.schedule.detailed_date + shift.schedule.detailed_start_time.substring(10) | fuzzyTime}}</h4>
             </div>
             
     </div>
   
-    <div id="info-tabs-container">
-       
-        <div id="info-pickup">
+    <div class="tabs-container">
+        <div id="info">
             <h4>Info</h4>
         </div>
-        <div id="take">
-            <h4>Take</h4>
+        <div id="map">
+            <h4>Map</h4>
+        </div>
+        <div id="calender">
+            <h4>Calender</h4>
         </div>
     </div>
 </bfr-drawer>
