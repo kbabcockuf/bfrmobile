@@ -12,7 +12,7 @@ $(function () {
                 console.log("Success (sign_in)");
                 window.sessionStorage.token = data.authentication_token;
                 window.sessionStorage.email = e;
-                window.location = ("home.html");
+                window.location = ("index.html");
             },
             error: function (msg) {
                 console.log("Error (sign_in)");
