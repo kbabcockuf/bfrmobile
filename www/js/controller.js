@@ -41,7 +41,8 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     }])
 
     .controller("PickUpCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
-        $scope.open = bfrApi.call("/logs/open.json")
+        /*$scope.open = bfrApi.call("/logs/open.json")*/
+        $scope.open = bfrApi.call("/logs/mine_past.json")
             .map(function(result) {
                 return bfrApi.logById(result)
                     .then(bfrApi.loadLocationDetail)
@@ -93,6 +94,10 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         }])
 
     .controller("SettingsCtrl", ['$scope', function($scope) {
+
+    }])
+
+    .controller("InfoCtrl", ['$scope', function($scope) {
 
     }])
 

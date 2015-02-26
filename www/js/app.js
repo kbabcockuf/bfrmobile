@@ -54,8 +54,16 @@ app.config([
                 controller: 'DetailCtrl'
             })
             .when('/settings', {
-                templateUrl: 'partials/settings.html',
+                templateUrl: 'partials/settings_new.html',
                 controller: 'SettingsCtrl'
+            })
+            .when('/detail', {
+                templateUrl: 'partials/detail.html',
+                controller: 'DetailCtrl'
+            })
+            .when('/info_new', {
+                templateUrl: 'partials/info_new.html',
+                controller: 'InfoCtrl'
             })
             .otherwise({
                 redirectTo: '/upcoming'

@@ -55,6 +55,10 @@ body{
    vertical-align: middle;
 }
 
+#home-icon > a{
+    text-decoration:none;
+}
+
 #logout-icon
 {
     background-color: #333;
@@ -71,7 +75,7 @@ body{
     line-height: 2.0;
 }
 
-#pickup-header, #settings-header{
+#pickup-header, #settings-header, #info-header {
     background-color: white;
     text-align: center;
     font-size: 12px;
@@ -79,18 +83,9 @@ body{
 }
 
 
-#donor-recipient, #shifts, #settings {
+#donor-recipient, #shifts, #settings, #inf {
     padding-top: 10px;
     padding-bottom: 10px;
-}
-
-.info-header{
-    background-color: white;
-    text-align: center;
-    font-size: 12px;
-    padding-top: 20px;
-    padding-bottom: 10px;
-    
 }
 
 #info-title, #notif{
