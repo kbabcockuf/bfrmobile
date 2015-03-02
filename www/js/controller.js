@@ -40,12 +40,14 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             .catch(storeErrorIn($scope, 'errorMsg'));
     }])
 
-    .controller("PickUpCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
+    .controller("PickUpCtrl", ['$scope', '$q' , 'bfrApi', function($scope, $q, bfrApi) {
         $scope.open = bfrApi.call("/logs/open.json")
         
             .map(function(result) {
-                return bfrApi.logById(result)
-                    .then(bfrApi.loadLocationDetail)
+                return $q.all(result.map(function(item){
+                    return bfrApi.logById(item)
+                        .then(bfrApi.loadLocationDetail)
+                }))
             })
             .then(function(result){
                 console.log(result);

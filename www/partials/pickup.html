@@ -1,45 +1,37 @@
 <div id="pickup-header">
-        <h4>
-            <div id="shifts">Shifts Needing Covering!</div>
-        </h4>
+    <h4>
+        <div id="shifts">Shifts Needing Covering!</div>
+    </h4>
+</div>
+<div>
+    <div class="error" ng-if="errorMsg">
+        <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}
     </div>
-
-<bfr-drawer ng-repeat="shift in openShifts" bfr-title="shift.schedule.detailed_start_time">
-    
-    <div>
-        <div class="error" ng-if="errorMsg">
-        <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
-    </div>
-
-    <div id="pickup-container">
-        <div id="location">
-            <h4>Location</h4>
+</div>
+<div ng-repeat="shift in openShifts">
+<bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule.detailed_date + item.schedule.detailed_start_time.substring(10) | fuzzyTime">
+    <h4>
+        <div class="donor-recipient"><span>{{item.log.donor.name}}</span>
+            <span ng-repeat="recipient in item.log.recipients">
+                &rarr; {{recipient.name}}
+            </span>
         </div>
-            <div id="location-contents">
-                <h4>
-                    <div id="donor-recipient"><span>{{log.donor.name}}</span>
-                        <span ng-repeat="recipient in log.recipients">
-                        &rarr; {{recipient.name}}
-                    </span></div>
-                </h4>
-            </div>
-        
-        <div id="date">
-            <h4>Date</h4>
-        </div>
-            <div id="date-contents">
-                <h4>{{shift.schedule.detailed_date + shift.schedule.detailed_start_time.substring(10) | fuzzyTime}}</h4>
-            </div>
-            
-    </div>
-  
-    <div class="tabs-container">
-        <a href="#/info_new" id="info"><h4>Info</h4></a>
+    </h4>
     <div>
-    <div class="tabs-container">
-        <a href="#/detail" id="map"><h4>Map</h4></a>
-    </div>
-    <div class="tabs-container">
-        <a id="take"><h4>Take</h4></a>
-    </div>
+        <div class="tabs-container">
+            <a href="#/info_new" id="info">
+                <h4>Info</h4>
+            </a>
+        </div>
+        <div class="tabs-container">
+            <a href="#/detail" id="map">
+                <h4>Map</h4>
+            </a>
+        </div>
+        <div class="tabs-container">
+            <a id="take">
+                <h4>Take</h4>
+            </a>
+        </div>
 </bfr-drawer>
+</div>

@@ -83,9 +83,15 @@ body{
 }
 
 
-#donor-recipient, #shifts, #settings, #inf {
+.donor-recipient, #shifts, #settings, #inf {
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.donor-recipient {
+    font-size: 14px;
+    text-align: center;
+    display: inline-block;      
 }
 
 #info-title, #notif{
