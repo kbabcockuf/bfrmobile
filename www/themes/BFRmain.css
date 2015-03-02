@@ -1,7 +1,6 @@
 ﻿*:not(ol) {
     margin: 0px;
     padding: 0px;
-
 }
 
 #submitButton{
@@ -225,11 +224,13 @@ ol
     padding-bottom: 10px;
     background-color: white;
     margin:0px;
+    font-size: 12px;
 }
 
 ul{
     background-color: white;
     margin:0px;
+    font-size: 12px;
 }
 
 #info,#map,#calender {

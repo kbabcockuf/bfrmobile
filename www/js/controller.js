@@ -40,7 +40,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             .catch(storeErrorIn($scope, 'errorMsg'));
     }])
 
-    .controller("PickUpCtrl", ['$scope', '$q' , 'bfrApi', function($scope, $q, bfrApi) {
+    .controller("PickUpCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
         $scope.open = bfrApi.call("/logs/open.json")
         
             .map(function(result) {
@@ -57,12 +57,29 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             .catch(storeErrorIn($scope, 'errorMsg'));
     }])
 
-    .controller("PastCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
+
+    .controller("PastCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
+        bfrApi.call("/logs/mine_past.json")
+            .map(function(result) {
+                return $q.all(result.map(function(item){
+                    return bfrApi.logById(item)
+                        .then(bfrApi.loadLocationDetail)
+                }))
+            })
+            .then(function(result){
+                console.log(result);
+                return result;
+            })
+            .then(storeIn($scope, 'pastShifts'))
+            .catch(storeErrorIn($scope, 'errorMsg'));
+    }])
+
+    /*.controller("PastCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
         bfrApi.call("/logs/mine_past.json")
             .map(bfrApi.logById)
             .then(storeIn($scope, 'pastShifts'))
             .catch(storeErrorIn($scope, 'errorMsg'));
-    }])
+    }])*/
 
     .controller("ReportCtrl", [
         '$scope', '$routeParams', 'bfrApi',
@@ -95,6 +112,37 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             };
         }])
 
+    /*.controller("ReportCtrl", [
+        '$scope', '$routeParams', 'bfrApi',
+        function($scope, $routeParams, bfrApi) {*/
+            //$scope.shiftItems = [{}];
+
+            /*$scope.$watch('shiftItems[shiftItems.length-1]', function(last) {
+                if (last.type && last.name &&last.weight) {
+                    $scope.shiftItems.push({});
+                }
+            }, true);*/
+
+            /*bfrApi.call("/food_types.json")
+                .then(storeIn($scope, 'foodTypes'));
+            bfrApi.call("/scale_types.json")
+                .then(storeIn($scope, 'scaleTypes'));
+            bfrApi.call("/transport_types.json")
+                .then(storeIn($scope, 'transportTypes'));
+
+            bfrApi.logById($routeParams.logId)
+                .then(bfrApi.loadLocationDetail)
+                .then(storeIn($scope, 'item'))
+                .catch(storeErrorIn($scope, 'errorMsg'));
+
+            console.log($scope);
+
+            $scope.submit = function() {
+                bfrApi.updateLog($scope.item)
+                    .catch(storeErrorIn($scope, 'errorMsg'));
+            };
+        }])*/
+    
     .controller("SettingsCtrl", ['$scope', function($scope) {
 
     }])
