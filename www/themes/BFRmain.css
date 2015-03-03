@@ -81,6 +81,9 @@ body{
     line-height: 2.0;
 }
 
+#info-header{
+    padding-top: 10px;
+}
 
 .donor-recipient, #shifts, #settings, #inf {
     padding-top: 10px;
@@ -88,7 +91,6 @@ body{
 }
 
 .donor-recipient {
-    font-size: 14px;
     text-align: center;
     display: inline-block;      
 }

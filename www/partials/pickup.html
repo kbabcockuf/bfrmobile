@@ -10,14 +10,13 @@
 </div>
 <div ng-repeat="shift in openShifts">
     <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule.detailed_date + item.schedule.detailed_start_time.substring(10) | fuzzyTime">
-        <h4>
-            <div class="donor-recipient"><span>{{item.log.donor.name}}</span>
+        <div class="header">
+            <div class="donor-recipient" ><span>{{item.log.donor.name}}</span>
                 <span ng-repeat="recipient in item.log.recipients">
-                    &rarr; {{recipient.name}}
+                &rarr; {{recipient.name}}
                 </span>
             </div>
-        </h4>
-        <div>
+        </div>
         <div class="tabs-container">
             <a href="#/detail/{{item.log.id}}" id="info">
                 <h4>Info</h4>

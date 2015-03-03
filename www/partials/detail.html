@@ -1,11 +1,14 @@
-<div id="info-header">
-    <div id="inf">
-        <span>{{shift.log.donor.name}}</span>
-        <span ng-repeat="recipient in shift.log.recipients">
-        &rarr; {{recipient.name}}
-        </span>
-    </div>
+
+
+<div class="header">
+        <div class="donor-recipient" ><span>{{shift.log.donor.name}}</span>
+        <span ng-repeat="recipient in item.log.recipients">
+            &rarr; {{recipient.name}}
+        </span></div>
 </div>
+
+
+
 
 <div id="info-title">
     <h4>
@@ -48,31 +51,40 @@
             <span ng-if="shift.schedule.difficulty_rating">
                 {{shift.schedule.difficulty_rating}}
             </span>
-            <spen ng-if="!shift.schedule.difficulty_rating" class="empty">Unknown</span>
+
+            <span ng-if="!shift.schedule.difficulty_rating" class="empty">Unknown</span>
         </div>
     </div>
     <div>
+        <br>
         <div ng-repeat="location in locations">
             <h3>{{location.name}} ({{location.type}})</h3>
             <p class="address">{{location.address}}</p>
             <p ng-if="location.public_notes">
+                <br>
                 <strong>Notes:</strong> {{location.public_notes}}
             </p>
             <p ng-if="location.entry_info">
+                <br>
                 <strong>Entry:</strong> {{location.entry_info}}
             </p>
             <p ng-if="location.equipment_storage_info">
+                <br>
                 <strong>Equipment:</strong> {{location.equipment_storage_info}}
             </p>
             <p ng-if="location.food_storage_info">
+                <br>
                 <strong>Food:</strong> {{location.food_storage_info}}
             </p>
             <p ng-if="location.contact">
+                <br>
                 <strong>Contact:</strong> {{location.contact}}
             </p>
             <p ng-if="location.exit_info">
+                <br>
                 <strong>Exit:</strong> {{location.exit_info}}
             </p>
+            <br>
         </div>
     </div>
 </div>
