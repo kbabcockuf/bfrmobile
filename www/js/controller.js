@@ -57,6 +57,24 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             .catch(storeErrorIn($scope, 'errorMsg'));
     }])
 
+    .controller("InfoCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
+        $scope.open = bfrApi.call("/logs/open.json")
+        
+            .map(function(result) {
+                return $q.all(result.map(function(item){
+                    return bfrApi.logById(item)
+                        .then(bfrApi.loadLocationDetail)
+                }))
+            })
+            .then(function(result){
+                console.log(result);
+                return result;
+            })
+            .then(storeIn($scope, 'openShifts'))
+            .catch(storeErrorIn($scope, 'errorMsg'));
+    }])
+
+
 
     .controller("PastCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
         bfrApi.call("/logs/mine_past.json")
@@ -144,10 +162,6 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         }])*/
     
     .controller("SettingsCtrl", ['$scope', function($scope) {
-
-    }])
-
-    .controller("InfoCtrl", ['$scope', function($scope) {
 
     }])
 
