@@ -95,6 +95,14 @@ body{
     display: inline-block;      
 }
 
+.route > *:after {
+    content: ' → ';
+}
+
+.route > *:last-child:after {
+    content: '';
+}
+
 #info-title, #notif{
     background-color: #999;
     color: White;

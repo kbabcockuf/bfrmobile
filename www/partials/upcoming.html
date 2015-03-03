@@ -1,5 +1,5 @@
 ﻿<div ng-repeat="shift in upcomingShifts">
-    <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule.detailed_date + item.schedule.detailed_start_time.substring(10) | fuzzyTime">
+    <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule | nextDate">
         <div>
             <div class="error" ng-if="errorMsg">
             <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>

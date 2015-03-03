@@ -115,7 +115,6 @@ angular.module("BFRMobile.api", [])
                  * added
                  */
                 loadLocationDetail: function(item) {
-                    console.log("item", item);
                     item.log.donor = api.locationById(item.log.donor_id);
                     item.log.recipients = $q.all(
                         item.log.recipient_ids.map(api.locationById));

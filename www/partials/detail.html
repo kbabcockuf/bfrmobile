@@ -1,14 +1,8 @@
-
-
 <div class="header">
-        <div class="donor-recipient" ><span>{{shift.log.donor.name}}</span>
-        <span ng-repeat="recipient in item.log.recipients">
-            &rarr; {{recipient.name}}
-        </span></div>
+    <div class="donor-recipient route">
+        <span ng-repeat="location in locations">{{location.name}}</span>
+    </div>
 </div>
-
-
-
 
 <div id="info-title">
     <h4>
@@ -19,7 +13,7 @@
 <div id="info-container">
     <div id="pickup">
         {{shift.schedule | describeFrequency}}
-        (Next pickup {{shift.schedule | nextDate}})
+        (Next pickup: {{shift.schedule | nextDate}})
     </div>
     <br>
     <div id="notes-container">

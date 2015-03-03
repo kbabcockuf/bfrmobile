@@ -51,13 +51,20 @@ function fuzzyTime(date) {
 }
 
 /**
- * Return a date in the future representing a particular day of the week.
+ * Return a date representing `time` on the next `day` where day is a
+ * day-of-the-week number from 0-6.
  * @param day {number} Day number (0-6)
+ * @param time {Date} Date representing the time of occurrence
  * @returns {Date}
  */
-function nextDayOfWeek(day) {
+function nextWeekly(day, time) {
     var date = new Date();
+    console.log(date, " -- ", day);
+
     date.setDate(date.getDate() + (7 + day - date.getDay()) % 7);
+    date.setHours(time.getHours(), time.getMinutes());
+
+    console.log(date);
     return date;
 }
 
@@ -75,18 +82,18 @@ angular.module("BFRMobile.filters", [])
             }
 
             var summary = "";
+            var start = new Date(schedule.detailed_start_time);
+            var end = new Date(schedule.detailed_stop_time);
+
             switch (schedule.frequency) {
                 case "weekly":
                     summary += "Pickup every " + WEEKDAY_FORMAT.format(
-                        nextDayOfWeek(schedule.day_of_week-1));
+                        nextWeekly(schedule.day_of_week, start));
                     break;
                 default:
                     console.log("Unrecognized frequency:", schedule.frequency);
                     summary += "Pickup " + schedule.frequency;
             }
-
-            var start = new Date(schedule.detailed_start_time);
-            var end = new Date(schedule.detailed_stop_time);
 
             summary += " between " + TIME_FORMAT.format(start)
                 + " and " + TIME_FORMAT.format(end);
@@ -96,14 +103,17 @@ angular.module("BFRMobile.filters", [])
     }])
     .filter('nextDate', [function() {
         return function(schedule) {
+            console.log(schedule);
             if (!schedule) {
                 return "";
             }
 
-            var nextStart = new Date();
+            var startTime = new Date(schedule.detailed_start_time);
 
+            var nextStart;
             switch (schedule.frequency) {
                 case "weekly":
+                    nextStart = nextWeekly(schedule.day_of_week, startTime);
                     break;
                 default:
                     console.log("Unrecognized frequency:", schedule.frequency);
