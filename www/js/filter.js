@@ -6,9 +6,13 @@ var WEEKDAY_FORMAT = new Intl.DateTimeFormat('en', {
     weekday: 'long'
 });
 
+// The API reports that times are in UTC (i.e '2000-01-01T14:00:00Z'), but they
+// are actually in local time. Format all times as UTC to match the desktop
+// website.
 var TIME_FORMAT = new Intl.DateTimeFormat('en', {
     hour: 'numeric',
-    minute: 'numeric'
+    minute: 'numeric',
+    timeZone: 'UTC'
 });
 
 /**
