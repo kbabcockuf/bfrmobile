@@ -11,6 +11,10 @@
 <ol>
 
     <li ng-repeat="shift in pastShifts">
+        <a>
+            {{shift.schedule.detailed_date + shift.schedule.detailed_start_time.substring(10) | fuzzyTime}}
+        </a>
+        
         <ol>
             <ul ng-repeat="item in shift">
                 <a ng-href="#/report/{{item.log.id}}">
