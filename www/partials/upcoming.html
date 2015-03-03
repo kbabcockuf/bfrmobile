@@ -1,33 +1,37 @@
-﻿<bfr-drawer ng-repeat="shift in upcomingShifts" bfr-title="shift.schedule.detailed_start_time">
-    
-    <div>
-        <div class="error" ng-if="errorMsg">
-        <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
-    </div>
-    
-    <div class="collapsable-tab">
-        <h4>
-            Today at 6pm
-        </h4>
-    </div>
+﻿<div ng-repeat="shift in upcomingShifts">
+    <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule.detailed_date + item.schedule.detailed_start_time.substring(10) | fuzzyTime">
+        <div>
+            <div class="error" ng-if="errorMsg">
+            <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
+        </div>
 
-    <div id="upcoming-container">
-        <ol>
-            <li>Whole Foods (Pickup)</li>
-            <li>Vitamin Cottage (Pickup)</li>
-            <li>Attention Homes (Drop)</li>
-        </ol>
-    </div>
+        <div class="collapsable-tab">
+            <h4>
+                Today at 6pm
+            </h4>
+        </div>
 
-    <div class="tabs-container">
-        <div id="info">
-            <h4>Info</h4>
+        <div id="upcoming-container">
+            <ol>
+                <li>{{item.log.donor.name}} (Pickup)</li>
+                <li ng-repeat="recipient in item.log.recipients">{{recipient.name}} (Drop)</li>
+            </ol>
         </div>
-        <div id="map">
-            <h4>Map</h4>
+
+        <div class="tabs-container">
+            <a href="#/detail/{{item.log.id}}" id="info">
+                <h4>Info</h4>
+            </a>
         </div>
-        <div id="calender">
-            <h4>Calender</h4>
+        <div class="tabs-container">
+            <a href="#/detail" id="map">
+                <h4>Map</h4>
+            </a>
         </div>
-    </div>
-</bfr-drawer>
+        <div class="tabs-container">
+            <a id="take">
+                <h4>Take</h4>
+            </a>
+        </div>
+    </bfr-drawer>
+</div>

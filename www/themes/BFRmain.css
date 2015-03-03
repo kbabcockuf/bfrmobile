@@ -345,6 +345,11 @@ form #email, form #password, form label {
     padding-top: 38px;
 }
 
+.empty {
+    font-style: italic;
+    color: #666;
+}
+
 #alert{
     padding-right: 4px;
 }

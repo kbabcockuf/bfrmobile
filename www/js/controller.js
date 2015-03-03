@@ -32,17 +32,34 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         $scope.signOut = bfrApi.signOut;
     }])
 
-    .controller("UpcomingCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
-        console.log("Upcoming");
-        $scope.upcoming = bfrApi.call("/logs/mine_upcoming.json")
-            .map(bfrApi.logById)
-            .then(storeIn($scope, 'upcomingShifts'))
-            .catch(storeErrorIn($scope, 'errorMsg'));
-    }])
+    .controller("UpcomingCtrl", ['$scope', '$q', 'bfrApi',
+        function($scope, $q, bfrApi) {
+            bfrApi.call("/logs/mine_upcoming.json")
+                .map(function(result) {
+                    return $q.all(result.map(function(item){
+                        return bfrApi.logById(item)
+                            .then(bfrApi.loadLocationDetail)
+                    }))
+                })
+                .then(storeIn($scope, 'upcomingShifts'))
+                .catch(storeErrorIn($scope, 'errorMsg'));
+        }])
 
-    .controller("PickUpCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
+    .controller("PickUpCtrl", ['$scope', '$q', 'bfrApi',
+        function($scope, $q, bfrApi) {
+            $scope.open = bfrApi.call("/logs/open.json")
+                .map(function(result) {
+                    return $q.all(result.map(function(item){
+                        return bfrApi.logById(item)
+                            .then(bfrApi.loadLocationDetail)
+                    }))
+                })
+                .then(storeIn($scope, 'openShifts'))
+                .catch(storeErrorIn($scope, 'errorMsg'));
+        }])
+
+    /*.controller("InfoCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
         $scope.open = bfrApi.call("/logs/open.json")
-        
             .map(function(result) {
                 return $q.all(result.map(function(item){
                     return bfrApi.logById(item)
@@ -55,26 +72,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             })
             .then(storeIn($scope, 'openShifts'))
             .catch(storeErrorIn($scope, 'errorMsg'));
-    }])
-
-    .controller("InfoCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
-        $scope.open = bfrApi.call("/logs/open.json")
-        
-            .map(function(result) {
-                return $q.all(result.map(function(item){
-                    return bfrApi.logById(item)
-                        .then(bfrApi.loadLocationDetail)
-                }))
-            })
-            .then(function(result){
-                console.log(result);
-                return result;
-            })
-            .then(storeIn($scope, 'openShifts'))
-            .catch(storeErrorIn($scope, 'errorMsg'));
-    }])
-
-
+    }])*/
 
     .controller("PastCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
         bfrApi.call("/logs/mine_past.json")
@@ -169,11 +167,18 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         '$scope', '$routeParams', 'bfrApi',
         function($scope, $routeParams, bfrApi) {
             bfrApi.logById($routeParams.logId)
-                .then(function(result) {
-                    $scope.shift = result.log;
-                    return bfrApi.loadLocationDetail($scope.shift);
+                .then(bfrApi.loadLocationDetail)
+                .then(function(shift) {
+                    $scope.shift = shift;
+                    $scope.locations = [shift.log.donor];
+                    shift.log.donor.type = 'Donor';
+
+                    shift.log.recipients.forEach(function(recipient) {
+                        recipient.type = 'Recipient';
+                        $scope.locations.push(recipient);
+                    });
                 })
-                .then(function(result) {
+                /*.then(function(result) {
                     var points = [result.donor];
                     Array.prototype.push.apply(points, result.recipients);
                     $scope.mapUrl = "https://www.google.com/maps/dir/" + points
@@ -185,5 +190,5 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
                     console.log("API call failed:", result);
                     $scope.errorMsg = result.statusText
                         || "Failed to load shift details.";
-                });
+                });*/
         }]);
