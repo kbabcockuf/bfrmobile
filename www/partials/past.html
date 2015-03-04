@@ -14,7 +14,7 @@
         <ol>
             <ul ng-repeat="item in shift">
                 <a ng-href="#/report/{{item.log.id}}">
-                    {{item.schedule.detailed_date + item.schedule.detailed_start_time.substring(10) | fuzzyTime}}
+                    {{item.schedule | nextDate}}
                 </a>
             </ul>
         </ol>

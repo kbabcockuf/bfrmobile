@@ -63,12 +63,8 @@ function fuzzyTime(date) {
  */
 function nextWeekly(day, time) {
     var date = new Date();
-    console.log(date, " -- ", day);
-
     date.setDate(date.getDate() + (7 + day - date.getDay()) % 7);
     date.setHours(time.getHours(), time.getMinutes());
-
-    console.log(date);
     return date;
 }
 
@@ -107,7 +103,6 @@ angular.module("BFRMobile.filters", [])
     }])
     .filter('nextDate', [function() {
         return function(schedule) {
-            console.log(schedule);
             if (!schedule) {
                 return "";
             }
