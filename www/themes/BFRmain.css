@@ -382,3 +382,7 @@ form #email, form #password, form label {
 #alert{
     padding-right: 4px;
 }
+
+.clear_fix{
+    clear: both;
+}
