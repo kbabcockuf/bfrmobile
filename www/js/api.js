@@ -150,8 +150,8 @@ angular.module("BFRMobile.api", [])
              */
             return function bfrCredentials() {
                 var auth = {
-                    volunteer_email: window.sessionStorage.email,
-                    volunteer_token: window.sessionStorage.token
+                    volunteer_email: window.localStorage.email,
+                    volunteer_token: window.localStorage.token
                 };
 
                 if (!auth.volunteer_email || !auth.volunteer_token) {

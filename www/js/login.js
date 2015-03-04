@@ -10,8 +10,8 @@ $(function () {
             data: { email: e, password: p },
             success: function (data) {
                 console.log("Success (sign_in)");
-                window.sessionStorage.token = data.authentication_token;
-                window.sessionStorage.email = e;
+                window.localStorage.token = data.authentication_token;
+                window.localStorage.email = e;
                 window.location = ("index.html");
             },
             error: function (msg) {

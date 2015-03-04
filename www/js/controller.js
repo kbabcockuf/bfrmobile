@@ -24,7 +24,7 @@ function storeIn(obj, key) {
  */
 function storeErrorIn(obj, key, message) {
     return function(result) {
-        console.log("Error:", message, result);
+        console.log("Error: " + message + " " + JSON.stringify(result));
         return obj[key] = result.statusText || message
             || "Failed to load shifts.";
     }
