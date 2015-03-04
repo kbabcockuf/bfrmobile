@@ -132,4 +132,10 @@ angular.module("BFRMobile.filters", [])
 
             return "https://www.google.com/maps/dir/" + points.join('/') + "/";
         }
-    });
+    })
+    .filter('describeLog', ['$filter', function($filter) {
+        return function(item) {
+            return $filter('nextDate')(item.schedule)
+                + " from " + item.log.donor.name;
+        }
+    }]);

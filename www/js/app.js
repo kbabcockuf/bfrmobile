@@ -35,36 +35,34 @@ app.config([
         $routeProvider
             .when('/upcoming', {
                 templateUrl: 'partials/upcoming.html',
-                controller: 'UpcomingCtrl'
+                controller: 'UpcomingCtrl',
+                tab: 'upcoming'
             })
             .when('/pickup', {
                 templateUrl: 'partials/pickup.html',
-                controller: 'PickUpCtrl'
+                controller: 'PickUpCtrl',
+                tab: 'pickup'
             })
             .when('/report', {
                 templateUrl: 'partials/past.html',
-                controller: 'PastCtrl'
+                controller: 'PastCtrl',
+                tab: 'past'
             })
             .when('/report/:logId', {
                 templateUrl: 'partials/report.html',
-                controller: 'ReportCtrl'
+                controller: 'ReportCtrl',
+                tab: 'past'
             })
             .when('/detail/:logId', {
                 templateUrl: 'partials/detail.html',
-                controller: 'DetailCtrl'
+                controller: 'DetailCtrl',
+                tab: 'detail'
             })
             .when('/settings', {
                 templateUrl: 'partials/settings_new.html',
-                controller: 'SettingsCtrl'
+                controller: 'SettingsCtrl',
+                tab: 'settings'
             })
-            /*.when('/detail', {
-                templateUrl: 'partials/detail.html',
-                controller: 'DetailCtrl'
-            })*/
-            /*.when('/info_new', {
-                templateUrl: 'partials/info_new.html',
-                controller: 'InfoCtrl'
-            })*/
             .otherwise({
                 redirectTo: '/upcoming'
             });
