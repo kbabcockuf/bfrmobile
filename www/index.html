@@ -2,8 +2,7 @@
 <html ng-app="BFRMobile">
   <head>
 
-	<!--<meta name="viewport" content="width=device-width,initial-scale=1">-->
-	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<meta name="viewport" content="user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,width=device-width,height=device-height,target-densitydpi=device-dpi" />
 
 	<title>Boulder Food Rescue</title>
 	<link type="text/css" rel="stylesheet" href="themes/BFRmain.css" />
@@ -39,15 +38,15 @@
                 <div id="logout-icon"><a ng-click="signOut()"> <img src="icons/logout14.png" /></a></div>  
     </div>
 
-    <div class="header-tabs">
-        <a href="#/upcoming"><h4>Upcoming</h4></a>
-    </div>
-    <div class="header-tabs">
-        <a href="#/pickup"><h4>Pick Up</h4></a>
-    </div>
-    <div class="header-tabs">
-        <a href="#/report"><h4>Enter Data</h4></a>
-    </div>
+    <a href="#/upcoming"><div class="header-tabs">
+        <h4>Upcoming</h4>
+    </div></a>
+    <a href="#/pickup"><div class="header-tabs">
+        <h4>Pick Up</h4>
+    </div></a>
+    <a href="#/report"><div class="header-tabs">
+        <h4>Enter Data</h4>
+    </div></a>
 
     <div>
         <div class="error" ng-if="errorMsg">
