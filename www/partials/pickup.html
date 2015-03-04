@@ -18,15 +18,16 @@
                     </span>
                 </div>
             </div>
+
             <div class="tabs-container">
                 <a href="#/detail/{{item.log.id}}" id="info">
                     <h4>Info</h4>
                 </a>
             </div>
             <div class="tabs-container">
-                <a href="#/detail" id="map">
-                    <h4>Map</h4>
-                </a>
+                <a href="{{item.log | directionsLink}}" id="map">
+                <h4>Map</h4>
+            </a>
             </div>
             <div class="tabs-container">
                 <a id="take">
@@ -34,6 +35,7 @@
                 </a>
             </div>
     
+
     </bfr-drawer>
     </div>
 </div>

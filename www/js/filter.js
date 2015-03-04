@@ -121,4 +121,15 @@ angular.module("BFRMobile.filters", [])
 
             return fuzzyTime(nextStart);
         }
-    }]);
+    }])
+    .filter('directionsLink', function() {
+        return function(log) {
+            var points = [];
+            points.push(encodeURIComponent(log.donor.address));
+            log.recipients.forEach(function(recipient) {
+                points.push(encodeURIComponent(recipient.address));
+            });
+
+            return "https://www.google.com/maps/dir/" + points.join('/') + "/";
+        }
+    });

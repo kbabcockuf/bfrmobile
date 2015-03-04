@@ -9,6 +9,7 @@
     </div>
 </div>
 <div ng-repeat="shift in upcomingShifts">
+
     <div class="shift-group">
         <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule | nextDate">
             <div id="upcoming-container">
@@ -24,11 +25,12 @@
                     </a>
                 </div>
                 <div class="tabs-container">
-                    <a href="#/detail" id="map">
-                        <h4>Map</h4>
-                    </a>
+                    <a href="{{item.log | directionsLink}}" id="map">
+                <h4>Map</h4>
+            </a>
                 </div>
             </div>
     </div>
+
     </bfr-drawer>
 </div>
