@@ -10,7 +10,7 @@
         </span></div>
 </div>
 
-<bfr-drawer bfr-title="item.log.donor.name">
+<bfr-drawer bfr-title="item.log.donor.name" bfr-show="true">
     <form id="enter-data-container">
         <div class="products" ng-repeat="(id, entry) in item.log_parts">
             <br><select class="dropdown-box" ng-model="entry.food_type_id" ng-options="item.id as item.name for item in foodTypes">
@@ -42,7 +42,7 @@
     </h4>
 </div>-->
 
-<bfr-drawer ng-repeat="recipient in item.log.recipients" bfr-title="recipient.name">
+<bfr-drawer ng-repeat="recipient in item.log.recipients" bfr-title="recipient.name" bfr-show="true">
     <div id="transportation-container">
         <form id="transportation-form-container">
             <br>
