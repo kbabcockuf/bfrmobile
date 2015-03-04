@@ -133,7 +133,6 @@ body{
 .shift-group{
     margin-bottom: 5px;
     border-left: 10px solid #666;
-    border-right: 10px solid #666;
 }
     
 .report-title{
@@ -263,9 +262,9 @@ ul{
     line-height: 2.0;    
 }
 
-#info-upcoming, #tabs-container{
+#info-upcoming, #map-upcoming{
     float:left;
-    width: 50;    
+    width: 50%;    
     display: inline-block;
     background: #666;
     text-align: center;

@@ -18,18 +18,18 @@
                     <li ng-repeat="recipient in item.log.recipients">{{recipient.name}} (Drop)</li>
                 </ol>
             </div>
-            <div id="upcoming-tabs">
+           
                 <div class="tabs-container">
-                    <a href="#/detail/{{item.log.id}}" id="info">
+                    <a href="#/detail/{{item.log.id}}" id="info-upcoming">
                         <h4>Info</h4>
                     </a>
                 </div>
                 <div class="tabs-container">
-                    <a href="{{item.log | directionsLink}}" id="map">
+                    <a href="{{item.log | directionsLink}}" id="map-upcoming">
                         <h4>Map</h4>
                     </a>
                 </div>
-            </div>
+           
     </div>
 
     </bfr-drawer>
