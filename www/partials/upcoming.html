@@ -1,4 +1,11 @@
-﻿<div ng-repeat="shift in upcomingShifts">
+﻿<div class="header">
+    <h4>
+        <div id="shifts">My Upcoming Shifts</div>
+    </h4>
+</div>
+
+
+<div ng-repeat="shift in upcomingShifts">
     <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule | nextDate">
         <div>
             <div class="error" ng-if="errorMsg">
