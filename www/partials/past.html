@@ -12,7 +12,7 @@
 
     <li ng-repeat="shift in pastShifts">
         <a>
-            {{shift.schedule.detailed_date + shift.schedule.detailed_start_time.substring(10) | fuzzyTime}}
+            {{shift.schedule | nextDate}}
         </a>
         
         <ol>
