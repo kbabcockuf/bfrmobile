@@ -3,36 +3,32 @@
         <div id="shifts">My Upcoming Shifts</div>
     </h4>
 </div>
-
-
+<div>
+    <div class="error" ng-if="errorMsg">
+        <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}
+    </div>
+</div>
 <div ng-repeat="shift in upcomingShifts">
-    <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule | nextDate">
-        <div>
-            <div class="error" ng-if="errorMsg">
-            <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
-        </div>
-
-        <div id="upcoming-container">
-            <ol>
-                <li>{{item.log.donor.name}} (Pickup)</li>
-                <li ng-repeat="recipient in item.log.recipients">{{recipient.name}} (Drop)</li>
-            </ol>
-        </div>
-
-        <div class="tabs-container">
-            <a href="#/detail/{{item.log.id}}" id="info">
-                <h4>Info</h4>
-            </a>
-        </div>
-        <div class="tabs-container">
-            <a href="#/detail" id="map">
-                <h4>Map</h4>
-            </a>
-        </div>
-        <div class="tabs-container">
-            <a id="take">
-                <h4>Take</h4>
-            </a>
-        </div>
+    <div class="shift-group">
+        <bfr-drawer ng-repeat="item in shift" bfr-title="item.schedule | nextDate">
+            <div id="upcoming-container">
+                <ol>
+                    <li>{{item.log.donor.name}} (Pickup)</li>
+                    <li ng-repeat="recipient in item.log.recipients">{{recipient.name}} (Drop)</li>
+                </ol>
+            </div>
+            <div id="upcoming-tabs">
+                <div class="tabs-container">
+                    <a href="#/detail/{{item.log.id}}" id="info">
+                        <h4>Info</h4>
+                    </a>
+                </div>
+                <div class="tabs-container">
+                    <a href="#/detail" id="map">
+                        <h4>Map</h4>
+                    </a>
+                </div>
+            </div>
+    </div>
     </bfr-drawer>
 </div>
