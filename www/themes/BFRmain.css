@@ -118,7 +118,7 @@ body{
     background-color: white;
     text-align: center;
     line-height: 2.8;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .collapsable-tab, .bfr-title{
@@ -127,6 +127,7 @@ body{
     line-height: 2.0;
     color: white; 
     font-size: 14px;
+    text-decoration: none;
     
 }
 

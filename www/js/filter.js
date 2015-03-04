@@ -135,7 +135,12 @@ angular.module("BFRMobile.filters", [])
     })
     .filter('describeLog', ['$filter', function($filter) {
         return function(item) {
-            return $filter('nextDate')(item.schedule)
-                + " from " + item.log.donor.name;
+            var summary = "";
+
+            if (item.schedule) {
+                summary += $filter('nextDate')(item.schedule) + " from ";
+            }
+
+            return summary + item.log.donor.name;
         }
     }]);

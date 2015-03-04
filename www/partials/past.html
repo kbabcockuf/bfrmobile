@@ -1,5 +1,4 @@
-﻿
-<div id="past-header">
+﻿<div id="past-header" class="header">
     <h4>Past Shifts</h4>
 </div>
 
@@ -8,19 +7,10 @@
     <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
 </div>
 
-<ol>
-
-    <li ng-repeat="shift in pastShifts">
-        <a>
-            {{shift.schedule | nextDate}}
-        </a>
-        
-        <ol>
-            <ul ng-repeat="item in shift">
-                <a ng-href="#/report/{{item.log.id}}">
-                    {{item.schedule | nextDate}}
-                </a>
-            </ul>
-        </ol>
-    </li>
-</ol>
+<div ng-repeat="shift in pastShifts">
+    <div class="shift-group">
+        <a ng-repeat="item in shift" ng-href="#/report/{{item.log.id}}"><div class="bfr-title">
+            {{item | describeLog}}
+        </div></a>
+    </div>
+</div>
