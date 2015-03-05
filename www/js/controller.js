@@ -31,9 +31,10 @@ function storeErrorIn(obj, key, message) {
 }
 
 angular.module("BFRMobile.controllers", ["BFRMobile.api"])
-    .controller("BfrAppCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
-        $scope.signOut = bfrApi.signOut;
-    }])
+    .controller("BfrAppCtrl", ['$scope', 'bfrApi',
+        function($scope, bfrApi) {
+            $scope.signOut = bfrApi.signOut;
+        }])
 
     .controller("UpcomingCtrl", ['$scope', '$q', 'bfrApi',
         function($scope, $q, bfrApi) {

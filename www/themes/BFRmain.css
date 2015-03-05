@@ -154,6 +154,7 @@ a{
 }
 
 .header-tabs {
+    display: block;
     width: 33.33%;
     float: left;
     background: #999;
@@ -164,7 +165,7 @@ a{
     font-size: 14px;
     
 }
-.header-tabs:hover, #settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calender:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover {
+#settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calender:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, .active-tab {
     background: grey;
     color: white;
 }
