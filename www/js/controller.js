@@ -113,8 +113,8 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     }])*/
 
     .controller("ReportCtrl", [
-        '$scope', '$routeParams', 'bfrApi',
-        function($scope, $routeParams, bfrApi) {
+        '$scope', '$routeParams', '$location', 'bfrApi',
+        function($scope, $routeParams, $location, bfrApi) {
             //$scope.shiftItems = [{}];
 
             /*$scope.$watch('shiftItems[shiftItems.length-1]', function(last) {
@@ -139,6 +139,10 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
 
             $scope.submit = function() {
                 bfrApi.updateLog($scope.item)
+                    .then(function(result) {
+                        alert(result.message);
+                        $location.path('/report');
+                    })
                     .catch(storeErrorIn($scope, 'errorMsg'));
             };
         }])
