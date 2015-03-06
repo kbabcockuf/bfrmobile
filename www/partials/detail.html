@@ -13,7 +13,7 @@
 <div id="info-container">
     <div id="pickup">
         {{shift.schedule | describeFrequency}}
-        (Next pickup: {{shift.schedule | nextDate}})
+        (Next pickup: {{shift.schedule | describeNextDate}})
     </div>
     <br>
     <div id="notes-container">

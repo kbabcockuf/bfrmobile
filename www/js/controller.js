@@ -36,8 +36,8 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             $scope.signOut = bfrApi.signOut;
         }])
 
-    .controller("UpcomingCtrl", ['$scope', '$q', 'bfrApi',
-        function($scope, $q, bfrApi) {
+    .controller("UpcomingCtrl", ['$scope', '$q', 'bfrApi', 'bfrLogUtils',
+        function($scope, $q, bfrApi, bfrLogUtils) {
             bfrApi.call("/logs/mine_upcoming.json")
                 .map(function(result) {
                     return $q.all(result.map(function(item){
@@ -47,6 +47,24 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
                 })
                 .then(storeIn($scope, 'upcomingShifts'))
                 .catch(storeErrorIn($scope, 'errorMsg'));
+
+            $scope.addCalendarEvent = function(item) {
+                var startTime = new Date(item.schedule.detailed_start_time);
+                var stopTime = new Date(item.schedule.detailed_stop_time);
+
+                var title = item.log.donor.name + " to " +
+                    item.log.recipients.map(function(recipient) {
+                        return recipient.name;
+                    }).join(',');
+
+                window.plugins.calendar.createEventInteractively(
+                    title, item.log.donor.address, item.schedule.public_notes,
+                    bfrLogUtils.nextDate(startTime, item.schedule.day_of_week),
+                    bfrLogUtils.nextDate(stopTime, item.schedule.day_of_week),
+                    function() {
+                        console.log("Added calendar event", item);
+                    }, storeErrorIn($scope, 'errorMsg'));
+            }
         }])
 
     .controller("PickUpCtrl", ['$scope', '$q', '$route', 'bfrApi',
@@ -104,13 +122,6 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             .then(storeIn($scope, 'pastShifts'))
             .catch(storeErrorIn($scope, 'errorMsg'));
     }])
-
-    /*.controller("PastCtrl", ['$scope', 'bfrApi', function($scope, bfrApi) {
-        bfrApi.call("/logs/mine_past.json")
-            .map(bfrApi.logById)
-            .then(storeIn($scope, 'pastShifts'))
-            .catch(storeErrorIn($scope, 'errorMsg'));
-    }])*/
 
     .controller("ReportCtrl", [
         '$scope', '$routeParams', '$location', 'bfrApi',

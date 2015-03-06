@@ -59,16 +59,48 @@ function fuzzyTime(date) {
  * day-of-the-week number from 0-6.
  * @param day {number} Day number (0-6)
  * @param time {Date} Date representing the time of occurrence
+ * @param from {Date} Return the next occurrence after this date (optional)
  * @returns {Date}
  */
-function nextWeekly(day, time) {
-    var date = new Date();
+function nextWeekly(day, time, from) {
+    var date = from || new Date();
     date.setDate(date.getDate() + (7 + day - date.getDay()) % 7);
     date.setHours(time.getHours(), time.getMinutes());
     return date;
 }
 
+/**
+ * Return the next date when this shift will take place.
+ */
+function nextDate(schedule) {
+    if (!schedule) {
+        return "";
+    }
+
+    var startTime = new Date(schedule.detailed_start_time);
+
+    var nextStart;
+    switch (schedule.frequency) {
+        case "weekly":
+            nextStart = nextWeekly(schedule.day_of_week, startTime);
+            break;
+        default:
+            console.log("Unrecognized frequency:", schedule.frequency);
+            return "";
+    }
+
+    return nextStart;
+}
+
 angular.module("BFRMobile.filters", [])
+    .factory('bfrLogUtils', function() {
+        return {
+            nextWeekly: nextWeekly,
+            nextDate: nextDate,
+            fuzzyTime: fuzzyTime
+        }
+    })
+
     .filter('describeFrequency', [function() {
         /**
          * Generate a human-readable summary for a recurring schedule.
@@ -101,25 +133,9 @@ angular.module("BFRMobile.filters", [])
             return summary;
         }
     }])
-    .filter('nextDate', [function() {
-        return function(schedule) {
-            if (!schedule) {
-                return "";
-            }
-
-            var startTime = new Date(schedule.detailed_start_time);
-
-            var nextStart;
-            switch (schedule.frequency) {
-                case "weekly":
-                    nextStart = nextWeekly(schedule.day_of_week, startTime);
-                    break;
-                default:
-                    console.log("Unrecognized frequency:", schedule.frequency);
-                    return "";
-            }
-
-            return fuzzyTime(nextStart);
+    .filter('describeNextDate', [function() {
+        return function(log) {
+            return fuzzyTime(nextDate(log));
         }
     }])
     .filter('directionsLink', function() {
@@ -130,7 +146,7 @@ angular.module("BFRMobile.filters", [])
                 points.push(encodeURIComponent(recipient.address));
             });
 
-            return "https://www.google.com/maps/dir/" + points.join('/') + "/";
+            return "http://www.google.com/maps/dir/" + points.join('/') + "/";
         }
     })
     .filter('describeLog', ['$filter', function($filter) {
@@ -138,7 +154,8 @@ angular.module("BFRMobile.filters", [])
             var summary = "";
 
             if (item.schedule) {
-                summary += $filter('nextDate')(item.schedule) + " from ";
+                summary += $filter('describeNextDate')(item.schedule)
+                    + " from ";
             }
 
             return summary + item.log.donor.name;
