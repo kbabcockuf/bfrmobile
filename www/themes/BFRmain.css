@@ -218,7 +218,7 @@ a{
     text-indent: 20px;
 }
 
-#transportation, #lbs{
+#transportation, #lbs, #weight-method{
     font-size: 12px;
 }
 
@@ -332,14 +332,19 @@ ul{
     width: 70px;
 }
 
-#transportaion-dropdown-box{
+#transportaion-dropdown-box, #weight-dropdown-box{
     width: 70px;
     display: inline-block;
 }
 
-#transportation{
+#transportation, #weight-method{
     display: inline-block;
     
+}
+
+#weight-method{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 #transportation-notes{
