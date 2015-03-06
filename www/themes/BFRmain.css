@@ -165,7 +165,7 @@ a{
     font-size: 14px;
     
 }
-#settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calendar:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, .active-tab {
+#settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calendar:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, #one-time:hover, #recurring:hover, .active-tab {
     background: grey;
     color: white;
 }
@@ -265,6 +265,16 @@ ul{
 #info,#map,#calendar {
     float:left;
     width: 33.33%;    
+    display: inline-block;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;    
+}
+
+#one-time,#recurring {
+    float:left;
+    width: 50%;    
     display: inline-block;
     background: #666;
     text-align: center;
