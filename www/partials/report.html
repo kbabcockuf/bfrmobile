@@ -17,7 +17,13 @@
             </select>
             <input class="food-input" type="text" size="15" ng-model="entry.description"/>
             <input class="lb-input" type="text" size="1" ng-model="entry.weight"/> <span id ="lbs">lbs</span>
+            <br>
         </div>
+
+        <div id ="weight-method">Weighing Method</div>
+            
+            <select id="weight-dropdown-box" ng-model="entry.scale_type_id" ng-options="item.id as item.name for item in scaleTypes">
+            </select>
 
         <!--<div class="products">
             <br><select class="dropdown-box">
