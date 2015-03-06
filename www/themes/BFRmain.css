@@ -165,7 +165,7 @@ a{
     font-size: 14px;
     
 }
-#settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calender:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, .active-tab {
+#settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calendar:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, .active-tab {
     background: grey;
     color: white;
 }
@@ -262,7 +262,7 @@ ul{
     font-size: 12px;
 }
 
-#info,#map,#calender {
+#info,#map,#calendar {
     float:left;
     width: 33.33%;    
     display: inline-block;
