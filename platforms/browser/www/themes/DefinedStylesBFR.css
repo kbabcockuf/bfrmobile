@@ -1,0 +1,120 @@
+﻿
+        body, textarea
+        {
+            font-size: 1em;
+            line-height: 1.3;
+            font-family: "Helvetica Neue" ,Helvetica,Arial,sans-serif;
+        }
+        h3
+        {
+            text-align: center;
+            text-indent: 0em;
+            padding: 3px;
+            margin: 0;
+        }
+        .infoDiv 
+        {
+            padding-left: 1em;
+            width: 90%;
+        }
+        .upcomingDiv
+        {
+            width: 95%;
+            margin: auto;
+            padding-top: 0.5em;
+        }
+        .upcomingDiv li a
+        {
+            text-decoration: none;
+            color: White !important;
+        }
+        .upcomingDiv .navDiv li
+        {
+            border: .1em solid #4b7333;
+            background-color: #51A351;
+            color: White;
+            float: left;
+            width: 42%%;
+            text-align: center;
+            list-style-type: none;
+        }
+        .clickCollapse
+        {
+            overflow: hidden;
+            border: .1em solid #4b7333;
+            margin-bottom: 0.2em;
+        }
+        .timeHeader
+        {
+            background: #51A351 /*{a-bup-background-color}*/;
+            border-color: #00a84c /*{a-bup-border}*/;
+            color: #FFFFFF
+        }
+        .donor, .recipient, .endOfForm
+        {
+            margin: auto;
+            width: 90%;
+        }
+        .saveChangesButton
+        {
+            float: left;
+            padding: .5em;
+            width: 42%;
+            text-align: center;
+            margin-left: 26%;
+            margin-right: auto;
+            margin-bottom: .8em;
+            margin-top: .8em;
+            border: .1em solid #4b7333;
+        }
+        .donorNameClass
+        {
+            padding: 0.2em;
+            background: #51A351;
+            color:white;
+            padding-left: 0.5em;
+        }
+        input
+        {
+            width: 40%;
+            float: left;
+            height: 1em;
+            padding: 0.2em;
+            line-height: 1;
+            margin: 0.2em;
+        }
+        .lbsClass
+        {
+            padding: 0.2em;
+            padding-left: 8em;
+            margin: 0;
+            line-height: 2;
+        }
+        .endOfForm p
+        {
+            width: 50%;
+            margin: 0;
+            margin-top: 0.2em;
+        }
+        select
+        {
+            padding: 0.2em;
+            margin-top: 0;
+        }
+        .takeItButton
+        {
+            float: left;
+            padding: .5em;
+            width: 20%;
+            text-align: center;
+            margin-left: 37%;
+            margin-right: auto;
+            margin-bottom: .8em;
+            margin-top: .8em;
+            border: .1em solid #4b7333;
+        }
+        .mapLink > a
+        {
+            padding-left: 30%;
+            padding-right: 30%;
+        }
