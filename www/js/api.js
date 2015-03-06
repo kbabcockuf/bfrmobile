@@ -44,11 +44,20 @@ angular.module("BFRMobile.api", [])
                     config.method = config.method || "GET";
 
                     var promise = $http(config)
+                        .catch(function(result) {
+                            if (result.status == 401) {
+                                // Request failed because used was logged out
+                                api.signOut();
+                            }
+                            return $q.reject(result);
+                        })
+
                     if (!raw) {
                         promise = promise.then(function(result) {
                             return result.data;
                         });
                     }
+
                     return angular.extend(promise, apiPromise);
                 },
 
