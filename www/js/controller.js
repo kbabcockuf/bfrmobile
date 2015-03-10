@@ -126,7 +126,13 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     .controller("ReportCtrl", [
         '$scope', '$routeParams', '$location', 'bfrApi',
         function($scope, $routeParams, $location, bfrApi) {
-            //$scope.shiftItems = [{}];
+            
+
+            $scope.$watch('item.log_parts[null]', function(last) {
+                if (last.type && last.name && last.weight) {
+                    $scope.item.log_parts[null]={};
+                }
+            }, true);
 
             /*$scope.$watch('shiftItems[shiftItems.length-1]', function(last) {
                 if (last.type && last.name &&last.weight) {
@@ -189,8 +195,10 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             };
         }])*/
     
-    .controller("SettingsCtrl", ['$scope', function($scope) {
-
+    .controller("SettingsCtrl", ['$scope', function($scope, $location) {
+        $scope.pageSwipe = function (page) {        
+            $location.url(page);
+        };
     }])
 
     .controller("DetailCtrl", [
