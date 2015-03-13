@@ -15,6 +15,19 @@ Array.prototype.pick = function() {
     });
 }
 
+// String.prototype.startsWith polyfill
+if (!String.prototype.startsWith) {
+  Object.defineProperty(String.prototype, 'startsWith', {
+    enumerable: false,
+    configurable: false,
+    writable: false,
+    value: function(searchString, position) {
+      position = position || 0;
+      return this.lastIndexOf(searchString, position) === position;
+    }
+  });
+}
+
 var app = angular.module('BFRMobile', [
     'ngRoute',
     'ngTouch',

@@ -53,8 +53,10 @@ angular.module("BFRMobile.directives", [])
             scope: {class: '@bfrActiveClass'},
             link: function(scope, element, attrs, controller, transcludeFn) {
                 scope.$on('$locationChangeSuccess', function() {
+                    console.log(attrs.href.replace(/^#/, ''), $location.path());
                     element.toggleClass(scope.class,
-                            $location.path() == attrs.href.replace(/^#/, ''));
+                            $location.path().startsWith(
+                                attrs.href.replace(/^#/, '')));
                 });
             }
         }
