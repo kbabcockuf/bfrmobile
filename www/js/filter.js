@@ -6,13 +6,9 @@ var WEEKDAY_FORMAT = new Intl.DateTimeFormat('en', {
     weekday: 'long'
 });
 
-// The API reports that times are in UTC (i.e '2000-01-01T14:00:00Z'), but they
-// are actually in local time. Format all times as UTC to match the desktop
-// website.
 var TIME_FORMAT = new Intl.DateTimeFormat('en', {
     hour: 'numeric',
-    minute: 'numeric',
-    timeZone: 'UTC'
+    minute: 'numeric'
 });
 
 /**
@@ -65,7 +61,7 @@ function fuzzyTime(date) {
 function nextWeekly(day, time, from) {
     var date = from || new Date();
     date.setDate(date.getDate() + (7 + day - date.getDay()) % 7);
-    date.setHours(time.getHours(), time.getMinutes());
+    date.setHours(time.getHours(), time.getMinutes(), time.getSeconds());
     return date;
 }
 

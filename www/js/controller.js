@@ -49,8 +49,9 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
                 .catch(storeErrorIn($scope, 'errorMsg'));
 
             $scope.addCalendarEvent = function(item) {
-                var startTime = new Date(item.schedule.detailed_start_time);
-                var stopTime = new Date(item.schedule.detailed_stop_time);
+                var startTime = bfrLogUtils.nextDate(item.schedule);
+                var stopTime = bfrLogUtils.nextDate(item.schedule);
+                console.log(item, startTime, stopTime);
 
                 var title = item.log.donor.name + " to " +
                     item.log.recipients.map(function(recipient) {
@@ -59,8 +60,8 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
 
                 window.plugins.calendar.createEventInteractively(
                     title, item.log.donor.address, item.schedule.public_notes,
-                    bfrLogUtils.nextDate(startTime, item.schedule.day_of_week),
-                    bfrLogUtils.nextDate(stopTime, item.schedule.day_of_week),
+                    startTime,
+                    stopTime,
                     function() {
                         console.log("Added calendar event", item);
                     }, storeErrorIn($scope, 'errorMsg'));
@@ -108,7 +109,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
     }])*/
 
     .controller("PastCtrl", ['$scope', '$q', 'bfrApi', function($scope, $q, bfrApi) {
-        bfrApi.call("/logs/mine_past.json")
+        bfrApi.call("/logs/todo.json")
             .map(function(result) {
                 return $q.all(result.map(function(item){
                     return bfrApi.logById(item)
