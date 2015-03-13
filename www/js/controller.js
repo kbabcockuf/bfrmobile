@@ -195,7 +195,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             };
         }])*/
     
-    .controller("SettingsCtrl", ['$scope', function($scope, $location) {
+    .controller("SettingsCtrl", ['$scope','$location', function($scope, $location) {
         $scope.pageSwipe = function (page) {        
             $location.url(page);
         };
