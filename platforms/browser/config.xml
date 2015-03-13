@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.boulderfoodrescue.bfrmobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Boulder Food Rescue</name>
     <description>
         Mobile Boulder Food Rescue
@@ -43,6 +43,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" />
     <gap:plugin name="org.apache.cordova.vibration" />
     <gap:plugin name="nl.x-services.plugins.calendar" />
+    <gap:plugin name="uk.co.workingedge.phonegap.plugin.LaunchNavigator" />
     <icon src="icon.png" />
     <icon gap:platform="android" gap:qualifier="ldpi" src="img/icons/android/ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="img/icons/android/mdpi.png" />

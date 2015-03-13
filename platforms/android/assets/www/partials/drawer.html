@@ -1,0 +1,7 @@
+<div class="bfr-title" ng-click="show = !show">
+    <div ng-class="show ? 'bfr-carat bfr-carat-open' : 'bfr-carat'"></div>
+    {{title}}
+</div>
+<div class="bfr-content bfr-animate-grow" ng-if="show">
+    <div class="bfr-content-inner" ng-transclude></div>
+</div>

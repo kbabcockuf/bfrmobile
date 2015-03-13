@@ -1,0 +1,413 @@
+﻿*:not(ol) {
+    margin: 0px;
+    padding: 0px;
+}
+
+#submitButton{
+    background-color: #666;
+    width: 75.00%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+    font-size: 1em;
+    
+}
+
+#fp-container{
+    float: center;
+    padding-top: 10px;
+}
+
+#forgotPassword{
+    color: #666;
+    font-size: 14px;
+}
+
+body{
+    font-family: arial, helvetica;
+    color: black;
+    
+}
+#home-header {
+    background-color: #333;
+    text-align: center;
+    color: white;
+    line-height: 3.2;
+}
+
+#main{
+    background-color: #333;
+    height:30px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+#home-icon{
+   background-color: #333;
+   float: left;
+   margin-left: 20px;
+   display:inline-block;
+   vertical-align: middle;
+}
+
+#home-icon > a{
+    text-decoration:none;
+}
+
+#logout-icon
+{
+    background-color: #333;
+    float: right;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+#logout-icon, #home-icon {
+    width: 40px;
+}
+
+.header {
+    background-color: white;
+    text-align: center;
+    font-size: 12px;
+    line-height: 2.0;
+}
+
+#pickup-header, #settings-header, #info-header {
+    background-color: white;
+    text-align: center;
+    font-size: 12px;
+    line-height: 2.0;
+}
+
+#info-header{
+    padding-top: 10px;
+}
+
+.donor-recipient, .shifts, #settings, #inf {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.donor-recipient {
+    text-align: center;
+    display: inline-block;      
+}
+
+.route > *:after {
+    content: ' → ';
+}
+
+.route > *:last-child:after {
+    content: '';
+}
+
+#info-title, #notif{
+    background-color: #999;
+    color: White;
+    text-align: center;
+    line-height: 2.0;
+}
+
+#past-header, #forgot_password-header{
+    background-color: white;
+    text-align: center;
+    line-height: 2.8;
+    font-size: 12px;
+}
+
+.collapsable-tab, .bfr-title{
+    padding: 0 8px;
+    background-color: #999;
+    line-height: 2.0;
+    color: white; 
+    font-size: 14px;
+    text-decoration: none;
+    
+}
+
+.bfr-title{
+    margin-bottom: 1px;
+    text-decoration: none !important;
+}
+
+.shift-group{
+    margin-bottom: 5px;
+    border-left: 10px solid #666;
+}
+
+a{
+    text-decoration: none;
+}    
+.report-title{
+    background-color: white;
+    text-align: center;
+    line-height: 2.0;
+    text-transform: uppercase;
+    font-size: 14px;
+    padding-top: 20px;
+}
+
+.header-tabs {
+    display: block;
+    width: 33.33%;
+    float: left;
+    background: #999;
+    clear: right;
+    text-align: center;
+    color: White;
+    line-height: 3.2;
+    font-size: 14px;
+    
+}
+#settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calendar:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, #one-time:hover, #recurring:hover, .active-tab {
+    background: grey;
+    color: white;
+}
+
+
+.header-tabs > a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
+#forgot_password_form{
+    padding-top: 10px;
+    text-align: center;
+}
+
+.email_reset label{
+    display: inline-block;
+    font-size: 12px;
+    color: #666;
+}
+
+#upcoming-container{
+    text-indent: 20px;
+}
+
+#info-container{
+    background-color: white;
+    padding-top: 20px;
+    padding-left: 5px;
+    font-size: 14px;
+}
+
+#notes-container{
+    font-size: 14px;
+}
+
+#settings-container{
+    background-color: white;
+    text-align: left;
+    line-height: 2.0;
+
+}
+
+#transportation-container{
+    background-color: white;
+}
+
+#transportation-form-container{
+    background-color: white;
+    text-indent: 20px;
+}
+
+#transportation, #lbs, #weight-method{
+    font-size: 12px;
+}
+
+
+#notification-box{
+    padding-top: 10px;
+    background-color: white;
+    text-align: left;
+    line-height: 2.0;
+    margin-left:10px;
+    margin-right:10px;
+    font-size: 14px;
+}
+
+.box{
+    margin-left: 5px;
+}
+
+
+h2,h4,h3 {
+    display: -webkit-inline-box;
+}
+
+li{
+    line-height: 200%;
+    font-size: 12px;
+}
+
+ol
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    margin:0px;
+    font-size: 12px;
+}
+
+ul{
+    background-color: white;
+    margin:0px;
+    font-size: 12px;
+}
+
+#info,#map,#calendar {
+    float:left;
+    width: 33.33%;    
+    display: inline-block;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;    
+}
+
+#one-time,#recurring {
+    float:left;
+    width: 50%;    
+    display: inline-block;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;    
+}
+
+#info-upcoming, #map-upcoming{
+    float:left;
+    width: 50%;    
+    display: inline-block;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;  
+}
+
+.tabs-container{
+    text-align: center;
+    margin-bottom: 0px;
+  
+}
+
+#take, #info-pickup{
+    float: center;
+    width: 33.33%;    
+    display: inline-block;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;   
+}
+
+#settings-log{
+    background-color: white;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+}
+
+#save{
+    background-color: #666;
+    width: 75.00%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background: #666;
+    text-align: center;
+    color: White;
+    line-height: 2.0;
+    
+}
+
+#enter-data-container{
+    background-color: white;
+    text-align:center;
+
+}
+
+.dropdown-box{
+    width: 70px;
+}
+
+#transportaion-dropdown-box, #weight-dropdown-box{
+    width: 70px;
+    display: inline-block;
+}
+
+#transportation, #weight-method{
+    display: inline-block;
+    
+}
+
+#weight-method{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#transportation-notes{
+    text-align: center;
+    background-color: white;
+}
+
+#transportation-form-container{
+   text-align: center;
+}
+    
+#pickup-container{
+    background-color: white;
+    text-align: center;
+    line-height: 2.0;
+}
+
+#location, #date{
+    background-color: #999;
+    color: White;
+    text-align: center;
+    line-height: 2.0;
+}
+
+#location-contents, #date-contents{
+    background-color: white;
+    text-align: center;
+    font-size: 12px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+form #email, form #password, form label {
+    width: 75%;
+    padding: 10px;
+    display: inline-flex;
+}
+
+.error{
+    text-align: center;
+    font-size: 14px;
+    padding-top: 38px;
+}
+
+.empty {
+    font-style: italic;
+    color: #666;
+}
+
+#alert{
+    padding-right: 4px;
+}
+
+.clear_fix{
+    clear: both;
+}

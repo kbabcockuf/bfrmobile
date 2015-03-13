@@ -22,8 +22,9 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "org.apache.cordova.splashscreen": "0.3.5",
-    "nl.x-services.plugins.calendar": "4.2.9"
+    "org.apache.cordova.splashscreen": "1.0.0",
+    "nl.x-services.plugins.calendar": "4.2.9",
+    "uk.co.workingedge.phonegap.plugin.LaunchNavigator": "2.1.0"
 }
 // BOTTOM OF METADATA
 });
