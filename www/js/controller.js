@@ -128,9 +128,11 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
         function($scope, $routeParams, $location, bfrApi) {
             
 
-            $scope.$watch('item.log_parts[null]', function(last) {
-                if (last.type && last.name && last.weight) {
-                    $scope.item.log_parts[null]={};
+            $scope.$watch('item.log_parts[last_new_part]', function(last) {
+                console.log($scope);
+                if (last.food_type_id && last.description && last.weight) {
+                    $scope.last_new_part = "new" + Date.now();
+                    $scope.item.log_parts[$scope.last_new_part]={};
                 }
             }, true);
 
@@ -149,15 +151,30 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
 
             bfrApi.logById($routeParams.logId)
                 .then(bfrApi.loadLocationDetail)
-                .then(storeIn($scope, 'item'))
+                .then(function(item){
+                    $scope.last_new_part = "new" + Date.now();
+                    item.log_parts[$scope.last_new_part]={};
+                    $scope.item = item;
+                })
                 .catch(storeErrorIn($scope, 'errorMsg'));
 
             console.log($scope);
 
             $scope.submit = function() {
+                for(var id in $scope.item.log_parts) {
+                    var current = $scope.item.log_parts[id];
+                    if(id.match(/^new/) && !current.food_type_id && !current.description && !current.weight) {
+                        delete $scope.item.log_parts[id];
+                        continue;
+                    }
+                    if(!current.weight){
+                        alert("Please enter a weight for all items.");
+                        return;
+                    }
+                }
                 bfrApi.updateLog($scope.item)
                     .then(function(result) {
-                        alert(result.message);
+                        alert("Message from the food rescue robot: " + result.message);
                         $location.path('/report');
                     })
                     .catch(storeErrorIn($scope, 'errorMsg'));
