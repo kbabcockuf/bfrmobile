@@ -68,7 +68,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             }
         }])
 
-    .controller("PickUpCtrl", ['$scope', '$q', '$route', 'bfrApi',
+    .controller("PickUpOneTimeCtrl", ['$scope', '$q', '$route', 'bfrApi',
         function($scope, $q, $route, bfrApi) {
             $scope.open = bfrApi.call("/logs/open.json")
                 .map(function(result) {
@@ -85,6 +85,30 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
              */
             $scope.take = function(id) {
                 bfrApi.call("/logs/" + id + "/take.json")
+                    .then(function(response) {
+                        alert(response.message);
+                        $route.reload();
+                    }, storeErrorIn($scope, 'errorMsg'));
+            }
+        }])
+
+    .controller("PickUpRecurringCtrl", ['$scope', '$q', '$route', 'bfrApi',
+        function($scope, $q, $route, bfrApi) {
+            $scope.open = bfrApi.call("/logs/schedule_chains/open.json")
+                .map(function(result) {
+                    return $q.all(result.map(function(item){
+                        return bfrApi.logById(item)
+                            .then(bfrApi.loadLocationDetail)
+                    }))
+                })
+                .then(storeIn($scope, 'openShifts'))
+                .catch(storeErrorIn($scope, 'errorMsg'));
+
+            /**
+             * Take a shift.
+             */
+            $scope.take = function(id) {
+                bfrApi.call("/schedule_chains/" + id + "/take.json")
                     .then(function(response) {
                         alert(response.message);
                         $route.reload();

@@ -38,8 +38,15 @@ app.config([
                 controller: 'UpcomingCtrl'
             })
             .when('/pickup', {
-                templateUrl: 'partials/pickup.html',
-                controller: 'PickUpCtrl'
+                redirectTo: '/pickup/onetime'
+            })
+            .when('/pickup/onetime', {
+                templateUrl: 'partials/pickup_onetime.html',
+                controller: 'PickUpOneTimeCtrl'
+            })
+            .when('/pickup/recurring', {
+                templateUrl: 'partials/pickup_recurring.html',
+                controller: 'PickUpRecurringCtrl'
             })
             .when('/report', {
                 templateUrl: 'partials/past.html',
