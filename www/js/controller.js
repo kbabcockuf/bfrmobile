@@ -187,21 +187,18 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             console.log($scope);
 
             $scope.getTotalWeight = function() {
-                console.log("getTotalWeight", $scope, $scope.item);
                 if (!$scope.item) {
-                    console.log("not getting total weight")
                     return 0;
                 }
 
-                return Array.prototype.reduce.call(
-                    $scope.item.log_parts, function(sum, part) {
-                        console.log(sum, part);
-                        if (isNaN(Number(part))) {
-                            return sum;
-                        } else {
-                            return sum + part.weight;
-                        }
-                    }, 0);
+                var weight = 0;
+                for (var id in $scope.item.log_parts) {
+                    if (!isNaN(Number($scope.item.log_parts[id].weight))) {
+                        weight += $scope.item.log_parts[id].weight;
+                    }
+                }
+
+                return weight;
             }
 
             $scope.submit = function() {
