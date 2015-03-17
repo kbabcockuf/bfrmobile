@@ -353,7 +353,7 @@ ul{
 #enter-data-container{
     background-color: white;
     text-align:center;
-
+    font-size: 12px;
 }
 
 .dropdown-box{
@@ -365,7 +365,7 @@ ul{
     display: inline-block;
 }
 
-#transportation, #weight-method{
+#transportation, #weight-method, #why-zero{
     display: inline-block;
     
 }
@@ -403,6 +403,12 @@ ul{
     font-size: 12px;
     padding-top: 10px;
     padding-bottom: 10px;
+}
+
+.radio-group {
+    display: inline-block;
+    vertical-align: top;
+    text-align: left;
 }
 
 form #email, form #password, form label {

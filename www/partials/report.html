@@ -20,10 +20,22 @@
             <br>
         </div>
 
-        <div id ="weight-method">Weighing Method</div>
-            
-            <select id="weight-dropdown-box" ng-model="entry.scale_type_id" ng-options="item.id as item.name for item in scaleTypes">
-            </select>
+        <div id="weight-method">Weighing Method</div>
+
+        <select id="weight-dropdown-box" ng-model="entry.scale_type_id" ng-options="item.id as item.name for item in scaleTypes">
+        </select><br>
+
+        <span ng-if="getTotalWeight() == 0">
+            <div id="why-zero">Why Zero?</div>
+            <div class="radio-group">
+                <p>
+                    <input type="radio" ng-model="item.log.why_zero" value="1" /> No Food At Donor
+                </p>
+                <p>
+                    <input type="radio" ng-model="item.log.why_zero" value="2" /> Shift Didn't Happen
+                </p>
+            </div>
+        </span>
 
         <!--<div class="products">
             <br><select class="dropdown-box">

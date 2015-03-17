@@ -186,21 +186,46 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
 
             console.log($scope);
 
+            $scope.getTotalWeight = function() {
+                console.log("getTotalWeight", $scope, $scope.item);
+                if (!$scope.item) {
+                    console.log("not getting total weight")
+                    return 0;
+                }
+
+                return Array.prototype.reduce.call(
+                    $scope.item.log_parts, function(sum, part) {
+                        console.log(sum, part);
+                        if (isNaN(Number(part))) {
+                            return sum;
+                        } else {
+                            return sum + part.weight;
+                        }
+                    }, 0);
+            }
+
             $scope.submit = function() {
-                for(var id in $scope.item.log_parts) {
+                for (var id in $scope.item.log_parts) {
                     var current = $scope.item.log_parts[id];
-                    if(id.match(/^new/) && !current.food_type_id && !current.description && !current.weight) {
+
+                    // Remove unused log_parts entries
+                    if (id.match(/^new/) && !current.food_type_id
+                        && !current.description && !current.weight) {
+
                         delete $scope.item.log_parts[id];
                         continue;
                     }
-                    if(!current.weight){
+
+                    if (!current.weight){
                         alert("Please enter a weight for all items.");
                         return;
                     }
                 }
+
                 bfrApi.updateLog($scope.item)
                     .then(function(result) {
-                        alert("Message from the food rescue robot: " + result.message);
+                        alert("Message from the food rescue robot: "
+                            + result.message);
                         $location.path('/report');
                     })
                     .catch(storeErrorIn($scope, 'errorMsg'));
