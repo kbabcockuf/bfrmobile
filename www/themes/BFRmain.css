@@ -405,10 +405,27 @@ ul{
     padding-bottom: 10px;
 }
 
-.radio-group {
+.radio-group 
+{
+    float: center;
     display: inline-block;
     vertical-align: top;
     text-align: left;
+    margin-bottom: 10px;
+    position:relative;
+    left: 10px;
+    
+}
+
+.radio-group > p{
+    padding-bottom: 5px;
+}
+
+
+#why-zero{
+    float: center;
+    position: relative;
+    
 }
 
 form #email, form #password, form label {
