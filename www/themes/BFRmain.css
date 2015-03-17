@@ -4,12 +4,11 @@
 }
 
 #submitButton{
-    background-color: #666;
+    background-color: #519E32;
     width: 75.00%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    background: #666;
     text-align: center;
     color: White;
     line-height: 2.0;
@@ -33,21 +32,19 @@ body{
     
 }
 #home-header {
-    background-color: #333;
+    background-color: #214907;
     text-align: center;
     color: white;
     line-height: 3.2;
 }
 
 #main{
-    background-color: #333;
     height:30px;
     text-transform: uppercase;
     font-size: 14px;
 }
 
 #home-icon{
-   background-color: #333;
    float: left;
    margin-left: 20px;
    display:inline-block;
@@ -60,7 +57,6 @@ body{
 
 #logout-icon
 {
-    background-color: #333;
     float: right;
     margin-right: 20px;
     display: inline-block;
@@ -108,7 +104,7 @@ body{
 }
 
 #info-title, #notif{
-    background-color: #999;
+    background-color: #519E32;
     color: White;
     text-align: center;
     line-height: 2.0;
@@ -123,17 +119,21 @@ body{
 
 .collapsable-tab, .bfr-title{
     padding: 0 8px;
-    background-color: #999;
     line-height: 2.0;
-    color: white; 
+    color: #333333;
     font-size: 14px;
     text-decoration: none;
+    background-color: #B3DD62;
     
 }
 
 .bfr-title{
     margin-bottom: 1px;
     text-decoration: none !important;
+}
+
+.pink > .bfr-title{
+    background-color: #FCC0CB !important;
 }
 
 .shift-group{
@@ -157,7 +157,7 @@ a{
     display: block;
     width: 33.33%;
     float: left;
-    background: #999;
+    background: #3E7F26;
     clear: right;
     text-align: center;
     color: White;
@@ -166,12 +166,12 @@ a{
     
 }
 #settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calendar:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, #one-time:hover, #recurring:hover, .active-tab {
-    background: grey;
+    background: #84BF56;
     color: white;
 }
 
 .active-tab {
-    background-color: grey !important;    
+    background-color: #84BF56 !important;    
 }
 
 .header-tabs > a {
@@ -192,6 +192,7 @@ a{
 
 #upcoming-container{
     text-indent: 20px;
+    
 }
 
 #info-container{
@@ -269,17 +270,32 @@ ul{
     float:left;
     width: 33.33%;    
     display: inline-block;
-    background: #666;
     text-align: center;
     color: White;
     line-height: 2.0;    
 }
 
-#one-time,#recurring {
+#info{
+    background-color: #4F89FD;
+}
+
+#map{
+    background-color: #999999;
+}
+
+#take{
+    background-color: #519E32 !important;
+}
+
+#calendar{
+    background-color: #519E32;
+}
+
+#one-time, #recurring {
     float:left;
     width: 50%;    
     display: inline-block;
-    background: #666;
+    background-color: #519E32;
     text-align: center;
     color: White;
     line-height: 2.0;    
@@ -323,12 +339,11 @@ ul{
 }
 
 #save{
-    background-color: #666;
+    background-color: #519E32;
     width: 75.00%;
     margin-left: auto;
     margin-right: auto;
     margin-top: 10px;
-    background: #666;
     text-align: center;
     color: White;
     line-height: 2.0;

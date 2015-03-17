@@ -170,6 +170,9 @@ a{
     color: white;
 }
 
+.active-tab {
+    background-color: grey !important;    
+}
 
 .header-tabs > a {
     text-decoration: inherit;

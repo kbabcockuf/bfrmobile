@@ -8,13 +8,11 @@
         <h4>Recurring</h4>
     </a>
 </div>
-
 <div id="pickup-header">
     <h4>
         <div class="shifts">Open Recurring Shifts</div>
     </h4>
 </div>
-
 <div>
     <div class="error" ng-if="errorMsg">
         <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}
@@ -22,31 +20,28 @@
 </div>
 <div ng-repeat="shift in openShifts">
     <div class="shift-group">
-        <bfr-drawer ng-repeat="item in shift" bfr-title="item | describeLog">
-            <div id="upcoming-container">
+        <div id ="pickup-container">
+            <bfr-drawer class="pink" ng-repeat="item in shift" bfr-title="item | describeLog">
                 <ol>
-                    <li>{{item.log.donor.name}} (Pickup)</li>
+                    <li i>{{item.log.donor.name}} (Pickup)</li>
                     <li ng-repeat="recipient in item.log.recipients">{{recipient.name}} (Drop)</li>
                 </ol>
-            </div>
-
-            <div class="tabs-container">
-                <a href="#/detail/{{item.log.id}}" id="info">
-                    <h4>Info</h4>
-                </a>
-            </div>
-            <div class="tabs-container">
-                <a bfr-navigate-link="item.log" id="map">
-                    <h4>Map</h4>
-                </a>
-            </div>
-            <div class="tabs-container">
-                <a ng-click="take(item.log.id)" id="take">
-                    <h4>Take</h4>
-                </a>
-            </div>
-    
-
-    </bfr-drawer>
+                <div class="tabs-container">
+                    <a href="#/detail/{{item.log.id}}" id="info">
+                        <h4>Info</h4>
+                    </a>
+                </div>
+                <div class="tabs-container">
+                    <a bfr-navigate-link="item.log" id="map">
+                        <h4>Map</h4>
+                    </a>
+                </div>
+                <div class="tabs-container">
+                    <a ng-click="take(item.log.id)" id="take">
+                        <h4>Take</h4>
+                    </a>
+                </div>
+            </bfr-drawer>
+        </div>
     </div>
 </div>
