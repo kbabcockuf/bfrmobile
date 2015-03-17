@@ -154,8 +154,9 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             
 
             $scope.$watch('item.log_parts[last_new_part]', function(last) {
-                console.log($scope);
-                if (last.food_type_id && last.description && last.weight) {
+                if (last && last.food_type_id
+                    && last.description && last.weight) {
+
                     $scope.last_new_part = "new" + Date.now();
                     $scope.item.log_parts[$scope.last_new_part]={};
                 }
