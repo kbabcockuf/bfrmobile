@@ -94,7 +94,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
 
     .controller("PickUpRecurringCtrl", ['$scope', '$q', '$route', 'bfrApi',
         function($scope, $q, $route, bfrApi) {
-            $scope.open = bfrApi.call("/logs/schedule_chains/open.json")
+            $scope.open = bfrApi.call("/schedule_chains/open.json")
                 .map(function(result) {
                     return $q.all(result.map(function(item){
                         return bfrApi.logById(item)
