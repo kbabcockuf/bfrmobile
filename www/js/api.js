@@ -74,6 +74,18 @@ angular.module("BFRMobile.api", [])
                 },
 
                 /**
+                 * Get detauls about a schedule chain
+                 *
+                 * @param item {object|Number} Id, or an object with an id
+                 * property
+                 * @return {Promise} Promise for the schedule chain details
+                 */
+                /*chainById: function(item) {
+                    var id = (item.id || item);
+                    return api.call("/schedule_chains/" + id + ".json");
+                },*/
+
+                /**
                  * Send an updated log item to .then(function(result) {
                     $scope.log_parts = result.log_parts;
                     return bfrApi.loadLocationDetail(result.log);

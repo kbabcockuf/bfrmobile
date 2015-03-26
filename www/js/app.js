@@ -57,10 +57,10 @@ app.config([
                 templateUrl: 'partials/pickup_onetime.html',
                 controller: 'PickUpOneTimeCtrl'
             })
-            .when('/pickup/recurring', {
+            /*.when('/pickup/recurring', {
                 templateUrl: 'partials/pickup_recurring.html',
                 controller: 'PickUpRecurringCtrl'
-            })
+            })*/
             .when('/report', {
                 templateUrl: 'partials/past.html',
                 controller: 'PastCtrl'
