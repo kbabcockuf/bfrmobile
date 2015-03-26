@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Boulder Food Rescue</title>
+	<link rel="stylesheet" href="themes/Bootstrap.css">
+	<link rel="stylesheet" href="themes/application.css">
+	
+    <script href="themes/js/boostrap-dropdown.js"></script>
+	<link rel="stylesheet" href="themes/css/boostrap_2-1-1.css">
+	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+
+	<!-- DatePicker -->
+	<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
+	
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+</head>
+<body>
+	<div data-role="page" id="home">  
+		<div data-position="fixed" data-role="header" data-theme="a">  
+			<a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext" href="home.html">
+				Home
+			</a>  
+			<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
+				Boulder Food Rescue
+			</h1> 
+			
+			
+			<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" data-iconpos="notext" href="index.html">
+				Log Out
+			</a>
+		</div> 
+		<div data-role="content" id="contentConfirmation" name="contentConfirmation" align="center">  
+			<h1>
+				Account
+			</h1>  
+			<form id="HLogin" method="GET">  
+				 <div data-role="fieldcontain">  
+					<label for="url">Username:</label>  
+					<input class="required" id="Lusername" name="uid_r" value="" type="text">            
+				</div>  
+				<div data-role="fieldcontain">  
+					<label for="url">Password:</label>  
+					<input id="Lpassword" name="pwd_r" value="" type="password">            
+				</div>  
+					<a rel="external" href="index.html" data-role="button" data-theme="b" data-inline="false">
+						<span class="ui-btn-inner ui-btn-corner-all">
+							<span class="ui-btn-text">
+								Log Out
+							</span>
+						</span>
+					</a>
+					<br>
+
+					<br>
+					<a href="#">Forgot Your Password?</a>
+			</form> 
+		</div>  
+	</div>
+</body>
+</html>

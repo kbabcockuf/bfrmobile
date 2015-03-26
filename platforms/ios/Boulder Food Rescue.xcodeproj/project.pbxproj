@@ -39,6 +39,12 @@
 		7E7966E61810823500FA85AD /* icon-small.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DC1810823500FA85AD /* icon-small.png */; };
 		7E7966E71810823500FA85AD /* icon-small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7E7966DD1810823500FA85AD /* icon-small@2x.png */; };
 		D4A0D8761607E02300AEF8BB /* Default-568h@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = D4A0D8751607E02300AEF8BB /* Default-568h@2x~iphone.png */; };
+		A672583D8F3141AD87F2ED8E /* Calendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DB5BE782BC649F0B23529CA /* Calendar.m */; };
+		D15AFB8A23744EA3A2C983A5 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97D8BC2239424C61874C637A /* EventKit.framework */; };
+		901FD86FBE0745BEB371A197 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5C627BE27C4FF583335EBF /* EventKitUI.framework */; };
+		C54B9F43CE974D2A819A27D3 /* CDVNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F527E3668334343A3F2CE7B /* CDVNotification.m */; };
+		7440C56E5EF44607BA876F4B /* CDVNotification.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8C238E61EFFC4BAEAEC288A9 /* CDVNotification.bundle */; };
+		2C6E2FDA7D0D4912A49A2517 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3BC9A78312F945C0B96536E5 /* AudioToolbox.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +110,14 @@
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Boulder Food Rescue/config.xml"; sourceTree = "<group>"; };
+		5DB5BE782BC649F0B23529CA /* Calendar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "Calendar.m"; path = "nl.x-services.plugins.calendar/Calendar.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		9C09060091C745F3BEBAA4FC /* Calendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Calendar.h"; path = "nl.x-services.plugins.calendar/Calendar.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		97D8BC2239424C61874C637A /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKit.framework"; path = "System/Library/Frameworks/EventKit.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		8A5C627BE27C4FF583335EBF /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "EventKitUI.framework"; path = "System/Library/Frameworks/EventKitUI.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
+		0F527E3668334343A3F2CE7B /* CDVNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVNotification.m"; path = "org.apache.cordova.dialogs/CDVNotification.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		3232D7FF92F4450ABDC40EB1 /* CDVNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVNotification.h"; path = "org.apache.cordova.dialogs/CDVNotification.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		8C238E61EFFC4BAEAEC288A9 /* CDVNotification.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = "CDVNotification.bundle"; path = "CDVNotification.bundle"; sourceTree = "<group>"; };
+		3BC9A78312F945C0B96536E5 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "AudioToolbox.framework"; path = "System/Library/Frameworks/AudioToolbox.framework"; sourceTree = SDKROOT; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +129,9 @@
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
 				305D5FD1115AB8F900A74A75 /* MobileCoreServices.framework in Frameworks */,
+				D15AFB8A23744EA3A2C983A5 /* EventKit.framework in Frameworks */,
+				901FD86FBE0745BEB371A197 /* EventKitUI.framework in Frameworks */,
+				2C6E2FDA7D0D4912A49A2517 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +193,7 @@
 				308D052D1370CCF300D202BF /* icons */,
 				308D05311370CCF300D202BF /* splash */,
 				8D1107310486CEB800E47090 /* Boulder Food Rescue-Info.plist */,
+				8C238E61EFFC4BAEAEC288A9 /* CDVNotification.bundle */,
 			);
 			name = Resources;
 			path = "Boulder Food Rescue/Resources";
@@ -187,6 +205,9 @@
 				5B1594DC16A7569C00FEF299 /* AssetsLibrary.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
 				305D5FD0115AB8F900A74A75 /* MobileCoreServices.framework */,
+				97D8BC2239424C61874C637A /* EventKit.framework */,
+				8A5C627BE27C4FF583335EBF /* EventKitUI.framework */,
+				3BC9A78312F945C0B96536E5 /* AudioToolbox.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -202,6 +223,10 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				5DB5BE782BC649F0B23529CA /* Calendar.m */,
+				9C09060091C745F3BEBAA4FC /* Calendar.h */,
+				0F527E3668334343A3F2CE7B /* CDVNotification.m */,
+				3232D7FF92F4450ABDC40EB1 /* CDVNotification.h */,
 			);
 			name = Plugins;
 			path = "Boulder Food Rescue/Plugins";
@@ -355,6 +380,7 @@
 				7E7966E11810823500FA85AD /* icon-50@2x.png in Resources */,
 				7E7966E51810823500FA85AD /* icon-76@2x.png in Resources */,
 				30FC414916E50CA1004E6F35 /* icon-72@2x.png in Resources */,
+				7440C56E5EF44607BA876F4B /* CDVNotification.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -386,6 +412,8 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
+				A672583D8F3141AD87F2ED8E /* Calendar.m in Sources */,
+				C54B9F43CE974D2A819A27D3 /* CDVNotification.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

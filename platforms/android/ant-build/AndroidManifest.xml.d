@@ -1,2 +1,2 @@
-/home/aluminous/dev/BFRMobile/platforms/android/ant-build/AndroidManifest.xml : \
-/home/aluminous/dev/BFRMobile/platforms/android/AndroidManifest.xml \
+/Users/austin/dev/BFRMobile/platforms/android/ant-build/AndroidManifest.xml : \
+/Users/austin/dev/BFRMobile/platforms/android/AndroidManifest.xml \

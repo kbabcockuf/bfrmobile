@@ -1,0 +1,84 @@
+<div class="header">
+    <div class="donor-recipient route">
+        <span ng-repeat="location in locations">{{location.name}}</span>
+    </div>
+</div>
+
+<div id="info-title">
+    <h4>
+        Info
+    </h4>
+</div>
+
+<div id="info-container">
+    <div id="pickup">
+        {{shift.schedule | describeFrequency}}
+        (Next pickup: {{shift.schedule | describeNextDate}})
+    </div>
+    <br>
+    <div id="notes-container">
+        <div id="notes">
+            <strong>Notes:</strong>
+            <span ng-if="shift.log.notes">{{shift.log.notes}}</span>
+            <spen ng-if="!shift.log.notes" class="empty">Empty</span>
+        </div>
+        <br>
+
+        <div id="expexcted_weight">
+            <strong>Expected Weight:</strong>
+            <span ng-if="shift.schedule.expected_weight">
+                {{shift.schedule.expected_weight}}
+            </span>
+            <spen ng-if="!shift.schedule.expected_weight" class="empty">Unknown</span>
+        </div>
+        <br>
+        <div id="Hilliness">
+            <strong>Hilliness:</strong>
+            <span ng-if="shift.schedule.hilliness">
+                {{shift.schedule.hilliness}}
+            </span>
+            <spen ng-if="!shift.schedule.hilliness" class="empty">Unknown</span>
+        </div>
+        <br>
+        <div id="difficulty">
+            <strong>Overall Difficulty:</strong>
+            <span ng-if="shift.schedule.difficulty_rating">
+                {{shift.schedule.difficulty_rating}}
+            </span>
+
+            <span ng-if="!shift.schedule.difficulty_rating" class="empty">Unknown</span>
+        </div>
+    </div>
+    <div>
+        <br>
+        <div ng-repeat="location in locations">
+            <h3>{{location.name}} ({{location.type}})</h3>
+            <p class="address">{{location.address}}</p>
+            <p ng-if="location.public_notes">
+                <br>
+                <strong>Notes:</strong> {{location.public_notes}}
+            </p>
+            <p ng-if="location.entry_info">
+                <br>
+                <strong>Entry:</strong> {{location.entry_info}}
+            </p>
+            <p ng-if="location.equipment_storage_info">
+                <br>
+                <strong>Equipment:</strong> {{location.equipment_storage_info}}
+            </p>
+            <p ng-if="location.food_storage_info">
+                <br>
+                <strong>Food:</strong> {{location.food_storage_info}}
+            </p>
+            <p ng-if="location.contact">
+                <br>
+                <strong>Contact:</strong> {{location.contact}}
+            </p>
+            <p ng-if="location.exit_info">
+                <br>
+                <strong>Exit:</strong> {{location.exit_info}}
+            </p>
+            <br>
+        </div>
+    </div>
+</div>

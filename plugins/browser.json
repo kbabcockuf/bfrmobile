@@ -15,6 +15,9 @@
         },
         "uk.co.workingedge.phonegap.plugin.LaunchNavigator": {
             "PACKAGE_NAME": "com.boulderfoodrescue.bfrmobile"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "com.boulderfoodrescue.bfrmobile"
         }
     },
     "dependent_plugins": {}

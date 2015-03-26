@@ -216,3 +216,126 @@ To disable web storage backup to iCloud, set the BackupWebStorage preference to 
 
 2015-03-26 09:27:59.277 Boulder Food Rescue[5905:61034] Resetting plugins due to page load.
 2015-03-26 09:27:59.493 Boulder Food Rescue[5905:61034] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/51687F6C-B72A-48B8-87F1-E7F2024B68B9/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 09:55:21.048 Boulder Food Rescue[7636:71811] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Data/Application/0BB78E03-CFE4-40A6-BB40-32C34E445C1F/Library/Cookies/Cookies.binarycookies
+2015-03-26 09:55:21.384 Boulder Food Rescue[7636:71811] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-26 09:55:21.385 Boulder Food Rescue[7636:71811] Multi-tasking -> Device: YES, App: YES
+2015-03-26 09:55:21.408 Boulder Food Rescue[7636:71811] Unlimited access to network resources
+2015-03-26 09:55:21.428 Boulder Food Rescue[7636:71811] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-26 09:55:22.133 Boulder Food Rescue[7636:71811] Resetting plugins due to page load.
+2015-03-26 09:55:22.528 Boulder Food Rescue[7636:71811] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/1A67857F-68DE-408E-8974-27DD804F97F8/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 09:55:22.886 Boulder Food Rescue[7636:71811] Resetting plugins due to page load.
+2015-03-26 09:55:22.936 Boulder Food Rescue[7636:71811] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/1A67857F-68DE-408E-8974-27DD804F97F8/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 09:55:37.053 Boulder Food Rescue[7636:71811] Resetting plugins due to page load.
+2015-03-26 09:55:37.163 Boulder Food Rescue[7636:71811] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/1A67857F-68DE-408E-8974-27DD804F97F8/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 09:55:53.204 Boulder Food Rescue[7636:71811] THREAD WARNING: ['Calendar'] took '172.854004' ms. Plugin should use a background thread.
+2015-03-26 09:56:02.431 Boulder Food Rescue[7636:71811] Reached Success
+2015-03-26 09:59:27.106 Boulder Food Rescue[7636:71811] CDVWebViewDelegate: Navigation started when state=1
+2015-03-26 09:59:27.107 Boulder Food Rescue[7636:71811] Failed to load webpage with error: CDVWebViewDelegate: Navigation started when state=1
+2015-03-26 09:59:27.108 Boulder Food Rescue[7636:71811] Resetting plugins due to page load.
+2015-03-26 09:59:27.125 Boulder Food Rescue[7636:71811] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/1A67857F-68DE-408E-8974-27DD804F97F8/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 09:59:37.844 Boulder Food Rescue[7922:73488] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Data/Application/0FF871B2-A159-4547-AC2B-606EF356C40C/Library/Cookies/Cookies.binarycookies
+2015-03-26 09:59:37.945 Boulder Food Rescue[7922:73488] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-26 09:59:37.946 Boulder Food Rescue[7922:73488] Multi-tasking -> Device: YES, App: YES
+2015-03-26 09:59:37.948 Boulder Food Rescue[7922:73488] Unlimited access to network resources
+2015-03-26 09:59:37.952 Boulder Food Rescue[7922:73488] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-26 09:59:38.199 Boulder Food Rescue[7922:73488] Resetting plugins due to page load.
+2015-03-26 09:59:38.394 Boulder Food Rescue[7922:73488] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/00CEE50A-DAC5-421B-B4C7-AF1274BFC2BD/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 09:59:40.891 Boulder Food Rescue[7922:73488] Resetting plugins due to page load.
+2015-03-26 09:59:40.917 Boulder Food Rescue[7922:73488] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/00CEE50A-DAC5-421B-B4C7-AF1274BFC2BD/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 10:02:05.456 Boulder Food Rescue[8204:75017] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Data/Application/ED04A829-3EB0-4F32-AB2B-1D0DDBA06C10/Library/Cookies/Cookies.binarycookies
+2015-03-26 10:02:05.609 Boulder Food Rescue[8204:75017] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-26 10:02:05.609 Boulder Food Rescue[8204:75017] Multi-tasking -> Device: YES, App: YES
+2015-03-26 10:02:05.615 Boulder Food Rescue[8204:75017] Unlimited access to network resources
+2015-03-26 10:02:05.620 Boulder Food Rescue[8204:75017] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-26 10:02:06.139 Boulder Food Rescue[8204:75017] Resetting plugins due to page load.
+2015-03-26 10:02:06.389 Boulder Food Rescue[8204:75017] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/1FAC5770-7D5C-4BD9-8607-F92D3A0C9C24/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 10:02:08.912 Boulder Food Rescue[8204:75017] Resetting plugins due to page load.
+2015-03-26 10:02:08.932 Boulder Food Rescue[8204:75017] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/1FAC5770-7D5C-4BD9-8607-F92D3A0C9C24/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 10:02:41.943 Boulder Food Rescue[8478:75792] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Data/Application/360B98EE-0157-4466-A6EC-23AEAE975B4A/Library/Cookies/Cookies.binarycookies
+2015-03-26 10:02:42.058 Boulder Food Rescue[8478:75792] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-26 10:02:42.059 Boulder Food Rescue[8478:75792] Multi-tasking -> Device: YES, App: YES
+2015-03-26 10:02:42.069 Boulder Food Rescue[8478:75792] Unlimited access to network resources
+2015-03-26 10:02:42.073 Boulder Food Rescue[8478:75792] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-26 10:02:42.261 Boulder Food Rescue[8478:75792] Resetting plugins due to page load.
+2015-03-26 10:02:42.449 Boulder Food Rescue[8478:75792] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/B2B2790C-44E7-4EF0-AED8-7D4BABA8DF29/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 10:02:46.116 Boulder Food Rescue[8478:75792] Resetting plugins due to page load.
+2015-03-26 10:02:46.135 Boulder Food Rescue[8478:75792] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/B2B2790C-44E7-4EF0-AED8-7D4BABA8DF29/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 10:08:05.975 Boulder Food Rescue[9070:79951] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Data/Application/4DD809FE-87F3-491F-BE50-0EF0199BBEC0/Library/Cookies/Cookies.binarycookies
+2015-03-26 10:08:06.255 Boulder Food Rescue[9070:79951] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-26 10:08:06.256 Boulder Food Rescue[9070:79951] Multi-tasking -> Device: YES, App: YES
+2015-03-26 10:08:06.281 Boulder Food Rescue[9070:79951] Unlimited access to network resources
+2015-03-26 10:08:06.292 Boulder Food Rescue[9070:79951] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-26 10:08:06.998 Boulder Food Rescue[9070:79951] Resetting plugins due to page load.
+2015-03-26 10:08:07.394 Boulder Food Rescue[9070:79951] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/BE1F2DE0-E170-41ED-B7AF-CD3D327E542A/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 10:08:07.820 Boulder Food Rescue[9070:79951] Resetting plugins due to page load.
+2015-03-26 10:08:07.864 Boulder Food Rescue[9070:79951] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/BE1F2DE0-E170-41ED-B7AF-CD3D327E542A/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 10:08:27.566 Boulder Food Rescue[9070:79951] Resetting plugins due to page load.
+2015-03-26 10:08:27.632 Boulder Food Rescue[9070:79951] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/BE1F2DE0-E170-41ED-B7AF-CD3D327E542A/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 10:11:09.771 Boulder Food Rescue[9379:82109] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Data/Application/D32B156C-44E8-4C2A-9FAA-C2B364A67361/Library/Cookies/Cookies.binarycookies
+2015-03-26 10:11:09.993 Boulder Food Rescue[9379:82109] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-26 10:11:09.994 Boulder Food Rescue[9379:82109] Multi-tasking -> Device: YES, App: YES
+2015-03-26 10:11:10.000 Boulder Food Rescue[9379:82109] Unlimited access to network resources
+2015-03-26 10:11:10.016 Boulder Food Rescue[9379:82109] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-26 10:11:10.382 Boulder Food Rescue[9379:82109] Resetting plugins due to page load.
+2015-03-26 10:11:10.642 Boulder Food Rescue[9379:82109] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/35C6891C-91CC-45E5-A420-98125BBC13FF/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 10:11:39.618 Boulder Food Rescue[9379:82109] Resetting plugins due to page load.
+2015-03-26 10:11:39.667 Boulder Food Rescue[9379:82109] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/35C6891C-91CC-45E5-A420-98125BBC13FF/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 10:14:34.485 Boulder Food Rescue[9769:84139] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Data/Application/DC6D5206-5CD7-4DFD-A922-1F8CE8BC8196/Library/Cookies/Cookies.binarycookies
+2015-03-26 10:14:34.757 Boulder Food Rescue[9769:84139] Apache Cordova native platform version 3.7.0 is starting.
+2015-03-26 10:14:34.758 Boulder Food Rescue[9769:84139] Multi-tasking -> Device: YES, App: YES
+2015-03-26 10:14:34.820 Boulder Food Rescue[9769:84139] Unlimited access to network resources
+2015-03-26 10:14:34.832 Boulder Food Rescue[9769:84139] 
+
+Started backup to iCloud! Please be careful.
+Your application might be rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines" at:
+https://developer.apple.com/icloud/documentation/data-storage/
+To disable web storage backup to iCloud, set the BackupWebStorage preference to "local" in the Cordova config.xml file
+
+2015-03-26 10:14:35.451 Boulder Food Rescue[9769:84139] Resetting plugins due to page load.
+2015-03-26 10:14:35.771 Boulder Food Rescue[9769:84139] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/6D2DF2FC-E320-4F5F-AA94-597841443AA2/Boulder%20Food%20Rescue.app/www/index.html#/upcoming
+2015-03-26 10:14:37.866 Boulder Food Rescue[9769:84139] Resetting plugins due to page load.
+2015-03-26 10:14:37.915 Boulder Food Rescue[9769:84139] Finished load of: file:///Users/austin/Library/Developer/CoreSimulator/Devices/712D8B7C-C8AF-4C51-88FD-764654E3FF20/data/Containers/Bundle/Application/6D2DF2FC-E320-4F5F-AA94-597841443AA2/Boulder%20Food%20Rescue.app/www/login.html
+2015-03-26 10:14:43.455 Boulder Food Rescue[9769:84139] THREAD WARNING: ['Notification'] took '96.212891' ms. Plugin should use a background thread.
