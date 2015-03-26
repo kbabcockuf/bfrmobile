@@ -7,6 +7,9 @@
     <feature name="Calendar">
         <param name="android-package" value="nl.xservices.plugins.Calendar" />
     </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
     <name>Boulder Food Rescue</name>
     <description>
         Mobile Boulder Food Rescue
@@ -87,7 +90,4 @@
     <gap:splash gap:platform="ios" height="1496" src="img/splash/ios/splash2048x1496.png" width="2048" />
     <gap:splash gap:platform="winphone" src="img/splash/winphone/splash.jpg" />
     <access origin="*" />
-    <feature name="Notification">
-        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
-    </feature>
 </widget>

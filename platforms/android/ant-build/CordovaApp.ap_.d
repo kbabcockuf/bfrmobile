@@ -197,11 +197,16 @@
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/partials/settings_new.html \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/partials/upcoming.html \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar \
+/Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/org.apache.cordova.dialogs \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/uk.co.workingedge.phonegap.plugin.LaunchNavigator \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar/test \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar/www \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar/test/tests.js \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/nl.x-services.plugins.calendar/www/Calendar.js \
+/Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www \
+/Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/android \
+/Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/notification.js \
+/Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/org.apache.cordova.dialogs/www/android/notification.js \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/uk.co.workingedge.phonegap.plugin.LaunchNavigator/www \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/uk.co.workingedge.phonegap.plugin.LaunchNavigator/www/android \
 /Users/austin/dev/BFRMobile/platforms/android/assets/www/plugins/uk.co.workingedge.phonegap.plugin.LaunchNavigator/www/android/launchnavigator.js \

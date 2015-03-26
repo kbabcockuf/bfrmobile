@@ -15,8 +15,8 @@ $(function () {
                 window.location = ("index.html");
             },
             error: function (msg) {
-            	navigator.notification.alert("Please check your username and password and"
-            		+ " try again. " + msg, null, "Login Failed");
+            	navigator.notification.alert("Please check your username and password.",
+            		null, "Login Failed");
             }
         });
         $("#submitButton").removeAttr("disabled");
