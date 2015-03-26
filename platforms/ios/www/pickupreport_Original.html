@@ -1,0 +1,337 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Boulder Food Rescue</title>
+	<link rel="stylesheet" href="themes/Bootstrap.css">
+
+	<link rel="stylesheet" href="themes/application.css">
+	
+	<!-- <script href="themes/js/boostrap-dropdown.js"></script>
+	<link rel="stylesheet" href="themes/css/boostrap_2-1-1.css">
+	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script> -->
+
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+
+	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
+	
+	<!-- DatePicker -->
+	<link rel="stylesheet" type="text/css" href="themes/jqm-datebox.min.css" />
+
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>
+
+	<script>
+		$(function () {
+			$.ajax({
+				type: "GET",
+				url: "http://dev.boulderfoodrescue.org/logs/mine_upcoming.json",
+				data: {volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token},
+				success: function (data) {
+        			//alert(JSON.stringify(data));
+        			//alert(JSON.stringify(data[0].donor_id));
+        			//alert(JSON.stringify(data));
+        			var data_id = (data.length-1);
+        			if((data[data_id]).id) {
+        				result = (data[data_id]).id;
+        				//alert((data[data_id]).id);
+        			}
+
+        			$("#test").on("submit", function (y) {
+        				$("#submitButton", this).attr("disabled", "disabled");
+        				//alert(getFormData());
+        				$.ajax({
+        					type: "PUT",
+        					url: "http://dev.boulderfoodrescue.org/logs/" + result + ".json",
+        					data: {volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token
+        					},
+        					success: function (data) {
+        						//alert("success");
+        					},
+        					error: function (msg) {
+        						//alert( JSON.stringify(msg) );
+        					}
+        				});
+        				$("#submitButton").removeAttr("disabled");
+        			});
+        		},
+        		error: function (msg) {
+        			//alert( JSON.stringify(msg) );
+        		}
+        	});
+		});
+
+		function getFormData(){
+			var data = "";
+			var $textInputs = $("input:text");
+			for (i = 0; i < $textInputs.length; i++){
+				if($textInputs[i].value){
+					data += $textInputs[i].name +": " + $textInputs[i].value + ", ";
+				}
+			}
+			var $selectInputs = $("select");
+			for (i = 0; i < $selectInputs.length; i++){
+				if($selectInputs[i].value){
+					data += $selectInputs[i].name +": " + $selectInputs[i].value + ", ";
+				}
+			}
+			var $textAreaInputs = $("textarea");
+			for (i = 0; i < $textAreaInputs.length; i++){
+				if($textAreaInputs[i].value){
+					data += $textAreaInputs[i].name +": " + $textAreaInputs[i].value + ", ";
+				}
+			}
+			var $checkboxInputs = $("input:checkbox");
+			if ($checkboxInputs.is(":checked")) {
+				data += $checkboxInputs[0].name +": " + "true" + ",";
+			}
+			else {
+				data += $checkboxInputs[0].name + ": " + "false" + ",";
+			}
+			return data;
+		}
+		</script>
+
+</head>
+<style type="text/css">
+	.field_title {
+		margin: 12px; 
+		color: black;
+	}
+	div.inputdata{
+		border:thin solid gray;
+		padding:0.1em;
+		margin:0.1em;
+	}
+
+	div.inputdata label{
+		float:left;
+		margin-right:15px;
+		/*padding:5px 0;*/
+		/*color:gray;*/
+	}
+
+	div.inputdata span{
+		display: block;
+		overflow: hidden;
+	}
+
+	div.inputdata input{
+		width:100%;
+		/*padding-top:8px;*/
+		border:none;
+		background:none;
+	}
+
+	.clear {
+		clear: both; 
+	}
+</style>
+<body>
+	<form id="test">
+		<div data-role="page" id="pickup">  
+			<div data-position="fixed" data-role="header" data-theme="a">  
+				<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="home" data-iconpos="notext" href="home.html">
+					Home
+				</a>  
+				<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
+					Food Rescue Robot
+				</h1> 
+				<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" data-iconpos="notext" href="index.html">
+					Log Out
+				</a>
+			</div> 
+			<h3>
+				<div style="margin: 15px; color: #4a4a4a; font:20px/1.5 'Trebuchet MS', Arial; border-bottom: 1px solid #c5c5c5 !important;">
+					<center>
+						Pick Up Report
+					</center>
+				</div>
+			</h3>
+			<div class="field_title" data-role="fieldcontain"> 
+				<label style="color: #DB5432; font:15px/1 'Trebuchet MS', Arial;" for="name">Date:</label>
+				<input class="date_picker" name="when" id="mydate" type="date" data-theme="b" data-role="datebox" data-options='{"mode": "flipbox"}'>
+			</div>
+
+			<div class="div_dim">
+				<select class="drop_button" name="volunteers" id="volunteers">
+					<option>Volunteer</option>
+					<option value="1">Gretchen</option>
+					<option value="2">Merk</option>
+					<option value="3">Bawb</option>
+					<option value="4">Hollah</option>
+					<option value="5">Atcha</option>
+					<option value="6">Yolohonda</option>
+					<option value="7">Z</option>
+				</select>
+			</div>
+
+			<div class="div_dim">
+				<select class="drop_button" name="donor" id="donor">
+					<option>Donor</option>
+					<option value="1">Hall Fewds</option>
+					<option value="2">Whale Mart</option>
+					<option value="3">Targeh</option>
+					<option value="4">AllFallFa</option>
+                    <option value="5">Soyweigh</option>
+					<option value="6">Wander Pris</option>
+					<option value="7">Farmer Betty</option>
+				</select>
+			</div>
+
+		<!-- <div class="div_dim">
+			<select class="drop_button" name="recipient" id="recipient" multiple="multiple" data-native-menu="false">
+				<option>Recipient</option>
+				<option value="mon">1</option>
+				<option value="tue">2</option>
+				<option value="wed">3</option>
+				<option value="thu">4</option>
+				<option value="fri">5</option>
+				<option value="sat">6</option>
+				<option value="sun">7</option>
+			</select>
+		</div> -->
+
+		<div class="div_dim">
+			<select class="drop_button" name="recipient" id="recipient">
+				<option>Recipient</option>
+				<option value="1">Nice man</option>
+				<option value="2">Nice woman</option>
+				<option value="3">Grate</option>
+				<option value="4">Bulldawg</option>
+				<option value="5">Pit Bullz</option>
+				<option value="6">Sunshine</option>
+				<option value="7">Rainbows</option>
+				<option value="8">Granny</option>
+				<option value="9">Noice</option>
+				<option value="10">Reading 4 fun</option>
+				<option value="11">Buskers</option>
+				<option value="12">Leptons R Lyfe</option>
+				<option value="13">Bosons though</option>
+				<option value="14">Are pretty neat 2</option>
+				<option value="15">Like really Fermions</option>
+				<option value="16">And Bosons</option>
+				<option value="17">Are kewl</option>
+				<option value="18">Quarky</option>
+				<option value="19">Twerky</option>
+				<option value="20">md5sum</option>
+				<option value="21">Hungry me is hungry</option>
+			</select>
+		</div>		
+		<div class="section_div">
+			<center>
+				Data
+			</center>
+		</div>
+		<div class="info_div">
+			<center>
+				Enter the weight/count for each food type
+			</center>
+		</div>
+		<div class="div_dim">
+			<select style="" class="drop_button" name="produce" id="produce" >
+				<option>Food Type</option>
+                <option value="1">Produce</option>
+				<option value="2">Dry Foods</option>
+				<option value="3">Water</option>
+				<option value="4">Soup</option>
+				<option value="5">Top</option>
+				<option value="6">Bottom</option>
+				<option value="7">Quarks</option>
+			</select>
+		</div>
+
+		<div class="field_title" data-role="fieldcontain">
+			<label style="color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;" for="name">Weight:</label>
+			<input type="text" name="weight" id="name" value=""  />
+			<!-- <label for="slider-1">Input slider:</label>
+			<input type="range" name="slider" id="slider-1" value="0" min="0" max="30" /> -->
+		</div>
+
+		<div class="field_title" data-role="fieldcontain">
+			<label style="color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;" for="name">Count:</label>
+			<input type="text" name="count" id="name" value=""  />
+			<!-- <label for="slider-fill">Input slider:</label>
+			<input type="range" name="slider" id="slider-fill" value="60" min="0" max="100" data-highlight="true" data-theme="f" data-track-theme="a"/> -->
+		</div>
+
+		<div class="field_title" data-role="fieldcontain">
+			<label style="color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;" for="name">Description:</label>
+
+			<input type="text" name="description" id="name" value=""  />
+			
+		</div>
+		<div class="div_dim">
+			<select class="drop_button" name="weighedwith" id="weighedwith">
+				<option>Weighed With</option>
+                <option value="FloorScale">Floor Scale (lb)</option>
+				<option value="Bathroom Scale">Bathroom Scale (lb)</option>
+				<option value="Guesstimate">Guesstimate (lb)</option>
+			</select>
+		</div>
+
+		<div class="div_dim">
+			<select class="drop_button" name="transportedwith" id="transportedwith">
+				<option>Transportation</option>
+				<option value="Bike">Bike</option>
+				<option value="Foot">Foot</option>
+                <option value="Car">Car</option>
+                <option value="Truck">Truck</option>
+                <option value="Van">Van</option>
+                <option value="Motorcycle">Motorcycle</option>
+                <option value="Golfcart">Golf cart</option>
+			</select>
+		</div>
+
+		<div class="field_title" data-role="fieldcontain">
+			<label style="color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;" for="textarea">
+				Notes:
+			</label>
+			<textarea cols="40" rows="8" name="notes" id="textarea">
+            </textarea>
+		</div>
+
+		<div class="field_title" data-role="fieldcontain">
+			<fieldset data-role="controlgroup">
+				<label style="color: #FF3300; font: 15px/1 'Trebuchet MS', Arial; line-height: 150%; height: 25px;" for="checkbox-1">
+					<text style="top: 15px;">Flag for Admin</text>
+				</label>
+				<input type="checkbox" name="flag_for_admin" id="checkbox-1" value="true" class="custom"/>
+			</fieldset>
+
+		</div> 
+
+		<!-- <div class="field_title" data-role="fieldcontain">
+				<label style="color: #DB5432; font: 15px/1 'Trebuchet MS', Arial;" for="checkbox-1">
+					Flag for Admin:
+				</label>
+				<input style="width: 13px;" type="checkbox" name="checkbox-1" id="checkbox-1" />
+			</div> -->
+		<!-- <center>
+			<a rel="external" href="home.html" data-role="button" data-theme="b" data-inline="true">Save Changes
+			</a>
+		</center> -->
+
+<!-- 		<div class="div_dim">
+			<a rel="external" href="home.html" data-role="button" data-theme="d" data-inline="false">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="ext_button">
+						Save Changes
+					</span>
+				</span>
+			</a>
+		</div> --> 
+
+		<input type="submit" value="Save Changes" id="submitButton">
+
+	</div>
+<!--</div>-->
+</form>
+</body>
+</html>

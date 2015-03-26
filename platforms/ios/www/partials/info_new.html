@@ -1,0 +1,44 @@
+﻿
+<div id="info-header">
+    <div id="inf">
+        <span>{{shift.log.donor.name}}</span>
+        <span ng-repeat="recipient in shift.log.recipients">
+        &rarr; {{recipient.name}}
+        </span>
+    </div>
+</div>
+
+<div id="info-title">
+    <h4>
+        Info
+    </h4>
+</div>
+
+<div id ="info-container">
+    <div id="pickup">
+        <strong>Pickup:</strong> Every Monday between 2PM and 3PM 
+    </div>
+    <br>
+    <div id="next_pickup">
+        <strong>Next Pickup:</strong> August 11th, 2014 14:00
+    </div>
+    <br>
+    <div id="notes-container">
+        <div id="notes">
+            <strong>Notes:</strong> {{shift.log.notes}}
+        </div>
+        <br>
+        
+        <div id="expexcted_weight">
+            <strong>Expected Weight:</strong> {{shift.log.expected_weight}}
+        </div>
+        <br>
+        <div id="Hilliness">
+            <strong>Hilliness:</strong> {{shift.log.hilliness}}
+        </div>
+        <br>
+        <div id="difficulty">
+            <strong>Overall Difficulty:</strong> {{shift.log.difficulty}}
+        </div>
+    </div>
+</div>

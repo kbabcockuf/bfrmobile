@@ -1,0 +1,41 @@
+﻿<div ng-swipe-left="pageSwipe('settings')">
+    <!-- Swipe to settings page -->
+</div>
+<div class="header">
+    <h4>
+        <div class="shifts">My Upcoming Shifts</div>
+    </h4>
+</div>
+<div>
+    <div class="error" ng-if="errorMsg">
+        <span id="alert"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}
+    </div>
+</div>
+<div ng-repeat="shift in upcomingShifts">
+    <div class="shift-group">
+        <bfr-drawer ng-repeat="item in shift" bfr-title="item | describeLog">
+            <div id="upcoming-container">
+                <ol>
+                    <li>{{item.log.donor.name}} (Pickup)</li>
+                    <li ng-repeat="recipient in item.log.recipients">{{recipient.name}} (Drop)</li>
+                </ol>
+            </div>
+            <div class="tabs-container">
+                <a href="#/detail/{{item.log.id}}" id="info">
+                    <h4>Info</h4>
+                </a>
+            </div>
+            <div class="tabs-container">
+                <a bfr-navigate-link="item.log" id="map">
+                    <h4>Map</h4>
+                </a>
+            </div>
+            <div class="tabs-container">
+                <a ng-click="addCalendarEvent(item)" id="calendar">
+                    <h4>Calendar</h4>
+                </a>
+            </div>
+            <div class="clear_fix"></div>
+        </bfr-drawer>
+    </div>
+</div>

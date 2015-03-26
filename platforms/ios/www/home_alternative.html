@@ -1,0 +1,176 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>Boulder Food Rescue</title>
+	<link rel="stylesheet" href="themes/Bootstrap.css">
+	<link rel="stylesheet" href="themes/application.css">
+	
+<!--	<script href="themes/js/boostrap-dropdown.js"></script>
+	<script href="themes/js/boostrap-dropdown_2-1-1.js"></script>-->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.js"></script>
+
+	<!-- DatePicker -->
+	<link rel="stylesheet" type="text/css" href="themes/jquery.mobile.min.css" />
+	
+	<link rel="stylesheet" type="text/css" href="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.min.css" /> 
+
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.core.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/latest/jqm-datebox.mode.flipbox.min.js"></script>
+	<script type="text/javascript" src="http://dev.jtsage.com/cdn/datebox/i18n/jquery.mobile.datebox.i18n.en_US.utf8.js"></script>	
+	<script>
+		$(function () {
+			$("#logout").on("click", function() {
+				$.ajax({
+					type: "DELETE",
+					url: "http://dev.boulderfoodrescue.org/volunteers/sign_out.json",
+					data: {volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token},
+					success: function (data) {
+						//alert("Logging Out");
+						window.location = ("index.html");
+					},
+					error: function(msg) {
+						//alert(JSON.stringify(msg));
+					}
+				});
+			});
+		});
+	</script>
+    
+    <style type="text/css">
+	    body, textarea {
+            font-size: 1em;
+            line-height: 1.3;
+            font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+            }
+    </style>
+</head>
+<body>
+    <form id="frmHome">
+    
+	<div data-role="page" id="home">  
+		<div data-position="fixed" data-role="header" data-theme="a">  
+			<a style="background-color: rgba(75,115,51,0);" rel="external" data-icon="home" data-iconpos="notext" href="home.html">Home</a>  
+			<h1 style="font:13px/1.5 'Trebuchet MS' bold, Arial; font-weight: bold;">
+				Food Rescue Robot
+			</h1> 
+
+    		<a style="background-color: rgba(75,115,51,0);" rel="external"data-icon="power" id="logout" data-iconpos="notext">Log Out</a>
+		</div> 
+
+			<!--<div style="margin: 15px; color: #4a4a4a; font:20px/1.5 'Trebuchet MS', Arial; border-bottom: 1px solid #c5c5c5 !important;">-->
+            <!--<div style="color: #4a4a4a; font:20px/1.5 'Trebuchet MS', Arial; border-bottom: 1px solid #c5c5c5 !important;">-->
+            <div class="header">
+				<center>
+					My Upcoming Shifts (3)
+				</center>   
+			</div>
+
+            <div class="shiftlink">
+                <a href="pickupreport.html?id=1" data-icon="button">1) 6:00pm (Aug 7)</a>
+                <!--<div style="margin: 5px">-->
+                <!--<div>-->
+			        <!--<a rel="external" href="pickupreport.html" data-role="button" data-theme="c" data-inline="false">-->
+                    <a href="pickupreport.html" class="ui-btn ui-btn-inline ui-corner-all" style="padding-left: 3px; padding-right: 3px;">
+   				        <!--<span class="ui-btn-inner ui-btn-corner-all">-->
+                        <!--<span class="ui-btn-inline">-->
+                        <!-- <span>-->
+					        <!--<span class="main_button">-->
+                            <!--<span>-->
+						        Pickup Report
+					        <!--</span>-->
+				        <!--</span>-->
+			        </a>
+		        <!--</div> -->
+                    <br />
+                     Whole Foods Baseline - Vitamin Cottage - Attention Homes
+            </div>
+
+            <div class="shiftlink">
+                <a href="pickupreport.html?id=1" data-icon="button">2) 5:00pm (Aug 9)</a>
+                <a href="pickupreport.html" class="ui-btn ui-btn-inline ui-corner-all" style="padding-left: 3px; padding-right: 3px;">Pickup Report</a>
+	            <br />
+                <div style="line-height: 1.5;">
+                    Wal-mart - Bridge House
+                </div>
+            </div>
+
+            <div class="shiftlink">
+                <a href="pickupreport.html?id=1" data-icon="button">3) 8:00am (Aug 15)</a>
+                <a href="pickupreport.html" class="ui-btn ui-btn-inline ui-corner-all" style="padding-left: 3px; padding-right: 3px;">Pickup Report</a>
+	            <br />
+                <div style="line-height: 1.5;">
+                    Safeway - BFR
+                </div>
+            </div>
+
+            <div class="subheader">
+				<center>
+					Add Shift? (10)
+				</center>
+			</div>
+                
+            <div class="shiftlink">
+                <a href="pickupreport.html?id=1" data-icon="button">1) 5:30pm (Aug 8)</a>
+                <a href="pickupreport.html" class="ui-btn ui-btn-inline ui-corner-all" style="padding-left: 3px; padding-right: 3px;">Add</a>
+	            <br />
+                <div style="line-height: 1.5;">
+                    Meals On Wheels - Attention Homes
+                </div>
+            </div>
+
+            <div class="shiftlink">
+                <a href="pickupreport.html?id=1" data-icon="button">2) 8:00am (Aug 10)</a>
+                <a href="pickupreport.html" class="ui-btn ui-btn-inline ui-corner-all" style="padding-left: 3px; padding-right: 3px;">Add</a>
+	            <br />
+                <div style="line-height: 1.5;">
+                    Alfalfa - Bridge House
+                </div>
+            </div>
+
+            <div class="shiftlink">
+                <a href="pickupreport.html?id=1" data-icon="button">3) 12:00pm (Aug 10)</a>
+                <a href="pickupreport.html" class="ui-btn ui-btn-inline ui-corner-all" style="padding-left: 3px; padding-right: 3px;">Add</a>
+	            <br />
+                <div style="line-height: 1.5;">
+                    Piggly Wiggly - Publix - Soup Kitchen
+                </div>
+            </div>
+
+            <div class="shiftlink">
+                <a href="pickupreport.html?id=1" data-icon="button">4) 6:00pm (Aug 16)</a>
+                <a href="pickupreport.html" class="ui-btn ui-btn-inline ui-corner-all" style="padding-left: 3px; padding-right: 3px;">Add</a>
+	            <br />
+                <div style="line-height: 1.5;">
+                    Whole Foods Baseline - Meals On Wheels - BFR
+                </div>
+            </div>
+
+<!--		<div style="margin: 15px">
+			<a rel="external" href="pickupreport.html" data-role="button" data-theme="c" data-inline="false">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="main_button">
+						Pickup Report
+					</span>
+				</span>
+			</a>
+		</div> 
+		<div style="margin: 15px">
+			<a rel="external" href="routes.html" data-role="button" data-theme="c" data-inline="false">
+				<span class="ui-btn-inner ui-btn-corner-all">
+					<span class="main_button">
+						View Today's Routes
+					</span>
+				</span>
+			</a>-->
+		</div> 
+
+	</div>
+
+</form>
+</body>
+</html>
