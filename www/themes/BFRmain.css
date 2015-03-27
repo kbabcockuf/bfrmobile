@@ -219,7 +219,11 @@ a{
 
 #transportation-form-container{
     background-color: white;
-    text-indent: 20px;
+}
+
+#transportation, #weight-method{
+	text-align: right;
+	width: 120px;
 }
 
 #transportation, #lbs, #weight-method{

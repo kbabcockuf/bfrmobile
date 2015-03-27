@@ -197,6 +197,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
             }
 
             $scope.submit = function() {
+            	console.log("Submitting item:", $scope.item);
                 for (var id in $scope.item.log_parts) {
                     var current = $scope.item.log_parts[id];
 
@@ -216,8 +217,7 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
 
                 bfrApi.updateLog($scope.item)
                     .then(function(result) {
-                        alert("Message from the food rescue robot: "
-                            + result.message);
+                        alert(result.message);
                         $location.path('/report');
                     })
                     .catch(storeErrorIn($scope, 'errorMsg'));

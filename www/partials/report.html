@@ -21,11 +21,6 @@
             <br>
         </div>
 
-        <div id="weight-method">Weighing Method</div>
-
-        <select id="weight-dropdown-box" ng-model="entry.scale_type_id" ng-options="item.id as item.name for item in scaleTypes">
-        </select><br>
-
         <span ng-if="getTotalWeight() == 0">
             <div id="why-zero">Why Zero?</div>
             <div class="radio-group">
@@ -62,18 +57,24 @@
 </div>-->
 
 <bfr-drawer ng-repeat="recipient in item.log.recipients" bfr-title="recipient.name" bfr-show="true">
-    <div id="transportation-container">
-        <form id="transportation-form-container">
-            <br>
-            <div id ="transportation">Transportation</div>
+</bfr-drawer>
 
-            <select id="transportaion-dropdown-box" ng-model="entry.type" ng-options="item.id as item.name for item in transportTypes">
+    <div id="transportation-container">
+			<form id="transportation-form-container">
+			<div id="weight-method">Weighing Method</div>
+
+			<select id="weight-dropdown-box" ng-model="item.log.scale_type_id" ng-options="item.id as item.name for item in scaleTypes">
+			</select><br>
+
+            <div id="transportation">Transportation</div>
+
+            <select id="transportaion-dropdown-box" ng-model="item.log.transport_type_id" ng-options="item.id as item.name for item in transportTypes">
             </select>
 
 
             <div id="transportation-notes">
                 <br>
-                <textarea type="text" cols="32" rows="4" placeholder="Notes about the shift. Equipment issues?"></textarea>
+                <textarea type="text" cols="32" rows="4" placeholder="Notes about the shift. Equipment issues?" ng-model="item.log.notes"></textarea>
             </div>
         </form>
         
@@ -83,10 +84,7 @@
             <h4>Save</h4>
 
         </div>
-        
 
-        
-</bfr-drawer>
 <!--<div class="collapsable-tab">
     <h4>
         Vitamin Cottage
