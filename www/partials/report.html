@@ -16,8 +16,8 @@
         <div class="products" ng-repeat="(id, entry) in item.log_parts">
             <br><select class="dropdown-box" ng-model="entry.food_type_id" ng-options="item.id as item.name for item in foodTypes">
             </select>
-            <input class="food-input" type="text" size="15" ng-model="entry.description"/>
-            <input class="lb-input" type="text" size="5" ng-model="entry.weight"/> <span id ="lbs">lbs</span>
+            <input class="food-input" type="text" size="15" ng-model="entry.description" placeholder="Description"/>
+            <input class="lb-input" type="text" size="5" ng-model="entry.weight" placeholder="Weight"/> <span id="lbs">lbs</span>
             <br>
         </div>
 
