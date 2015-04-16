@@ -12,7 +12,7 @@
     text-align: center;
     color: White;
     line-height: 2.0;
-    font-size: 1em;
+    font-size: 1.2em;
     
 }
 
@@ -23,7 +23,7 @@
 
 #forgotPassword{
     color: #666;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 body{
@@ -41,7 +41,7 @@ body{
 #main{
     height:30px;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #home-icon{
@@ -70,14 +70,14 @@ body{
 .header {
     background-color: white;
     text-align: center;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 2.0;
 }
 
 #pickup-header, #settings-header, #info-header {
     background-color: white;
     text-align: center;
-    font-size: 12px;
+    font-size: 16px;
     line-height: 2.0;
 }
 
@@ -114,14 +114,14 @@ body{
     background-color: white;
     text-align: center;
     line-height: 2.8;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .collapsable-tab, .bfr-title{
     padding: 0 8px;
     line-height: 2.0;
     color: #333333;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
     background-color: #B3DD62;
     
@@ -149,7 +149,7 @@ a{
     text-align: center;
     line-height: 2.0;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: 16px;
     padding-top: 20px;
 }
 
@@ -162,7 +162,7 @@ a{
     text-align: center;
     color: White;
     line-height: 3.2;
-    font-size: 14px;
+    font-size: 16px;
     
 }
 #settings-log:hover, #info:hover, #info-pickup:hover, #map:hover, #calendar:hover, #save:hover, bfr-title:hover,.collapsable-tab:hover, #home-icon:hover, #logout-icon:hover,#take:hover, a:hover, #submitButton:hover, #one-time:hover, #recurring:hover, .active-tab {
@@ -186,7 +186,7 @@ a{
 
 .email_reset label{
     display: inline-block;
-    font-size: 12px;
+    font-size: 16px;
     color: #333333;
 }
 
@@ -199,11 +199,11 @@ a{
     background-color: white;
     padding-top: 20px;
     padding-left: 5px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 #notes-container{
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #settings-container{
@@ -219,11 +219,15 @@ a{
 
 #transportation-form-container{
     background-color: white;
-    text-indent: 20px;
+}
+
+#transportation, #weight-method{
+	text-align: right;
+	width: 120px;
 }
 
 #transportation, #lbs, #weight-method{
-    font-size: 12px;
+    font-size: 14px;
 }
 
 
@@ -234,7 +238,7 @@ a{
     line-height: 2.0;
     margin-left:10px;
     margin-right:10px;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .box{
@@ -248,7 +252,7 @@ h2,h4,h3 {
 
 li{
     line-height: 200%;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 ol
@@ -257,13 +261,17 @@ ol
     padding-bottom: 10px;
     background-color: white;
     margin:0px;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 ul{
     background-color: white;
     margin:0px;
-    font-size: 12px;
+    font-size: 14px;
+}
+
+input {
+	font-size: 12pt;
 }
 
 #info,#map,#calendar {
@@ -352,7 +360,7 @@ ul{
 #enter-data-container{
     background-color: white;
     text-align:center;
-    font-size: 12px;
+    font-size: 14px;
 }
 
 .dropdown-box{
@@ -379,10 +387,6 @@ ul{
     background-color: white;
 }
 
-#transportation-notes textarea{
-    text-indent: 10px;
-}
-
 #transportation-form-container{
    text-align: center;
 }
@@ -403,7 +407,7 @@ ul{
 #location-contents, #date-contents{
     background-color: white;
     text-align: center;
-    font-size: 12px;
+    font-size: 14px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
@@ -449,7 +453,7 @@ form label {
 
 .error{
     text-align: center;
-    font-size: 14px;
+    font-size: 16px;
     padding-top: 38px;
     padding-bottom: 10px;
 }

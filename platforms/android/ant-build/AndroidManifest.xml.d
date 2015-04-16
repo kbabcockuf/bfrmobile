@@ -1,2 +1,2 @@
-/Users/austin/dev/BFRMobile/platforms/android/ant-build/AndroidManifest.xml : \
-/Users/austin/dev/BFRMobile/platforms/android/AndroidManifest.xml \
+/home/caleb/Checkouts/food-rescue-mobile/platforms/android/ant-build/AndroidManifest.xml : \
+/home/caleb/Checkouts/food-rescue-mobile/platforms/android/AndroidManifest.xml \

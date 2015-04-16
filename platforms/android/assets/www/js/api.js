@@ -4,7 +4,7 @@ angular.module("BFRMobile.api", [])
     /**
      * API endpoint to be prepended to API calls (excludes trailing '/').
      */
-    .value("apiEndpoint", "http://dev.boulderfoodrescue.org")
+    .value("apiEndpoint", "http://boulderfoodrescue.org")
 
     /**
      * Boulder Food Rescue API client
@@ -72,6 +72,18 @@ angular.module("BFRMobile.api", [])
                     var id = (item.id || item);
                     return api.call("/logs/" + id + ".json");
                 },
+
+                /**
+                 * Get detauls about a schedule chain
+                 *
+                 * @param item {object|Number} Id, or an object with an id
+                 * property
+                 * @return {Promise} Promise for the schedule chain details
+                 */
+                /*chainById: function(item) {
+                    var id = (item.id || item);
+                    return api.call("/schedule_chains/" + id + ".json");
+                },*/
 
                 /**
                  * Send an updated log item to .then(function(result) {

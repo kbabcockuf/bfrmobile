@@ -6,7 +6,7 @@ $(function () {
         var p = $("#password").val();
         $.ajax({
             type: "POST",
-            url: "http://dev.boulderfoodrescue.org/volunteers/sign_in.json",
+            url: "http://boulderfoodrescue.org/volunteers/sign_in.json",
             data: { email: e, password: p },
             success: function (data) {
                 console.log("Success (sign_in)");
@@ -28,17 +28,3 @@ function init() {
     //document.addEventListener("deviceready", deviceReady, true);
     delete init;
 }
-
-//function myFunction() {
-//    alert("You failed");
-//    $.post("http://dev.boulderfoodrescue.org/volunteers/sign_in.json?email=julia@dragondev.com&password=dr@g0ndream", function(data) {
-//            if(data == true) {
-//                alert("Your login succeeded");
-//                window.location = ("home.html");
-//            } else {
-//                alert("Your login failed");
-//            }
-//        }
-//    // window.location = ("home.html");
-//    // $.mobile.changePage("home.html");
-//}
