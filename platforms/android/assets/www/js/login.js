@@ -6,7 +6,7 @@ $(function () {
         var p = $("#password").val();
         $.ajax({
             type: "POST",
-            url: "http://boulderfoodrescue.org/volunteers/sign_in.json",
+            url: "http://robot.boulderfoodrescue.org/volunteers/sign_in.json",
             data: { email: e, password: p },
             success: function (data) {
                 console.log("Success (sign_in)");

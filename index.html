@@ -32,7 +32,7 @@
                 var p = $("#password").val();
                 $.ajax({
                     type: "POST",
-                    url: "http://boulderfoodrescue.org/volunteers/sign_in.json",
+                    url: "http://robot.boulderfoodrescue.org/volunteers/sign_in.json",
                     data: { email: e, password: p },
                     success: function (data) {
                         //alert('Success');
@@ -55,7 +55,7 @@
             $("hitButton", this).attr("disabled", "disabled");
             $.ajax({
                 type: "DELETE",
-                url: "http://boulderfoodrescue.org/volunteers/sign_out.json",
+                url: "http://robot.boulderfoodrescue.org/volunteers/sign_out.json",
                 data: { volunteer_email: window.sessionStorage.email, volunteer_token: window.sessionStorage.token },
                 success: function (data) {
                     //alert('Success');

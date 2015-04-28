@@ -4,7 +4,7 @@ angular.module("BFRMobile.api", [])
     /**
      * API endpoint to be prepended to API calls (excludes trailing '/').
      */
-    .value("apiEndpoint", "http://boulderfoodrescue.org")
+    .value("apiEndpoint", "http://robot.boulderfoodrescue.org")
 
     /**
      * Boulder Food Rescue API client
