@@ -86,4 +86,9 @@
     <gap:splash gap:platform="ios" width="2048" height="1496" src="img/splash/ios/splash2048x1496.png" />
     <gap:splash gap:platform="winphone" src="img/splash/winphone/splash.jpg" />
     <access origin="*" />
+    <access origin="tel:*" launch-external="yes"/>
+	<access origin="geo:*" launch-external="yes"/>
+	<access origin="mailto:*" launch-external="yes"/>
+	<access origin="sms:*" launch-external="yes"/>
+	<access origin="market:*" launch-external="yes"/>
 </widget>

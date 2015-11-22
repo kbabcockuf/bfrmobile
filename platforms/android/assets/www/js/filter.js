@@ -16,6 +16,8 @@ function fuzzyTime(date) {
         date = new Date(date);
     }
 
+	date = convertDate(date);
+	
 	var weekdayFormat = new Intl.DateTimeFormat('en', {
 		weekday: 'long'
 	});
@@ -63,6 +65,15 @@ function nextWeekly(day, time, from) {
     date.setDate(date.getDate() + (7 + day - date.getDay()) % 7);
     date.setHours(time.getHours(), time.getMinutes(), time.getSeconds());
     return date;
+}
+
+function convertDate(date) {
+    var newDate = new Date();
+
+    var offset = date.getTimezoneOffset()*60*1000;
+    newDate.setTime(date.getTime() + offset);
+
+    return newDate;   
 }
 
 /**

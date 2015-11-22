@@ -11,17 +11,23 @@
     <span id="Span1"><img src="../www/icons/alert-black.png" /></span>{{errorMsg}}</div>
 </div>
 
-<bfr-drawer bfr-title="item.log.donor.name" bfr-show="true">
+<div id="info-title">
+    <h4>
+        To Do Pickup Report
+    </h4>
+</div>
+
     <form id="enter-data-container">
         <div class="products" ng-repeat="(id, entry) in item.log_parts">
             <br><select class="dropdown-box" ng-model="entry.food_type_id" ng-options="item.id as item.name for item in foodTypes">
             </select>
             <input class="food-input" type="text" size="15" ng-model="entry.description" placeholder="Description"/>
-            <input class="lb-input" type="text" size="5" ng-model="entry.weight" placeholder="Weight"/> <span id="lbs">lbs</span>
+            <input class="lb-input" type="text" size="5" ng-model="entry.weight" placeholder="Weight"/>
             <br>
         </div>
 
         <span ng-if="getTotalWeight() == 0">
+        	<br>
             <div id="why-zero">Why Zero?</div>
             <div class="radio-group">
                 <p>
@@ -32,32 +38,9 @@
                 </p>
             </div>
         </span>
-
-        <!--<div class="products">
-            <br><select class="dropdown-box">
-                <option value="Bread">Bread</option>
-            </select>
-            <input type="text" size="15" />
-            <input type="text"size="1" /> lbs
-        </div>
-        <div class="products">
-            <br><select class="dropdown-box">
-                <option value="Meat">Meat</option>
-            </select>
-            <input class="food-input" type="text" size="15" />
-            <input class="lb-input" type="text"size="1" /> lbs
-        </div>--><br>
+		<br>
     </form>
 
-</bfr-drawer>
-<!--<div class="collapsable-tab">
-    <h4>
-        Whole Foods Baseline
-    </h4>
-</div>-->
-
-<bfr-drawer ng-repeat="recipient in item.log.recipients" bfr-title="recipient.name" bfr-show="true">
-</bfr-drawer>
 
     <div id="transportation-container">
 			<form id="transportation-form-container">
@@ -69,12 +52,14 @@
             <div id="transportation">Transportation</div>
 
             <select id="transportaion-dropdown-box" ng-model="item.log.transport_type_id" ng-options="item.id as item.name for item in transportTypes">
-            </select>
+            </select><br><br>
 
+			<div id="transportation">Hours Spent</div>
+			<input class="lb-input" type="text" size="5" ng-model="item.log.hours_spent"/>
 
             <div id="transportation-notes">
                 <br>
-                <textarea type="text" cols="32" rows="4" placeholder="Notes about the shift. Equipment issues?" ng-model="item.log.notes"></textarea>
+                <textarea type="text" cols="32" rows="4" placeholder="Send notes about the shift to the Admin. Equipment issues?" ng-model="item.log.notes"></textarea>
             </div>
         </form>
         
@@ -82,7 +67,13 @@
 
         <div id="save" ng-click="submit()">
             <h4>Save</h4>
-
+        </div>
+        <br>
+        <div class="header">
+        	Questions? Concerns? Comments? 
+        </div>
+        <div class="header">
+        	<a href="mailto:info@boulderfoodrescue.com?Subject=">Email Boulder Food Rescue</a>
         </div>
 
 <!--<div class="collapsable-tab">

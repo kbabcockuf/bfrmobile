@@ -214,6 +214,9 @@ angular.module("BFRMobile.controllers", ["BFRMobile.api"])
                         return;
                     }
                 }
+                
+                if ($scope.item.log.notes)
+                	$scope.item.log.flag_for_admin = true;
 
                 bfrApi.updateLog($scope.item)
                     .then(function(result) {
