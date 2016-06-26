@@ -80,16 +80,20 @@ angular.module("BFRMobile.directives", [])
             link: function(scope, element, attrs, controller, transcludeFn) {
                 element.click(function() {
                     console.log(scope);
-                    launchnavigator.navigate(
-                        scope.log.donor.address,
-                        scope.log.recipients[0].address,
-                        function(){
-                            // Map launched
-                        },
-                        function(error){
-                            // Fallback to browser version
-                            fallbackMap(scope.log);
-                        });
+                    if (launchnavigator) {
+						launchnavigator.navigate(
+							scope.log.donor.address,
+							scope.log.recipients[0].address,
+							function(){
+								// Map launched
+							},
+							function(error){
+								// Fallback to browser version
+								fallbackMap(scope.log);
+							});
+					} else {
+						fallbackMap(scope.log);
+					}
                 });
             }
         };

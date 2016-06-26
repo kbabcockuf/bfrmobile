@@ -53,7 +53,9 @@
         <br>
         <div ng-repeat="location in locations">
             <h3>{{location.name}} ({{location.type}})</h3>
-            <p class="address">{{location.address}}</p>
+            <p class="address">          	
+            	<a ng-href="http://maps.google.com/maps?z=5&t=m&q=loc:{{location.lat}}+{{location.lng}}" target="_blank">{{location.address}}</a>
+            </p>
             <p ng-if="location.public_notes">
                 <br>
                 <strong>Notes:</strong> {{location.public_notes}}

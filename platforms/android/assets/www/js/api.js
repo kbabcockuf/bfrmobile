@@ -46,8 +46,8 @@ angular.module("BFRMobile.api", [])
                     var promise = $http(config)
                         .catch(function(result) {
                             if (result.status == 401) {
-                                // Request failed because used was logged out
-                                api.signOut();
+                                // Request failed because user was logged out
+                                window.location = loginRedirect;
                             }
                             return $q.reject(result);
                         })
